@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
-import "./globals.css";
+import "../styles/global-bootstrap.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Gaurav's website",
+  title: "Gaurav Parab's website",
   description: "A portfolio/website for Gaurav",
+  icons: "images/wip-icon.png",
 };
 
 export default function RootLayout({
