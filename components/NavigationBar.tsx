@@ -16,7 +16,9 @@ export default function NavigationBar() {
             <Nav.Link href="#contact">Contact</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="/resume">Download Resume</Nav.Link>
+            <Nav.Link href="/documents/Gaurav_Parab_resume.pdf" download>
+              Download Resume
+            </Nav.Link>
           </Nav>
           <Navbar.Brand href="/linkedin">
             <img
