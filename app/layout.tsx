@@ -6,8 +6,8 @@ import "../styles/global-bootstrap.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Gaurav Parab's website",
-  description: "A portfolio/website for Gaurav",
+  title: "Gaurav Parab's website(currently a work in progress!)",
+  description: "A portfolio website for Gaurav",
   icons: "images/wip-icon.png",
 };
 
