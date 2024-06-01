@@ -7,13 +7,14 @@ import { Button } from "react-bootstrap";
 export default function NavigationBar() {
   return (
     // <Container>
-    <Navbar bg="dark" data-bs-theme="dark">
+    <Navbar expand="sm" bg="dark" data-bs-theme="dark">
       <Container>
         <Navbar.Brand href="/">Gaurav Parab</Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="#about">About</Nav.Link>
           <Nav.Link href="#projects">Projects</Nav.Link>
+          <Nav.Link href="#pastexp">Past Experience</Nav.Link>
           <Nav.Link href="#contact">Contact</Nav.Link>
         </Nav>
         <Nav>
