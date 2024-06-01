@@ -1,5 +1,5 @@
-import { redirect, RedirectType } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function Github() {
-	return redirect("https://www.github.com/graviscool")
+  return permanentRedirect("https://www.github.com/");
 }

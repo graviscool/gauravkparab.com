@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function Linkedin() {
-  return redirect("https://www.linkedin.com/in/gparab");
+  return permanentRedirect("https://www.linkedin.com/in/gparab");
 }
