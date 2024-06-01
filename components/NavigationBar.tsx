@@ -21,6 +21,7 @@ export default function NavigationBar() {
           className="bg-dark"
           aria-labelledby="offcanvasNavbarLabel-expand-lg"
           placement="end"
+          data-bs-theme="dark"
         >
           <Offcanvas.Header closeButton>
             <Offcanvas.Title className="text-light fw-bolder">
@@ -28,20 +29,20 @@ export default function NavigationBar() {
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
-            <Nav className="me-auto text-light">
+            <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="#about">About</Nav.Link>
               <Nav.Link href="#prevexp">Previous Experience</Nav.Link>
               <Nav.Link href="#projects">Projects</Nav.Link>
               <Nav.Link href="#contact">Contact</Nav.Link>
             </Nav>
-            <Nav className="me-auto text-light">
+            <Nav className="me-1">
               <Nav.Link href="/documents/Gaurav_Parab_resume.pdf" download>
                 Download Resume
               </Nav.Link>
             </Nav>
 
-            <Navbar.Brand href="/linkedin">
+            <Navbar.Brand href="/linkedin" className="me-1">
               <Image
                 src="/images/linkedin-logo.png"
                 width={30}
