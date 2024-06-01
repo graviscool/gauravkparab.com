@@ -10,7 +10,7 @@ const Main = () => {
         <section>
           <h2>About Me</h2>
           <p>
-            Hi, I'm Gaurav! I'm a passionate web developer with experience in
+            Hi, I&apos;m Gaurav! I&apos;m a passionate web developer with experience in
             React and Next.js. I love building interactive and user-friendly
             websites.
           </p>

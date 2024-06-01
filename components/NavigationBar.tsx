@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
+import { Button } from "react-bootstrap";
 
 export default function NavigationBar() {
   return (
@@ -38,14 +39,20 @@ export default function NavigationBar() {
             alt="Github"
           />
         </Navbar.Brand>
-        <Form className="d-flex">
+        <Form className="d-flex" id="search">
           <Form.Control
             type="search"
             placeholder="search..."
-            className="me-auto"
+            className="me-2"
             aria-label="search-box"
           ></Form.Control>
         </Form>
+        <Button
+          variant="outline-info"
+          onClick={(e) => alert(`This feature hasn't been implemented yet`)}
+        >
+          Search
+        </Button>
       </Container>
     </Navbar>
     // </Container>
