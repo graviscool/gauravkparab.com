@@ -1,0 +1,10 @@
+.footer {
+  background-color: lightgreen;
+  color: grey;
+  height: 55px;
+}
+
+.footerCopyright {
+  text-align: right;
+  font-size: large;
+}
