@@ -1,68 +1,9 @@
 import React from "react";
+// import '../styles/Main.module.css'
 
-const Main = () => {
+export default function Main() {
   return (
-    <div className="main-container">
-      <header>
-        <h1>Welcome to My Portfolio</h1>
-      </header>
-      <main>
-        <section>
-          <h2>About Me</h2>
-          <p>
-            Hi, I&apos;m Gaurav! I&apos;m a passionate web developer with experience in
-            React and Next.js. I love building interactive and user-friendly
-            websites.
-          </p>
-        </section>
-        <section>
-          <h2>Projects</h2>
-          <ul>
-            <li>
-              <h3>Project 1</h3>
-              <p>Description of project 1.</p>
-            </li>
-            <li>
-              <h3>Project 2</h3>
-              <p>Description of project 2.</p>
-            </li>
-            <li>
-              <h3>Project 3</h3>
-              <p>Description of project 3.</p>
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h2>Work Experience</h2>
-          <ul>
-            <li>
-              <h3>Company A</h3>
-              <p>Position: Web Developer</p>
-              <p>Duration: 2019 - 2021</p>
-              <p>
-                Responsibilities: Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit.
-              </p>
-            </li>
-            <li>
-              <h3>Company B</h3>
-              <p>Position: Frontend Engineer</p>
-              <p>Duration: 2017 - 2019</p>
-              <p>
-                Responsibilities: Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit.
-              </p>
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h2>Contact Me</h2>
-          <p>
-            If you have any questions or would like to work together, feel free
-            to reach out to me. You can find my contact information below.
-          </p>
-        </section>
-      </main>
+    <div className="container">
       <style jsx>{`
         .main-container {
           max-width: 800px;
@@ -116,8 +57,66 @@ const Main = () => {
           color: #666;
         }
       `}</style>
+      <header>
+        <h1>Welcome to My Portfolio...</h1>
+      </header>
+      <main>
+        <section>
+          <h2>About Me</h2>
+          <p>
+            Hi, I&apos;m Gaurav! I&apos;m a passionate web developer with
+            experience in React and Next.js. I love building interactive and
+            user-friendly websites.
+          </p>
+        </section>
+        <section>
+          <h2>Projects</h2>
+          <ul>
+            <li>
+              <h3>Project 1</h3>
+              <p>Description of project 1.</p>
+            </li>
+            <li>
+              <h3>Project 2</h3>
+              <p>Description of project 2.</p>
+            </li>
+            <li>
+              <h3>Project 3</h3>
+              <p>Description of project 3.</p>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Work Experience</h2>
+          <ul>
+            <li>
+              <h3>Company A</h3>
+              <p>Position: Web Developer</p>
+              <p>Duration: 2019 - 2021</p>
+              <p>
+                Responsibilities: Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit.
+              </p>
+            </li>
+            <li>
+              <h3>Company B</h3>
+              <p>Position: Frontend Engineer</p>
+              <p>Duration: 2017 - 2019</p>
+              <p>
+                Responsibilities: Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit.
+              </p>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Contact Me</h2>
+          <p>
+            If you have any questions or would like to work together, feel free
+            to reach out to me. You can find my contact information below.
+          </p>
+        </section>
+      </main>
     </div>
   );
-};
-
-export default Main;
+}
