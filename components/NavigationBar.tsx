@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Button, Image } from "react-bootstrap";
+import { Button, Dropdown, Image, SplitButton } from "react-bootstrap";
 
 export default function NavigationBar() {
   return (
@@ -12,6 +12,7 @@ export default function NavigationBar() {
       bg="dark"
       className="bg-body-tertiary mb-0"
       data-bs-theme="dark"
+      collapseOnSelect
     >
       <Container>
         <Navbar.Brand href="/">Gaurav Parab</Navbar.Brand>
@@ -34,12 +35,20 @@ export default function NavigationBar() {
               <Nav.Link href="#projects">Projects</Nav.Link>
               <Nav.Link href="/contact">Contact</Nav.Link>
             </Nav>
-            <Nav className="me-1">
-              <Nav.Link href="/documents/Gaurav_Parab_resume.pdf" download>
-                Download Resume
-              </Nav.Link>
+            <Nav className="me-2">
+              <SplitButton
+                title="View Resume"
+                variant="outline-success"
+                href="/documents/Gaurav_Parab_resume.pdf"
+              >
+                <Dropdown.Item
+                  href="/documents/Gaurav_Parab_resume.pdf"
+                  download
+                >
+                  Download Resume
+                </Dropdown.Item>
+              </SplitButton>
             </Nav>
-
             <Navbar.Brand href="/linkedin" className="me-1">
               <Image
                 src="/images/linkedin-logo.png"
@@ -49,7 +58,7 @@ export default function NavigationBar() {
                 alt="Linkedin"
               />
             </Navbar.Brand>
-            <Navbar.Brand href="/github">
+            <Navbar.Brand href="/github" className="me-0">
               <Image
                 src="/images/github-logo-white.png"
                 width="30"
@@ -58,20 +67,6 @@ export default function NavigationBar() {
                 alt="Github"
               />
             </Navbar.Brand>
-            <Form className="d-flex" id="search">
-              <Form.Control
-                type="search"
-                className="me-2"
-                size="sm"
-                aria-label="search-box"
-              ></Form.Control>
-            </Form>
-            <Button
-              variant="outline-info"
-              onClick={(e) => alert(`Searching hasn't been implemented yet`)}
-            >
-              Search
-            </Button>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
       </Container>
