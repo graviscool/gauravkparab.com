@@ -8,9 +8,6 @@ export default function Main() {
   return (
     <Container fluid className="bg-dark text-light">
       <div>
-        <header>
-          <h1>Hi I&apos;m Gaurav!</h1>
-        </header>
         <main>
           <section id="about">
             <h2>About Me</h2>
@@ -23,37 +20,49 @@ export default function Main() {
           <section id="projects">
             <h2>Projects</h2>
             <CardGroup>
-              <Card className="bg-dark text-light" style={{ width: "18rem" }}>
+              <Card bg="secondary" border="primary">
                 <Card.Body>
                   <Card.Title>Project 1</Card.Title>
                   <Card.Subtitle className="mb-2 text-light">
                     sub 1
                   </Card.Subtitle>
                   <Card.Text>example text 1</Card.Text>
-                  <Card.Link href="#">Card Link 1</Card.Link>
-                  <Card.Link href="#">Card Link 2</Card.Link>
+                  <Card.Link href="#" className="text-dark">
+                    Card Link 1
+                  </Card.Link>
+                  <Card.Link href="#" className="text-dark">
+                    Card Link 2
+                  </Card.Link>
                 </Card.Body>
               </Card>
-              <Card className="bg-dark text-light" style={{ width: "18rem" }}>
+              <Card bg="primary" border="info">
                 <Card.Body>
                   <Card.Title>Project 2</Card.Title>
                   <Card.Subtitle className="mb-2 text-light">
                     sub 2
                   </Card.Subtitle>
                   <Card.Text>example text 2</Card.Text>
-                  <Card.Link href="#">Card Link 1</Card.Link>
-                  <Card.Link href="#">Card Link 2</Card.Link>
+                  <Card.Link href="#" className="link-warning">
+                    Card Link 1
+                  </Card.Link>
+                  <Card.Link href="#" className="link-warning">
+                    Card Link 2
+                  </Card.Link>
                 </Card.Body>
               </Card>
-              <Card className="bg-dark text-light" style={{ width: "18rem" }}>
+              <Card bg="info" border="success">
                 <Card.Body>
                   <Card.Title>Project 3</Card.Title>
                   <Card.Subtitle className="mb-2 text-light">
                     sub 3
                   </Card.Subtitle>
                   <Card.Text>example text 3</Card.Text>
-                  <Card.Link href="#">Card Link 1</Card.Link>
-                  <Card.Link href="#">Card Link 2</Card.Link>
+                  <Card.Link href="#" className="link-danger">
+                    Card Link 1
+                  </Card.Link>
+                  <Card.Link href="#" className="link-danger">
+                    Card Link 2
+                  </Card.Link>
                 </Card.Body>
               </Card>
             </CardGroup>
