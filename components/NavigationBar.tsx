@@ -10,7 +10,7 @@ export default function NavigationBar() {
     <Navbar
       expand="lg"
       bg="dark"
-      className="bg-body-tertiary mb-3"
+      className="bg-body-tertiary mb-0"
       data-bs-theme="dark"
     >
       <Container>
@@ -22,9 +22,10 @@ export default function NavigationBar() {
           aria-labelledby="offcanvasNavbarLabel-expand-lg"
           placement="end"
           data-bs-theme="dark"
+          sc
         >
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title className="text-light fw-bolder">
+            <Offcanvas.Title className="fw-bolder">
               Navigation
             </Offcanvas.Title>
           </Offcanvas.Header>
@@ -63,8 +64,8 @@ export default function NavigationBar() {
             <Form className="d-flex" id="search">
               <Form.Control
                 type="search"
-                placeholder="search..."
                 className="me-2"
+                size="sm"
                 aria-label="search-box"
               ></Form.Control>
             </Form>
