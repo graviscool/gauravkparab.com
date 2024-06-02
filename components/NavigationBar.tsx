@@ -22,12 +22,9 @@ export default function NavigationBar() {
           aria-labelledby="offcanvasNavbarLabel-expand-lg"
           placement="end"
           data-bs-theme="dark"
-          sc
         >
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title className="fw-bolder">
-              Navigation
-            </Offcanvas.Title>
+            <Offcanvas.Title className="fw-bolder">Navigation</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="me-auto">
@@ -35,7 +32,7 @@ export default function NavigationBar() {
               <Nav.Link href="#about">About</Nav.Link>
               <Nav.Link href="#prevexp">Previous Experience</Nav.Link>
               <Nav.Link href="#projects">Projects</Nav.Link>
-              <Nav.Link href="#contact">Contact</Nav.Link>
+              <Nav.Link href="/contact">Contact</Nav.Link>
             </Nav>
             <Nav className="me-1">
               <Nav.Link href="/documents/Gaurav_Parab_resume.pdf" download>

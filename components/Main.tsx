@@ -99,16 +99,6 @@ export default function Main() {
           <section id="techstack">
             <h2>Dev Tools/Tech Stack</h2>
           </section>
-          <section id="contact">
-            <h2>Contact Me</h2>
-            <p>
-              If you have any questions or would just like to reach out, feel
-              free to reach out to me at my email{" "}
-              <a href="mailto:gkparab1@gmail.com" className="link-info">
-                gkparab1@gmail.com
-              </a>
-            </p>
-          </section>
         </main>
       </div>
     </Container>
