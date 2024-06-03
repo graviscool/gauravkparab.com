@@ -10,14 +10,16 @@ export default function Main() {
     <Container fluid className={styles.mainContainer}>
       <div>
         <main>
+          <p className={styles.introHi}>
+            Hi! <br />
+            I&apos;m Gaurav
+          </p>
           <section id="about">
-            <h2>About Me</h2>
             <p>
-              Hi! I&apos;m Gaurav, a rising junior majoring in Computer Science
-              at Penn State University. I&apos;m aspiring to work in the
-              software field. <br />I am currently looking for any software
-              related intern opportunities in the near future. I would love to
-              connect!
+              I&apos;m a rising junior majoring in Computer Science at Penn
+              State University. I&apos;m aspiring to work in the software field.{" "}
+              <br />I am currently looking for any software related intern
+              opportunities in the near future. I would love to connect!
             </p>
           </section>
           <section id="projects">

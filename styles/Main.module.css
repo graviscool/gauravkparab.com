@@ -10,3 +10,8 @@
 .mainContainer {
   background-color: #add8e6;
 }
+
+.introHi {
+  font-size: 2rem;
+  font-weight: bold;
+}
