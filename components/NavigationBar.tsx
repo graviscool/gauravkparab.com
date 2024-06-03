@@ -13,7 +13,7 @@ export default function NavigationBar() {
       data-bs-theme="dark"
       collapseOnSelect
     >
-      <Container>
+      <Container fluid>
         <Navbar.Brand href="/">Gaurav Parab</Navbar.Brand>
         <Navbar.Toggle aria-controls={"offcanvasNavbar-expand-lg"} />
         <Navbar.Offcanvas
@@ -34,7 +34,7 @@ export default function NavigationBar() {
               <Nav.Link href="#projects">Projects</Nav.Link>
               <Nav.Link href="/contact">Contact</Nav.Link>
             </Nav>
-            <Nav className="me-2">
+            <Nav className="me-3">
               <SplitButton
                 title="View Resume"
                 variant="outline-success"
@@ -50,7 +50,7 @@ export default function NavigationBar() {
                 </Dropdown.Item>
               </SplitButton>
             </Nav>
-            <Navbar.Brand href="/linkedin" className="me-1">
+            <Navbar.Brand href="/linkedin" className="me-2">
               <Image
                 src="/images/linkedin-logo.png"
                 width={30}
