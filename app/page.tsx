@@ -4,14 +4,18 @@ import Main from "@/components/Main";
 import "@/styles/global-bootstrap.css";
 import styles from "@/styles/Home.module.css";
 import Footer from "@/components/Footer";
-import { Container } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 
 export default function Home() {
   return (
     <>
-        <NavigationBar/>
-        <Main />
-        <Footer />
+      <Alert variant="warning" className="mb-0">
+        This website is still a work in progress! See the main page{" "}
+        <Alert.Link href="https://gauravkparab.com">here</Alert.Link>
+      </Alert>
+      <NavigationBar />
+      <Main />
+      <Footer />
     </>
   );
 }
