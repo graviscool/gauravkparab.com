@@ -1,1 +1,12 @@
-/* TODO copy css from Main.tsx */
+.projectCard {
+  width: 30%;
+  /* width: fit-content; */
+}
+
+.expCard {
+  width: 50%;
+}
+
+.mainContainer {
+  background-color: #add8e6;
+}

@@ -1,9 +1,8 @@
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Form from "react-bootstrap/Form";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Button, Dropdown, Image, SplitButton } from "react-bootstrap";
+import { Dropdown, Image, SplitButton } from "react-bootstrap";
 
 export default function NavigationBar() {
   return (
@@ -40,6 +39,8 @@ export default function NavigationBar() {
                 title="View Resume"
                 variant="outline-success"
                 href="/documents/Gaurav_Parab_resume.pdf"
+                target="_blank"
+                rel="noreferrer noopener"
               >
                 <Dropdown.Item
                   href="/documents/Gaurav_Parab_resume.pdf"
