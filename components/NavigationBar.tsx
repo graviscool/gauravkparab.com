@@ -35,7 +35,7 @@ export default function NavigationBar() {
                 <Nav.Link href="#about">About</Nav.Link>
                 <Nav.Link href="#prevexp">Previous Experience</Nav.Link>
                 <Nav.Link href="#projects">Projects</Nav.Link>
-                <Nav.Link href="/contact">Contact</Nav.Link>
+                <Nav.Link href="#contact">Contact</Nav.Link>
               </Nav>
               <Nav className="me-3">
                 <SplitButton
