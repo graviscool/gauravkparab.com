@@ -12,6 +12,14 @@
 }
 
 .introHi {
-  font-size: 2rem;
+  font-size: 150px;
   font-weight: bold;
+}
+
+.stackCard {
+  width: 7rem;
+}
+
+.about {
+  text-align: center;
 }

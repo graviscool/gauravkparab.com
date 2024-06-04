@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Alert variant="warning" className="mb-0">
         This website is still a work in progress! See the main page{" "}
-        <Alert.Link href="https://gauravkparab.com">here</Alert.Link>
+        <Alert.Link href="https://gauravkparab.com">here</Alert.Link>.
       </Alert>
       <NavigationBar />
       <Main />

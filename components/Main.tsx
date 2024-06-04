@@ -4,17 +4,22 @@ import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import { Figure, Ratio } from "react-bootstrap";
 import styles from "@/styles/Main.module.css";
+import { motion } from "framer-motion";
 
 export default function Main() {
   return (
     <Container fluid className={styles.mainContainer}>
       <div>
         <main>
-          <p className={styles.introHi}>
-            Hi! <br />
-            I&apos;m Gaurav
-          </p>
-          <section id="about">
+          <motion.h1
+            initial={{ x: -1500 }}
+            animate={{ x: 200 }}
+            transition={{ duration: 0.8 }}
+            className={`${styles.introHi} mb-4`}
+          >
+            Hi! I&apos;m Gaurav
+          </motion.h1>
+          <section id="about" className={styles.about}>
             <p>
               I&apos;m a rising junior majoring in Computer Science at Penn
               State University. I&apos;m aspiring to work in the software field.{" "}
@@ -78,16 +83,33 @@ export default function Main() {
           </section>
           <section id="prevexp">
             <h2>Work Experience</h2>
-            <Card bg="body" className={`mb-3 ${styles.expCard}`}>
-              <Card.Header>Company A</Card.Header>
+            <Card
+              bg="light"
+              text="dark"
+              border="success"
+              className={`mb-3 ${styles.expCard}`}
+            >
+              <Card.Header>Pennsylvania State University</Card.Header>
               <Card.Body>
                 <Card.Title>Learning Assistant</Card.Title>
-                <Card.Text>Learning assistant description...</Card.Text>
+                <Card.Text>
+                  • Interacted with and taught students in CMPSC 131
+                  (Programming Fundamentals) recitation classes alongside TA’s.{" "}
+                  <br />
+                  • Held review sessions to help students understand the new
+                  material presented in lectures. <br /> • Conducted code
+                  reviews and helped grade homework, projects, and tests.
+                </Card.Text>
                 <Card.Footer>August 2022 - December 2023</Card.Footer>
               </Card.Body>
             </Card>
-            <Card bg="body" className={styles.expCard}>
-              <Card.Header>Company B</Card.Header>
+            <Card
+              bg="light"
+              text="dark"
+              border="success"
+              className={`mb-2 ${styles.expCard}`}
+            >
+              <Card.Header>Special Order Systems</Card.Header>
               <Card.Body>
                 <Card.Title>Project Intern</Card.Title>
                 <Card.Text>Project intern description...</Card.Text>
@@ -97,12 +119,18 @@ export default function Main() {
           </section>
           <section id="techstack">
             <h2>Dev Tools/Tech Stack</h2>
-            <Figure>
+            <Card className={styles.stackCard}>
+              <Card.Img variant="top" src="/images/langs/python-icon.png" />
+              <Card.Body>
+                <Card.Text>Python</Card.Text>
+              </Card.Body>
+            </Card>
+            {/* <Figure>
               <Ratio aspectRatio="1x1">
                 <Figure.Image src="/images/langs/python-icon.png" />
               </Ratio>
               <Figure.Caption className="text-light">Python</Figure.Caption>
-            </Figure>
+            </Figure> */}
           </section>
           <section id="contact">
             <h2>Contact Me</h2>
