@@ -11,9 +11,37 @@
   background-color: #add8e6;
 }
 
+/* different intro sizes based on device viewport */
+
 .introHi {
-  font-size: 150px;
-  font-weight: bold;
+  font-size: 9rem;
+  /* background-image: url("../public/images/sf-night.jpg"); */
+  /* background-size: cover; */
+  /* background-position: center; */
+}
+
+@media (max-width: 1200px) {
+  .introHi {
+    font-size: 8rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .introHi {
+    font-size: 6em;
+  }
+}
+
+@media (max-width: 768px) {
+  .introHi {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .introHi {
+    font-size: 3rem;
+  }
 }
 
 .stackCard {
