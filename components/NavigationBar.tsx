@@ -50,7 +50,12 @@ export default function NavigationBar() {
                 </Dropdown.Item>
               </SplitButton>
             </Nav>
-            <Navbar.Brand href="/linkedin" className="me-2">
+            <Navbar.Brand
+              href="/linkedin"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="me-2"
+            >
               <Image
                 src="/images/linkedin-logo.png"
                 width={30}
@@ -59,7 +64,12 @@ export default function NavigationBar() {
                 alt="Linkedin"
               />
             </Navbar.Brand>
-            <Navbar.Brand href="/github" className="me-0">
+            <Navbar.Brand
+              href="/github"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="me-0"
+            >
               <Image
                 src="/images/github-logo-white.png"
                 width="30"
