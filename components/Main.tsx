@@ -60,13 +60,13 @@ export default function Main() {
           {/* </motion.h1> */}
           <div>
             <section id="about" className={styles.about}>
-              <p>
+              <motion.p initial= {{x: -1500}} animate={{x: 20}} transition={{duration: 1.5}}>
                 I&apos;m a rising junior majoring in Computer Science at Penn
                 State University. I&apos;m aspiring to work in the software
                 field. <br />I am currently looking for any software related
                 intern opportunities in the near future. I would love to
                 connect!
-              </p>
+              </motion.p>
             </section>
             <section id="projects">
               <h2>Projects</h2>
