@@ -1,12 +1,19 @@
 {
   "name": "gauravkparab.com",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/graviscool/gauravkparab.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "homepage": "https://gauravkparab.com",
   "dependencies": {
     "@react-spring/parallax": "^9.7.3",
     "@react-spring/web": "^9.7.3",
