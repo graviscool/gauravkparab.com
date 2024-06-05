@@ -52,10 +52,16 @@
 }
 
 .stackCard {
-  width: 7rem;
+  width: 6rem;
+  transition: transform 0.5s;
+}
+
+.stackCard:hover {
+  transform: scale(1.17);
 }
 
 .about {
   /* text-align: center; */
   font-size: 20px;
+  display: flex;
 }

@@ -23,7 +23,7 @@ export default function Main() {
             <div
               style={{
                 width: "100vw",
-                height: "80vh",
+                height: "100vh",
                 position: "relative",
               }}
             >
@@ -43,6 +43,7 @@ export default function Main() {
             <div style={{ position: "absolute", left: 50, top: 100 }}>
               <TypeIt
                 as="h1"
+                id="introAnim"
                 getBeforeInit={(instance) => {
                   instance
                     .type("Hi!")
@@ -67,17 +68,17 @@ export default function Main() {
           {/* </motion.h1> */}
           <div>
             <section id="about" className={styles.about}>
-              <p className="animate__animated animate__bounceInLeft">
+              {/* <p className="animate-on-scroll animate__animated animate__bounceInLeft">
                 {" "}
                 I&apos;m a rising junior majoring in Computer Science at Penn
                 State University. I&apos;m aspiring to work in the software
                 field. <br />I am currently looking for any software related
                 intern opportunities in the near future. I would love to
                 connect!
-              </p>
-              {/* <motion.p
-                initial={{ x: -1500 }}
-                animate={{ x: 20 }}
+              </p> */}
+              <motion.p
+                initial={{ x: "-100%" }}
+                whileInView={{ x: 0 }}
                 transition={{ duration: 1.5 }}
               >
                 I&apos;m a rising junior majoring in Computer Science at Penn
@@ -85,7 +86,7 @@ export default function Main() {
                 field. <br />I am currently looking for any software related
                 intern opportunities in the near future. I would love to
                 connect!
-              </motion.p> */}
+              </motion.p>
             </section>
             <section id="projects">
               <h2>Projects</h2>
@@ -178,22 +179,98 @@ export default function Main() {
                 <Card.Header>Special Order Systems</Card.Header>
                 <Card.Body>
                   <Card.Title>Project Intern</Card.Title>
-                  <Card.Text>Project intern description...</Card.Text>
+                  <Card.Text>project intern description...</Card.Text>
                   <Card.Footer>July 2021 - December 2021</Card.Footer>
                 </Card.Body>
               </Card>
             </section>
             <section id="techstack">
               <h2>Dev Tools/Tech Stack</h2>
-              <Card className={styles.stackCard}>
-                <Card.Img variant="top" src="/images/langs/python-icon.png" />
-                <Card.Body>
-                  <Card.Text>Python</Card.Text>
-                </Card.Body>
-              </Card>
+              <CardGroup>
+                <Card
+                  className={`${styles.stackCard} mx-md-2 my-sm-3`}
+                  bg="info"
+                  text="dark"
+                >
+                  <Card.Img variant="top" src="/images/langs/python.png" />
+                  <Card.Body>
+                    <Card.Text>Python</Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className={`${styles.stackCard} mx-md-2 my-sm-3`}
+                  bg="info"
+                  text="dark"
+                >
+                  <Card.Img variant="top" src="/images/langs/java.png" />
+                  <Card.Body>
+                    <Card.Text>Java</Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className={`${styles.stackCard} mx-md-2 my-sm-3`}
+                  bg="info"
+                  text="dark"
+                >
+                  <Card.Img variant="top" src="/images/langs/js.png" />
+                  <Card.Body>
+                    <Card.Text>Javascript</Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className={`${styles.stackCard} mx-md-2 my-sm-3`}
+                  bg="info"
+                  text="dark"
+                >
+                  <Card.Img variant="top" src="/images/langs/c.png" />
+                  <Card.Body>
+                    <Card.Text>C</Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className={`${styles.stackCard} mx-md-2 my-sm-3`}
+                  bg="info"
+                  text="dark"
+                >
+                  <Card.Img variant="top" src="/images/langs/react.png" />
+                  <Card.Body>
+                    <Card.Text>React</Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className={`${styles.stackCard} mx-md-2 my-sm-3`}
+                  bg="info"
+                  text="dark"
+                >
+                  <Card.Img variant="top" src="/images/langs/html.png" />
+                  <Card.Body>
+                    <Card.Text>HTML</Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className={`${styles.stackCard} mx-md-2 my-sm-3`}
+                  bg="info"
+                  text="dark"
+                >
+                  <Card.Img variant="top" src="/images/langs/sql.png" />
+                  <Card.Body>
+                    <Card.Text>SQL</Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className={`${styles.stackCard} mx-md-2 my-sm-3`}
+                  bg="info"
+                  text="dark"
+                >
+                  <Card.Img variant="top" src="/images/langs/linux.png" />
+                  <Card.Body>
+                    <Card.Text>Linux</Card.Text>
+                  </Card.Body>
+                </Card>
+              </CardGroup>
               {/* <Figure>
               <Ratio aspectRatio="1x1">
-                <Figure.Image src="/images/langs/python-icon.png" />
+                <Figure.Image src="/images/langs/python.png" />
               </Ratio>
               <Figure.Caption className="text-light">Python</Figure.Caption>
             </Figure> */}
@@ -203,13 +280,13 @@ export default function Main() {
               <p>
                 If you have any questions or would just like to reach out, feel
                 free to reach out to me at my email{" "}
-                <a href="mailto:gkparab1@gmail.com" className="link-info">
+                <a href="mailto:gkparab1@gmail.com" className="link-danger">
                   gkparab1@gmail.com
                 </a>{" "}
                 or on{" "}
                 <a
                   href="https://www.linkedin.com/in/gparab"
-                  className="link-info"
+                  className="link-primary"
                 >
                   Linkedin
                 </a>
