@@ -43,7 +43,6 @@ export default function Main() {
             <div style={{ position: "absolute", left: 50, top: 100 }}>
               <TypeIt
                 as="h1"
-                id="introAnim"
                 getBeforeInit={(instance) => {
                   instance
                     .type("Hi!")
@@ -68,14 +67,6 @@ export default function Main() {
           {/* </motion.h1> */}
           <div>
             <section id="about" className={styles.about}>
-              {/* <p className="animate-on-scroll animate__animated animate__bounceInLeft">
-                {" "}
-                I&apos;m a rising junior majoring in Computer Science at Penn
-                State University. I&apos;m aspiring to work in the software
-                field. <br />I am currently looking for any software related
-                intern opportunities in the near future. I would love to
-                connect!
-              </p> */}
               <motion.p
                 initial={{ x: "-100%" }}
                 whileInView={{ x: 0 }}

@@ -53,11 +53,11 @@
 
 .stackCard {
   width: 6rem;
-  transition: transform 0.5s;
+  transition: transform 0.25s;
 }
 
 .stackCard:hover {
-  transform: scale(1.17);
+  transform: scale(1.15);
 }
 
 .about {
