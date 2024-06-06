@@ -98,8 +98,8 @@ export default function Main() {
                   </Card.Body>
                 </Card>
                 <Card
-                  bg="primary"
-                  border="info"
+                  bg="secondary"
+                  border="primary"
                   className={`mb-3 me-3 ${styles.projectCard}`}
                 >
                   <Card.Body>
@@ -117,8 +117,8 @@ export default function Main() {
                   </Card.Body>
                 </Card>
                 <Card
-                  bg="info"
-                  border="success"
+                  bg="secondary"
+                  border="primary"
                   className={`mb-3 ${styles.projectCard}`}
                 >
                   <Card.Body>
@@ -176,6 +176,7 @@ export default function Main() {
             <section id="techstack">
               <h2>Dev Tools/Tech Stack</h2>
               <CardGroup className="text-center">
+                {/* <Row className="text-center"> */}
                 <Card
                   className={`${styles.stackCard} mx-md-2 my-sm-3`}
                   bg="info"
@@ -277,6 +278,7 @@ export default function Main() {
                     <Card.Text>Linux</Card.Text>
                   </Card.Body>
                 </Card>
+                {/* </Row> */}
               </CardGroup>
               {/* <Figure>
               <Ratio aspectRatio="1x1">

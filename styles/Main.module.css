@@ -69,14 +69,17 @@
 .bgImage {
   object-fit: cover;
   object-position: center;
-  animation: fadeIn 7s forwards;
+  position: sticky;
+  animation: imageFadeIn 6s forwards;
 }
 
-@keyframes fadeIn {
+@keyframes imageFadeIn {
   from {
-    opacity: 0.1;
+    top: 0;
+    opacity: 0.05;
   }
   to {
+    top: 200;
     opacity: 1;
   }
 }
