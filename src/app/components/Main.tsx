@@ -33,7 +33,14 @@ export default function Main() {
                 className={styles.bgImage}
               />
             </div>
-            <div style={{ position: "absolute", left: 50, top: 100 }}>
+            <div
+              style={{
+                position: "absolute",
+                left: 100,
+                top: 100,
+                alignItems: "center",
+              }}
+            >
               <TypeIt
                 as="h1"
                 getBeforeInit={(instance) => {
@@ -60,20 +67,16 @@ export default function Main() {
           {/* </motion.h1> */}
           <div>
             <section id="about" className={styles.about}>
-              <motion.p
-                initial={{ x: "-100%" }}
-                whileInView={{ x: 0 }}
-                transition={{ duration: 1.5 }}
-              >
+              <p>
                 I&apos;m a rising junior majoring in Computer Science at Penn
                 State University. I&apos;m aspiring to work in the software
                 field. <br />I am currently looking for any software related
                 intern opportunities in the near future. I would love to
                 connect!
-              </motion.p>
+              </p>
             </section>
             <section id="projects">
-              <h2>Projects</h2>
+              <h2 className={styles.heading}>Projects</h2>
               <Row md={4}>
                 <Card
                   bg="secondary"
@@ -135,7 +138,7 @@ export default function Main() {
               </Row>
             </section>
             <section id="prevexp">
-              <h2>Work Experience</h2>
+              <h2 className={styles.heading}>Work Experience</h2>
               <Card
                 bg="light"
                 text="dark"
@@ -171,7 +174,7 @@ export default function Main() {
               </Card>
             </section>
             <section id="techstack">
-              <h2>Dev Tools/Tech Stack</h2>
+              <h2 className={styles.heading}>Dev Tools/Tech Stack</h2>
               <CardGroup className="text-center">
                 {/* <Row className="text-center"> */}
                 <Card
@@ -295,7 +298,7 @@ export default function Main() {
               </Figure> */}
             </section>
             <section id="contact">
-              <h2>Contact Me</h2>
+              <h2 className={styles.heading}>Contact Me</h2>
               <p className="mb-0">
                 If you have any questions or would just like to reach out, feel
                 free to reach out to me at my email{" "}
