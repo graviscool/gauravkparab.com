@@ -6,7 +6,7 @@ import { Figure, Ratio, Row } from "react-bootstrap";
 import styles from "@/styles/Main.module.css";
 import { motion } from "framer-motion";
 import TypeIt from "typeit-react";
-import Image from "next/image";
+import { ParallaxBanner } from "react-scroll-parallax";
 
 export default function Main() {
   return (
@@ -23,18 +23,15 @@ export default function Main() {
             <div
               style={{
                 width: "100vw",
-                height: "100vh",
                 position: "relative",
               }}
             >
-              <Image
-                src="/images/sf-night.jpg"
-                alt="sf-night"
-                priority
-                fill
-                style={{ left: -12 }}
+              <ParallaxBanner
+                layers={[{ image: "images/sf-night.jpg", speed: -20 }]}
+                // className="aspect-[2/1]"
+                style={{ height: "100vh", left: -12 }}
                 className={styles.bgImage}
-              ></Image>
+              />
             </div>
             <div style={{ position: "absolute", left: 50, top: 100 }}>
               <TypeIt
@@ -181,6 +178,7 @@ export default function Main() {
                   className={`${styles.stackCard} mx-md-2 my-sm-3`}
                   bg="info"
                   text="dark"
+                  border="success"
                 >
                   <Card.Img variant="top" src="/images/langs/python.png" />
                   <Card.Body>
@@ -191,6 +189,7 @@ export default function Main() {
                   className={`${styles.stackCard} mx-md-2 my-sm-3`}
                   bg="info"
                   text="dark"
+                  border="success"
                 >
                   <Card.Img
                     variant="top"
@@ -204,6 +203,7 @@ export default function Main() {
                   className={`${styles.stackCard} mx-md-2 my-sm-3`}
                   bg="info"
                   text="dark"
+                  border="success"
                 >
                   <Card.Img
                     variant="top"
@@ -217,6 +217,7 @@ export default function Main() {
                   className={`${styles.stackCard} mx-md-2 my-sm-3`}
                   bg="info"
                   text="dark"
+                  border="success"
                 >
                   <Card.Img
                     variant="top"
@@ -230,6 +231,7 @@ export default function Main() {
                   className={`${styles.stackCard} mx-md-2 my-sm-3`}
                   bg="info"
                   text="dark"
+                  border="success"
                 >
                   <Card.Img
                     variant="top"
@@ -243,6 +245,7 @@ export default function Main() {
                   className={`${styles.stackCard} mx-md-2 my-sm-3`}
                   bg="info"
                   text="dark"
+                  border="success"
                 >
                   <Card.Img
                     variant="top"
@@ -256,6 +259,7 @@ export default function Main() {
                   className={`${styles.stackCard} mx-md-2 my-sm-3`}
                   bg="info"
                   text="dark"
+                  border="success"
                 >
                   <Card.Img
                     variant="top"
@@ -269,6 +273,7 @@ export default function Main() {
                   className={`${styles.stackCard} mx-md-2 my-sm-3`}
                   bg="info"
                   text="dark"
+                  border="success"
                 >
                   <Card.Img
                     variant="top"
@@ -281,15 +286,17 @@ export default function Main() {
                 {/* </Row> */}
               </CardGroup>
               {/* <Figure>
-              <Ratio aspectRatio="1x1">
-                <Figure.Image src="/images/langs/python.png" />
-              </Ratio>
-              <Figure.Caption className="text-light">Python</Figure.Caption>
-            </Figure> */}
+                <Ratio aspectRatio="1x1">
+                  <Figure.Image src="/images/langs/python.png" />
+                </Ratio>
+                <Figure.Caption className="text-light">
+                  Python lalalalala
+                </Figure.Caption>
+              </Figure> */}
             </section>
             <section id="contact">
               <h2>Contact Me</h2>
-              <p>
+              <p className="mb-0">
                 If you have any questions or would just like to reach out, feel
                 free to reach out to me at my email{" "}
                 <a href="mailto:gkparab1@gmail.com" className="link-danger">

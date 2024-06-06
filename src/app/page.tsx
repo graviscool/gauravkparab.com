@@ -4,6 +4,7 @@ import Main from "@/components/Main";
 import styles from "@/styles/Home.module.css";
 import Footer from "@/components/Footer";
 import { Alert } from "react-bootstrap";
+import { ParallaxBanner } from "react-scroll-parallax";
 
 export default function Home() {
   return (

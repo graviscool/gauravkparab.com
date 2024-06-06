@@ -8,7 +8,7 @@ export default function NavigationBar() {
   return (
     <header>
       <Navbar
-        expand="lg"
+        expand="md"
         bg="dark"
         className="bg-body-tertiary mb-0"
         data-bs-theme="dark"
@@ -16,7 +16,7 @@ export default function NavigationBar() {
         collapseOnSelect
       >
         <Container fluid>
-          <Navbar.Brand href="/">Gaurav Parab</Navbar.Brand>
+          <Navbar.Brand className="ms-2" href="/">Gaurav Parab</Navbar.Brand>
           <Navbar.Toggle aria-controls={"offcanvasNavbar-expand-lg"} />
           <Navbar.Offcanvas
             id="offcanvasNavbar-expand-lg"

@@ -3,7 +3,7 @@ import { Col, Container, Nav, Row } from "react-bootstrap";
 
 export default function Footer() {
   return (
-    <footer className={`${styles.footer} bg-dark text-light py-4`}>
+    <footer className="bg-dark text-light py-2">
       <Container fluid>
         <Row>
           <Col md={4}>
@@ -20,7 +20,7 @@ export default function Footer() {
             </Nav>
           </Col>
           <Col>
-            <p style={{ textAlign: "right" }}>&copy; 2024 Gaurav Parab</p>
+            <p className="text-end">&copy; 2024 Gaurav Parab</p>
           </Col>
         </Row>
       </Container>
