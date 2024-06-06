@@ -12,6 +12,7 @@ export default function NavigationBar() {
         bg="dark"
         className="bg-body-tertiary mb-0"
         data-bs-theme="dark"
+        sticky="top"
         collapseOnSelect
       >
         <Container fluid>

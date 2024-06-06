@@ -2,7 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
-import { Figure, Ratio } from "react-bootstrap";
+import { Figure, Ratio, Row } from "react-bootstrap";
 import styles from "@/styles/Main.module.css";
 import { motion } from "framer-motion";
 import TypeIt from "typeit-react";
@@ -32,12 +32,8 @@ export default function Main() {
                 alt="sf-night"
                 priority
                 fill
-                style={{
-                  objectFit: "cover",
-                  objectPosition: "center",
-                  display: "flex",
-                  left: -12,
-                }}
+                style={{ left: -12 }}
+                className={styles.bgImage}
               ></Image>
             </div>
             <div style={{ position: "absolute", left: 50, top: 100 }}>
@@ -81,63 +77,65 @@ export default function Main() {
             </section>
             <section id="projects">
               <h2>Projects</h2>
-              <Card
-                bg="secondary"
-                border="primary"
-                className={`mb-3 ${styles.projectCard}`}
-              >
-                <Card.Body>
-                  <Card.Title>Project 1</Card.Title>
-                  <Card.Subtitle className="mb-2 text-light">
-                    sub 1
-                  </Card.Subtitle>
-                  <Card.Text>example text 1</Card.Text>
-                  <Card.Link href="#" className="text-dark">
-                    Card Link 1
-                  </Card.Link>
-                  <Card.Link href="#" className="text-dark">
-                    Card Link 2
-                  </Card.Link>
-                </Card.Body>
-              </Card>
-              <Card
-                bg="primary"
-                border="info"
-                className={`mb-3 ${styles.projectCard}`}
-              >
-                <Card.Body>
-                  <Card.Title>Project 2</Card.Title>
-                  <Card.Subtitle className="mb-2 text-light">
-                    sub 2
-                  </Card.Subtitle>
-                  <Card.Text>example text 2</Card.Text>
-                  <Card.Link href="#" className="link-warning">
-                    Card Link 1
-                  </Card.Link>
-                  <Card.Link href="#" className="link-warning">
-                    Card Link 2
-                  </Card.Link>
-                </Card.Body>
-              </Card>
-              <Card
-                bg="info"
-                border="success"
-                className={`mb-3 ${styles.projectCard}`}
-              >
-                <Card.Body>
-                  <Card.Title>Project 3</Card.Title>
-                  <Card.Subtitle className="mb-2 text-light">
-                    sub 3
-                  </Card.Subtitle>
-                  <Card.Text>example text 3</Card.Text>
-                  <Card.Link href="#" className="link-danger">
-                    Card Link 1
-                  </Card.Link>
-                  <Card.Link href="#" className="link-danger">
-                    Card Link 2
-                  </Card.Link>
-                </Card.Body>
-              </Card>
+              <Row md={4}>
+                <Card
+                  bg="secondary"
+                  border="primary"
+                  className={`mb-3 me-3 ms-2 ${styles.projectCard}`}
+                >
+                  <Card.Body>
+                    <Card.Title>Project 1</Card.Title>
+                    <Card.Subtitle className="mb-2 text-light">
+                      sub 1
+                    </Card.Subtitle>
+                    <Card.Text>example text 1</Card.Text>
+                    <Card.Link href="#" className="text-dark">
+                      Card Link 1
+                    </Card.Link>
+                    <Card.Link href="#" className="text-dark">
+                      Card Link 2
+                    </Card.Link>
+                  </Card.Body>
+                </Card>
+                <Card
+                  bg="primary"
+                  border="info"
+                  className={`mb-3 me-3 ${styles.projectCard}`}
+                >
+                  <Card.Body>
+                    <Card.Title>Project 2</Card.Title>
+                    <Card.Subtitle className="mb-2 text-light">
+                      sub 2
+                    </Card.Subtitle>
+                    <Card.Text>example text 2</Card.Text>
+                    <Card.Link href="#" className="link-warning">
+                      Card Link 1
+                    </Card.Link>
+                    <Card.Link href="#" className="link-warning">
+                      Card Link 2
+                    </Card.Link>
+                  </Card.Body>
+                </Card>
+                <Card
+                  bg="info"
+                  border="success"
+                  className={`mb-3 ${styles.projectCard}`}
+                >
+                  <Card.Body>
+                    <Card.Title>Project 3</Card.Title>
+                    <Card.Subtitle className="mb-2 text-light">
+                      sub 3
+                    </Card.Subtitle>
+                    <Card.Text>example text 3</Card.Text>
+                    <Card.Link href="#" className="link-danger">
+                      Card Link 1
+                    </Card.Link>
+                    <Card.Link href="#" className="link-danger">
+                      Card Link 2
+                    </Card.Link>
+                  </Card.Body>
+                </Card>
+              </Row>
             </section>
             <section id="prevexp">
               <h2>Work Experience</h2>
@@ -177,7 +175,7 @@ export default function Main() {
             </section>
             <section id="techstack">
               <h2>Dev Tools/Tech Stack</h2>
-              <CardGroup>
+              <CardGroup className="text-center">
                 <Card
                   className={`${styles.stackCard} mx-md-2 my-sm-3`}
                   bg="info"
@@ -193,7 +191,10 @@ export default function Main() {
                   bg="info"
                   text="dark"
                 >
-                  <Card.Img variant="top" src="/images/langs/java.png" />
+                  <Card.Img
+                    variant="top"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"
+                  />
                   <Card.Body>
                     <Card.Text>Java</Card.Text>
                   </Card.Body>
@@ -203,7 +204,10 @@ export default function Main() {
                   bg="info"
                   text="dark"
                 >
-                  <Card.Img variant="top" src="/images/langs/js.png" />
+                  <Card.Img
+                    variant="top"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                  />
                   <Card.Body>
                     <Card.Text>Javascript</Card.Text>
                   </Card.Body>
@@ -213,7 +217,10 @@ export default function Main() {
                   bg="info"
                   text="dark"
                 >
-                  <Card.Img variant="top" src="/images/langs/c.png" />
+                  <Card.Img
+                    variant="top"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg"
+                  />
                   <Card.Body>
                     <Card.Text>C</Card.Text>
                   </Card.Body>
@@ -223,7 +230,10 @@ export default function Main() {
                   bg="info"
                   text="dark"
                 >
-                  <Card.Img variant="top" src="/images/langs/react.png" />
+                  <Card.Img
+                    variant="top"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                  />
                   <Card.Body>
                     <Card.Text>React</Card.Text>
                   </Card.Body>
@@ -233,7 +243,10 @@ export default function Main() {
                   bg="info"
                   text="dark"
                 >
-                  <Card.Img variant="top" src="/images/langs/html.png" />
+                  <Card.Img
+                    variant="top"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg"
+                  />
                   <Card.Body>
                     <Card.Text>HTML</Card.Text>
                   </Card.Body>
@@ -243,7 +256,10 @@ export default function Main() {
                   bg="info"
                   text="dark"
                 >
-                  <Card.Img variant="top" src="/images/langs/sql.png" />
+                  <Card.Img
+                    variant="top"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg"
+                  />
                   <Card.Body>
                     <Card.Text>SQL</Card.Text>
                   </Card.Body>
@@ -253,7 +269,10 @@ export default function Main() {
                   bg="info"
                   text="dark"
                 >
-                  <Card.Img variant="top" src="/images/langs/linux.png" />
+                  <Card.Img
+                    variant="top"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-plain.svg"
+                  />
                   <Card.Body>
                     <Card.Text>Linux</Card.Text>
                   </Card.Body>
