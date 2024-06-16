@@ -81,7 +81,7 @@ export default function Main() {
                 <Card
                   bg="secondary"
                   border="primary"
-                  className={`mb-3 me-3 ms-2 ${styles.projectCard}`}
+                  className={`mb-3 me-3 ms-4 ${styles.projectCard}`}
                 >
                   <Card.Body>
                     <Card.Title>Project 1</Card.Title>
@@ -91,9 +91,6 @@ export default function Main() {
                     <Card.Text>example text 1</Card.Text>
                     <Card.Link href="#" className="text-dark">
                       Card Link 1
-                    </Card.Link>
-                    <Card.Link href="#" className="text-dark">
-                      Card Link 2
                     </Card.Link>
                   </Card.Body>
                 </Card>
@@ -111,9 +108,6 @@ export default function Main() {
                     <Card.Link href="#" className="link-warning">
                       Card Link 1
                     </Card.Link>
-                    <Card.Link href="#" className="link-warning">
-                      Card Link 2
-                    </Card.Link>
                   </Card.Body>
                 </Card>
                 <Card
@@ -129,9 +123,6 @@ export default function Main() {
                     <Card.Text>example text 3</Card.Text>
                     <Card.Link href="#" className="link-danger">
                       Card Link 1
-                    </Card.Link>
-                    <Card.Link href="#" className="link-danger">
-                      Card Link 2
                     </Card.Link>
                   </Card.Body>
                 </Card>
@@ -149,12 +140,9 @@ export default function Main() {
                 <Card.Body>
                   <Card.Title>Learning Assistant</Card.Title>
                   <Card.Text>
-                    • Interacted with and taught students in CMPSC 131
-                    (Programming Fundamentals) recitation classes alongside
-                    TA’s. <br />
-                    • Held review sessions to help students understand the new
-                    material presented in lectures. <br /> • Conducted code
-                    reviews and helped grade homework, projects, and tests.
+                    Assisted TA&apos;s in an entry level computer science class
+                    along with holding reviews for students and reviewing
+                    submitted code.
                   </Card.Text>
                   <Card.Footer>August 2022 - December 2023</Card.Footer>
                 </Card.Body>
@@ -168,7 +156,12 @@ export default function Main() {
                 <Card.Header>Special Order Systems</Card.Header>
                 <Card.Body>
                   <Card.Title>Project Intern</Card.Title>
-                  <Card.Text>project intern description...</Card.Text>
+                  <Card.Text>
+                    Assisted in the development of security system solutions for
+                    California state beaches using API interactions in Python
+                    and helped write code to connect to a weather API and relay
+                    data to beach systems and personnel.
+                  </Card.Text>
                   <Card.Footer>July 2021 - December 2021</Card.Footer>
                 </Card.Body>
               </Card>
