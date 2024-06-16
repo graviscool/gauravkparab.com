@@ -77,7 +77,7 @@ export default function Main() {
             </section>
             <section id="projects">
               <h2 className={styles.heading}>Projects</h2>
-              <Row md={4}>
+              <Row md={3}>
                 <Card
                   bg="secondary"
                   border="primary"

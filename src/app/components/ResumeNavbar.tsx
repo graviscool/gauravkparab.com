@@ -39,58 +39,6 @@ export default function ResumeNavbar() {
                 <Nav.Link href="#projects">Projects</Nav.Link>
                 <Nav.Link href="#prevexp">Previous Experience</Nav.Link>
               </Nav>
-              <Nav className="me-3">
-                <SplitButton
-                  title="View Resume"
-                  variant="outline-success"
-                  href="/resume"
-                >
-                  <Dropdown.Item
-                    href="documents/Gaurav_Parab_resume.pdf"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    View PDF resume
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    href="/documents/Gaurav_Parab_resume.pdf"
-                    download
-                  >
-                    Download Resume
-                  </Dropdown.Item>
-                </SplitButton>
-              </Nav>
-              <Navbar.Brand
-                href="/linkedin"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="me-2"
-              >
-                <Image
-                  src="/images/linkedin-logo.png"
-                  width={30}
-                  height={30}
-                  className="d-inline-block align-top"
-                  alt="Linkedin"
-                />
-              </Navbar.Brand>
-              <Navbar.Brand
-                href="/github"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="me-0"
-              >
-                <Image
-                  src="/images/github-logo-white.png"
-                  width="30"
-                  height="30"
-                  className="d-inline-block align-top"
-                  alt="Github"
-                />
-              </Navbar.Brand>
-              <Nav className="ms-2">
-                <Nav.Link href="#contact">Contact Me</Nav.Link>
-              </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
