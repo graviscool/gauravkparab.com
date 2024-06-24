@@ -8,14 +8,11 @@ export default function Footer() {
         <Row>
           <Col md={4}>
             <Nav>
-              <Nav.Link href="#about" className="text-light">
+              <Nav.Link href="/about" className="text-light">
                 About
               </Nav.Link>
-              <Nav.Link href="#contact" className="text-light">
+              <Nav.Link href="/contact" className="text-light">
                 Contact
-              </Nav.Link>
-              <Nav.Link href="/sitemap.xml" className="text-light">
-                Sitemap
               </Nav.Link>
             </Nav>
           </Col>

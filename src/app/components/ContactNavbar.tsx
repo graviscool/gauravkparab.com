@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Dropdown, Image, SplitButton } from "react-bootstrap";
 
-export default function NavigationBar() {
+export default function ContactNavbar() {
   return (
     <header>
       <Navbar
@@ -12,7 +12,6 @@ export default function NavigationBar() {
         bg="dark"
         className="bg-body-tertiary mb-0"
         data-bs-theme="dark"
-        fixed="top"
         collapseOnSelect
       >
         <Container fluid>
@@ -36,8 +35,6 @@ export default function NavigationBar() {
               <Nav className="me-auto">
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/about">About</Nav.Link>
-                <Nav.Link href="#projects">Projects</Nav.Link>
-                <Nav.Link href="#prevexp">Previous Experience</Nav.Link>
               </Nav>
               <Nav className="me-3">
                 <SplitButton
@@ -84,7 +81,7 @@ export default function NavigationBar() {
                 />
               </Navbar.Brand>
               <Nav className="ms-2">
-                <Nav.Link href="/contact">Contact Me</Nav.Link>
+                <Nav.Link href="#contact">Contact Me</Nav.Link>
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

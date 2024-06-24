@@ -7,13 +7,14 @@ import styles from "@/styles/Main.module.css";
 import { motion } from "framer-motion";
 import TypeIt from "typeit-react";
 import { ParallaxBanner } from "react-scroll-parallax";
+import Head from "next/head";
 
 export default function Main() {
   return (
     <>
-      <head>
+      <Head>
         <link rel="preload" href="/images/sf-night.jpg" as="image" />
-      </head>
+      </Head>
       <Container fluid className={styles.mainContainer}>
         <div>
           <main>
@@ -70,15 +71,6 @@ export default function Main() {
             {/* <p>Hi! I&apos;m Gaurav</p> */}
             {/* </motion.h1> */}
             <div>
-              <section id="about" className={styles.about}>
-                <p>
-                  I&apos;m a rising junior majoring in Computer Science at Penn
-                  State University. I&apos;m aspiring to work in the software
-                  field. <br />I am currently looking for any software related
-                  intern opportunities in the near future. I would love to
-                  connect!
-                </p>
-              </section>
               <section id="projects">
                 <h2 className={styles.heading}>Projects</h2>
                 <Row md={3}>
@@ -293,24 +285,6 @@ export default function Main() {
                   Python lalalalala
                 </Figure.Caption>
               </Figure> */}
-              </section>
-              <section id="contact">
-                <h2 className={styles.heading}>Contact Me</h2>
-                <p className="mb-0">
-                  If you have any questions or would just like to reach out,
-                  feel free to reach out to me at my email{" "}
-                  <a href="mailto:gkparab1@gmail.com" className="link-danger">
-                    gkparab1@gmail.com
-                  </a>{" "}
-                  or on{" "}
-                  <a
-                    href="https://www.linkedin.com/in/gparab"
-                    className="link-primary"
-                  >
-                    Linkedin
-                  </a>
-                  . I look forward to hearing from you!
-                </p>
               </section>
             </div>
           </main>
