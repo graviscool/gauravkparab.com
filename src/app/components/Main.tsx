@@ -50,14 +50,22 @@ export default function Main() {
                   as="h1"
                   getBeforeInit={(instance) => {
                     instance
-                      .type("Hi!")
-                      .pause(200)
+                      .type("Hi! I'm Gaurav.")
                       .break({ delay: 500 })
-                      .type("I'm Gaurav")
-                      .pause(2000)
-                      .delete(10, { speed: 200 })
-                      .type("Nice to meet you!")
-                      .pause(5000);
+                      .type("A college student.")
+                      .pause(1500)
+                      .delete(16, { speed: 200 })
+                      .pause(1500)
+                      .type("programming enthusiast.")
+                      .pause(1500)
+                      .delete(23, { speed: 200 })
+                      .type("technology lover.")
+                      .pause(1500)
+                      .delete(17, { speed: 200 })
+                      .type("bot developer.")
+                      .pause(1500)
+                      .delete(17, { speed: 200 });
+
                     return instance;
                   }}
                   options={{
@@ -68,8 +76,6 @@ export default function Main() {
                 />
               </div>
             </div>
-            {/* <p>Hi! I&apos;m Gaurav</p> */}
-            {/* </motion.h1> */}
             <div>
               <section id="projects">
                 <h2 className={styles.heading}>Projects</h2>
@@ -277,14 +283,6 @@ export default function Main() {
                   </Card>
                   {/* </Row> */}
                 </CardGroup>
-                {/* <Figure>
-                <Ratio aspectRatio="1x1">
-                  <Figure.Image src="/images/langs/python.png" />
-                </Ratio>
-                <Figure.Caption className="text-light">
-                  Python lalalalala
-                </Figure.Caption>
-              </Figure> */}
               </section>
             </div>
           </main>

@@ -1,0 +1,33 @@
+/* Styling for the main paragraph */
+.contactText {
+  margin-top: 1rem; /* Equivalent to mt-3 */
+  margin-bottom: 0.5rem; /* Equivalent to mb-2 */
+  font-size: 1rem; /* Equivalent to fs-6 */
+  line-height: 1.5;
+  color: #98fb98; /* Darker gray for better readability */
+  font-family: Arial, sans-serif; /* A clean, professional font */
+}
+
+/* Styling for the email link */
+.emailLink {
+  color: #dc3545; /* Bootstrap's danger color */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.emailLink:hover {
+  text-decoration: underline;
+  color: #a71d2a; /* Darker red on hover */
+}
+
+/* Styling for the LinkedIn link */
+.linkedinLink {
+  color: #0d6efd; /* Bootstrap's primary color */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.linkedinLink:hover {
+  text-decoration: underline;
+  color: #0a58ca; /* Darker blue on hover */
+}
