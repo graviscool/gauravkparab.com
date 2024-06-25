@@ -72,7 +72,7 @@ export default function Contact() {
           </a>
           . I look forward to hearing from you!
         </p>
-        <div className="bg-dark" style={{ height: "100vh" }}>
+        <div className="bg-dark vh-100">
           {/* <Form ref={contactForm} onSubmit={sendContactEmail}>
           <Row className="g-2">
             <Col>

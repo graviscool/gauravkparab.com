@@ -25,17 +25,12 @@ export default function Main() {
             className={`${styles.introHi} mb-4`}
           > */}
             <div>
-              <div
-                style={{
-                  width: "100vw",
-                  position: "relative",
-                }}
-              >
+              <div className="vw-100 carousel">
                 <ParallaxBanner
                   layers={[{ image: "images/sf-night.jpg", speed: -20 }]}
                   // className="aspect-[2/1]"
-                  style={{ height: "100vh", left: -12 }}
-                  className={styles.bgImage}
+                  style={{ left: -12 }}
+                  className={`${styles.bgImage} vh-100`}
                 />
               </div>
               <div
