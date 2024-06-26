@@ -2,7 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
-import { Figure, Ratio, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import styles from "@/styles/Main.module.css";
 import { motion } from "framer-motion";
 import TypeIt from "typeit-react";
@@ -25,7 +25,7 @@ export default function Main() {
             className={`${styles.introHi} mb-4`}
           > */}
             <div>
-              <div className="vw-100 carousel">
+              <div className="vw-100 position-relative">
                 <ParallaxBanner
                   layers={[{ image: "images/sf-night.jpg", speed: -20 }]}
                   // className="aspect-[2/1]"
@@ -48,18 +48,30 @@ export default function Main() {
                       .type("Hi! I'm Gaurav.")
                       .break({ delay: 500 })
                       .type("A college student.")
+                      .exec(
+                        (instance) =>
+                          (instance.getElement().style.color = "green")
+                      )
                       .pause(1500)
                       .delete(16, { speed: 200 })
                       .pause(1500)
-                      .type("programming enthusiast.")
+                      .type("web developer.")
                       .pause(1500)
-                      .delete(23, { speed: 200 })
-                      .type("technology lover.")
+                      .delete(24, { speed: 200 })
+                      .type("n ai enthusiast.")
+                      .pause(1500)
+                      .delete(18, { speed: 200 })
+                      .exec(
+                        (instance) =>
+                          (instance.getElement().style.color = "blue")
+                      )
+                      .type(" bot developer.")
                       .pause(1500)
                       .delete(17, { speed: 200 })
-                      .type("bot developer.")
-                      .pause(1500)
-                      .delete(17, { speed: 200 });
+                      .exec(
+                        (instance) =>
+                          (instance.getElement().style.color = "#add8e6")
+                      );
 
                     return instance;
                   }}
@@ -67,7 +79,7 @@ export default function Main() {
                     speed: 75,
                     waitUntilVisible: true,
                   }}
-                  className={`${styles.introHi} mb-4 text-light`}
+                  className={`${styles.introHi} mb-4`}
                 />
               </div>
             </div>
@@ -125,6 +137,20 @@ export default function Main() {
                   </Card>
                 </Row>
               </section>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  height={200}
+                  src="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=650px&langs_count=7"
+                  alt="Top Languages used"
+                />
+              </div>
               <section id="prevexp">
                 <h2 className={styles.heading}>Work Experience</h2>
                 <Card

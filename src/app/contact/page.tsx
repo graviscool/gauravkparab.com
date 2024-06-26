@@ -62,8 +62,8 @@ export default function Contact() {
           to reach out to me at my email{" "}
           <a href="mailto:gkparab1@gmail.com" className={styles.emailLink}>
             gkparab1@gmail.com
-          </a>{" "}
-          or fill out the form below. You can also contact me on{" "}
+          </a>
+          . You can also contact me on{" "}
           <a
             href="https://www.linkedin.com/in/gparab"
             className={styles.linkedinLink}
