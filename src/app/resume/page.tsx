@@ -5,6 +5,7 @@ export default function Resume() {
   return (
     <>
       <ResumeNavigationBar />
+      <p>This page is currently a work in progress.</p>
     </>
   );
 }

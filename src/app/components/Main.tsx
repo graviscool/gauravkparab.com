@@ -17,13 +17,12 @@ export default function Main() {
         <link rel="preload" href="/images/langs/python.png" as="image" />
       </Head>
       <Container fluid className={styles.mainContainer}>
-        <div>
+        <div className="overflow-hidden">
           <main>
             <div>
               <div className="vw-100 position-relative">
                 <ParallaxBanner
                   layers={[{ image: "images/sf-night.jpg", speed: -20 }]}
-                  style={{ left: -12 }}
                   className={`${styles.bgImage} vh-100`}
                 />
               </div>
@@ -39,15 +38,16 @@ export default function Main() {
                   as="h1"
                   getBeforeInit={(instance) => {
                     instance
+                      .pause(550)
                       .type("Hi! I'm Gaurav.")
                       .break({ delay: 500 })
-                      .type("A college student.")
+                      .type("A college student. 🎓")
                       .exec(
                         (instance) =>
                           (instance.getElement().style.color = "green")
                       )
                       .pause(1500)
-                      .delete(16, { speed: 200 })
+                      .delete(18, { speed: 200 })
                       .pause(1500)
                       .type("web developer.")
                       .pause(1500)
@@ -60,9 +60,9 @@ export default function Main() {
                       .pause(200)
                       .move(16)
                       .pause(1500)
-                      .delete(15, { speed: 200 })
+                      .delete(16, { speed: 200 })
                       .pause(1500)
-                      .type("bot developer.")
+                      .type(" bot developer.")
                       .exec(
                         (instance) =>
                           (instance.getElement().style.color = "blue")
@@ -183,7 +183,7 @@ export default function Main() {
                   <img
                     height={200}
                     src="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&langs_count=7"
-                    alt="Top Languages used"
+                    alt="Top Languages Used"
                   />
                 </picture>
               </div>
@@ -225,11 +225,10 @@ export default function Main() {
                       <Card.Body>
                         <Card.Title>Project Intern</Card.Title>
                         <Card.Text>
-                          Assisted in the development of security system
-                          solutions for California state beaches using API
-                          interactions in Python and helped write code to
-                          connect to a weather API and relay data to beach
-                          systems and personnel.
+                          Helped develop of security system solutions for
+                          California state beaches using API interactions in
+                          Python and helped write code to connect to a weather
+                          API and relay data to beach systems and personnel.
                         </Card.Text>
                         <Card.Footer>July 2021 - December 2021</Card.Footer>
                       </Card.Body>

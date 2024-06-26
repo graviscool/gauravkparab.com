@@ -3,9 +3,6 @@
   /* width: fit-content; */
 }
 
-.expCard {
-}
-
 .mainContainer {
   background-color: #add8e6;
   padding: 0;
@@ -56,7 +53,7 @@
 
 .stackCard {
   width: 6rem;
-  transition: transform 0.25s;
+  transition: transform 0.5s;
 }
 
 .stackCard:hover {

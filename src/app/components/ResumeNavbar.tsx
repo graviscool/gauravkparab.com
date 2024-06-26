@@ -12,7 +12,6 @@ export default function ResumeNavbar() {
         bg="dark"
         className="bg-body-tertiary mb-0"
         data-bs-theme="dark"
-        fixed="top"
         collapseOnSelect
       >
         <Container fluid>

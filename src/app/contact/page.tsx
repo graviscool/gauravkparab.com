@@ -10,54 +10,15 @@ import {
   Toast,
 } from "react-bootstrap";
 import ContactNavbar from "../components/ContactNavbar";
-import emailjs from "@emailjs/browser";
 import styles from "@/styles/Contact.module.css";
-import Footer from "../components/Footer";
+import ContactFooter from "../components/ContactFooter";
 
 export default function Contact() {
-  const contactForm = useRef<HTMLFormElement>(null);
-
-  //   const sendContactEmail = (event: React.FormEvent<HTMLFormElement>) => {
-  //     event.preventDefault();
-  //     emailjs
-  //       .sendForm("formal_gmail", "template_formal", contactForm.current!, {
-  //         publicKey: "BgT2UkxSM0t0kALG6",
-  //       })
-  //       .then(
-  //         () => {
-  //           return (
-  //             <Toast>
-  //               <Toast.Header>
-  //                 <img className="rounded me-2" alt="" />
-  //                 <strong className="me-auto">Contact Request</strong>
-  //                 <small>Now</small>
-  //               </Toast.Header>
-  //               <Toast.Body>
-  //                 Your contact message was sent successfully.
-  //               </Toast.Body>
-  //             </Toast>
-  //           );
-  //         },
-  //         (error) => {
-  //           return (
-  //             <Toast>
-  //               <Toast.Header>
-  //                 <img className="rounded me-2" alt="" />
-  //                 <strong className="me-auto">Contact Request</strong>
-  //                 <small>Now</small>
-  //               </Toast.Header>
-  //               <Toast.Body>Your submission was not successful.</Toast.Body>
-  //             </Toast>
-  //           );
-  //         }
-  //       );
-  //   };
-
   return (
     <>
-      <Container fluid className="bg-dark text-light">
+      <Container fluid className="bg-secondary text-light">
         <ContactNavbar />
-        <p className={`mt-3 mb-2 fs-2 ${styles.contactText}`}>
+        <p className={`mt-3 mb-2 fs-2 ms-2 ${styles.contactText}`}>
           If you have any questions or would just like to reach out, feel free
           to reach out to me at my email{" "}
           <a href="mailto:gkparab1@gmail.com" className={styles.emailLink}>
@@ -66,13 +27,15 @@ export default function Contact() {
           . You can also contact me on{" "}
           <a
             href="https://www.linkedin.com/in/gparab"
+            target="_blank"
+            rel="noreferrer noopener"
             className={styles.linkedinLink}
           >
             Linkedin
           </a>
           . I look forward to hearing from you!
         </p>
-        <div className="bg-dark vh-100">
+        <div className="bg-secondary vh-100">
           {/* <Form ref={contactForm} onSubmit={sendContactEmail}>
           <Row className="g-2">
             <Col>
@@ -103,7 +66,7 @@ export default function Contact() {
         </Form> */}
         </div>
       </Container>
-      <Footer />
+      <ContactFooter />
     </>
   );
 }

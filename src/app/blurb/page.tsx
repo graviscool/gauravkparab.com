@@ -2,14 +2,14 @@
 
 import { Container } from "react-bootstrap";
 import BlurbNavbar from "../components/BlurbNavbar";
-import Footer from "../components/Footer";
+import BlurbFooter from "../components/BlurbFooter";
 
 export default function About() {
   return (
     <>
       <BlurbNavbar />
       <div>
-        <Container fluid className="vh-100 bg-info">
+        <Container fluid className="vh-100 bg-secondary">
           <p>I&apos;m Gaurav Parab</p>
           <ul>
             <li>Location: San Jose, CA</li>
@@ -19,7 +19,7 @@ export default function About() {
           </ul>
         </Container>
       </div>
-      <Footer />
+      <BlurbFooter />
     </>
   );
 }
