@@ -82,9 +82,6 @@ export default function ContactNavbar() {
                   alt="Github"
                 />
               </Navbar.Brand>
-              <Nav className="ms-2">
-                <Nav.Link href="#contact">Contact Me</Nav.Link>
-              </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>

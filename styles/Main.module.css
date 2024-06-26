@@ -97,3 +97,9 @@
 .heading {
   font-family: Georgia, "Times New Roman", Times, serif;
 }
+
+.topLang {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

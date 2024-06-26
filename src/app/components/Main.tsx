@@ -14,21 +14,15 @@ export default function Main() {
     <>
       <Head>
         <link rel="preload" href="/images/sf-night.jpg" as="image" />
+        <link rel="preload" href="/images/langs/python.png" as="image" />
       </Head>
       <Container fluid className={styles.mainContainer}>
         <div>
           <main>
-            {/* <motion.h1
-            initial={{ x: -1500 }}
-            animate={{ x: 200 }}
-            transition={{ duration: 0.8 }}
-            className={`${styles.introHi} mb-4`}
-          > */}
             <div>
               <div className="vw-100 position-relative">
                 <ParallaxBanner
                   layers={[{ image: "images/sf-night.jpg", speed: -20 }]}
-                  // className="aspect-[2/1]"
                   style={{ left: -12 }}
                   className={`${styles.bgImage} vh-100`}
                 />
@@ -93,13 +87,16 @@ export default function Main() {
                     className={`mb-3 me-3 ms-4 ${styles.projectCard}`}
                   >
                     <Card.Body>
-                      <Card.Title>Project 1</Card.Title>
+                      <Card.Title>Monopoly</Card.Title>
                       <Card.Subtitle className="mb-2 text-light">
-                        sub 1
+                        Java
                       </Card.Subtitle>
                       <Card.Text>example text 1</Card.Text>
-                      <Card.Link href="#" className="text-dark">
-                        Card Link 1
+                      <Card.Link
+                        href="/projectfiles/MonopolyProject.jar"
+                        className="text-dark"
+                      >
+                        JAR file
                       </Card.Link>
                     </Card.Body>
                   </Card>
@@ -125,31 +122,49 @@ export default function Main() {
                     className={`mb-3 ${styles.projectCard}`}
                   >
                     <Card.Body>
-                      <Card.Title>Project 3</Card.Title>
+                      <Card.Title>Discord Bot</Card.Title>
                       <Card.Subtitle className="mb-2 text-light">
-                        sub 3
+                        Node.js
                       </Card.Subtitle>
                       <Card.Text>example text 3</Card.Text>
-                      <Card.Link href="#" className="link-danger">
-                        Card Link 1
+                      <Card.Link
+                        href="https://github.com/The-English-Hub-Dev/The-English-Hub"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="link-info"
+                      >
+                        Github Link
                       </Card.Link>
                     </Card.Body>
                   </Card>
                 </Row>
               </section>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
+              <div className={styles.topLang}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  height={200}
-                  src="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=650px&langs_count=7"
-                  alt="Top Languages used"
-                />
+                <picture>
+                  <source
+                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=300px&langs_count=7"
+                    media="(max-width: 430px)"
+                  />
+                  <source
+                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=400px&langs_count=7"
+                    media="(max-width: 550px)"
+                  />
+                  <source
+                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=500px&langs_count=7"
+                    media="(max-width: 800px)"
+                  />
+                  <source
+                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=700px&langs_count=7"
+                    media="(max-width: 9999px)"
+                  />
+
+                  <img
+                    height={200}
+                    src="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&langs_count=7"
+                    alt="Top Languages used"
+                  />
+                </picture>
               </div>
               <section id="prevexp">
                 <h2 className={styles.heading}>Work Experience</h2>

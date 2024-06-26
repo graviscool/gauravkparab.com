@@ -14,6 +14,14 @@ export default function Footer() {
               <Nav.Link href="/contact" className="text-light">
                 Contact
               </Nav.Link>
+              <Nav.Link
+                href="/documents/Gaurav_Parab_resume.pdf"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="text-light"
+              >
+                Resume
+              </Nav.Link>
             </Nav>
           </Col>
           <Col>
