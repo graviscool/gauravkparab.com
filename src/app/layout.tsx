@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Gaurav Parab's website",
   description: "A portfolio website for Gaurav",
   icons: "images/gp-logo.png",
+  twitter: {
+    images: "images/gp-logo.png",
+  },
 };
 
 export default function RootLayout({
