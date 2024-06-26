@@ -107,7 +107,12 @@ export default function Main() {
                       <Card.Subtitle className="mb-2 text-light">
                         Java
                       </Card.Subtitle>
-                      <Card.Text>example text 1</Card.Text>
+                      <Card.Text>
+                        A class project in which me and my groupmates built the
+                        game of Monopoly from scratch in Java using GUIs. I
+                        wrote 30% of the code and assisted with debugging,
+                        writing documentation, and submitting reports.
+                      </Card.Text>
                       <Card.Link
                         href="/projectfiles/MonopolyProject.jar"
                         className="text-dark"
@@ -143,7 +148,7 @@ export default function Main() {
                         Node.js
                       </Card.Subtitle>
                       <Card.Text>
-                        Build a bot from scratch that allowed moderators to
+                        Built a bot from scratch that allowed moderators to
                         perform tasks efficiently and allowed the server
                         management to automate tasks such as role assignment and
                         messages.
@@ -154,7 +159,7 @@ export default function Main() {
                         rel="noreferrer noopener"
                         className="link-info"
                       >
-                        Github Link
+                        GitHub Link
                       </Card.Link>
                     </Card.Body>
                   </Card>

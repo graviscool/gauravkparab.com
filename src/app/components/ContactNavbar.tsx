@@ -20,9 +20,9 @@ export default function ContactNavbar() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls={"offcanvasNavbar-expand-lg"} />
           <Navbar.Offcanvas
-            id="offcanvasNavbar-expand-lg"
+            id="offcanvasNavbar-expand-md"
             className="bg-dark"
-            aria-labelledby="offcanvasNavbarLabel-expand-lg"
+            aria-labelledby="offcanvasNavbarLabel-expand-md"
             placement="end"
             data-bs-theme="dark"
           >

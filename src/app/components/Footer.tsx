@@ -33,7 +33,10 @@ export default function Footer() {
             >
               Website Info
             </Button> */}
-            <p className="text-end">&copy; 2024 Gaurav Parab</p>
+            <div className="text-end mb-0">
+              <a href="#top" className={`${styles.topLink} link-info`}>top</a>
+              <p>&copy; 2024 Gaurav Parab</p>
+            </div>
           </Col>
         </Row>
       </Container>

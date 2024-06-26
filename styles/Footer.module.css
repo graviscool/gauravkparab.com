@@ -1,1 +1,7 @@
-/* TODO: add styles from Footer.tsx in here maybe */
+.topLink {
+  opacity: 0.1;
+}
+
+.topLink:hover {
+  opacity: 0.9;
+}
