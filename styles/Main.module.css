@@ -4,11 +4,11 @@
 }
 
 .expCard {
-  width: 50%;
 }
 
 .mainContainer {
   background-color: #add8e6;
+  padding: 0;
 }
 
 /* different intro sizes based on device viewport */
@@ -69,7 +69,7 @@
 }
 
 .projectCard:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .about {
@@ -82,7 +82,7 @@
   object-fit: cover;
   object-position: center;
   position: sticky;
-  animation: imageFadeIn 5s forwards;
+  animation: imageFadeIn 5s forwards, zoomIn 5s forwards;
 }
 
 @keyframes imageFadeIn {
@@ -94,12 +94,43 @@
   }
 }
 
-.heading {
+@keyframes zoomIn {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.1;
+  }
+}
+
+.headingTwo {
   font-family: Georgia, "Times New Roman", Times, serif;
+  padding: 10px 10px;
+  /* border-bottom: 2px solid #007bff;
+  padding-bottom: 5px; */
+  background: -webkit-linear-gradient(#2b5876, #4e4376);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.headingTwo:hover {
+  background: -webkit-linear-gradient(#2c3e50, #000000);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .topLang {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.topLink {
+  opacity: 0.1;
+}
+
+.topLink:hover {
+  opacity: 0.9;
 }

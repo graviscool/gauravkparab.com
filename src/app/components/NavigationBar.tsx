@@ -7,12 +7,13 @@ import { Dropdown, Image, SplitButton } from "react-bootstrap";
 export default function NavigationBar() {
   return (
     <header>
+      <a id="top" content="top of page"></a>
       <Navbar
         expand="md"
         bg="dark"
-        className="bg-body-tertiary mb-0"
+        className="bg-body-tertiary mb-0 z-1"
         data-bs-theme="dark"
-        fixed="top"
+        sticky="top"
         collapseOnSelect
       >
         <Container fluid>

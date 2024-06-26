@@ -2,7 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
-import { Row } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import styles from "@/styles/Main.module.css";
 import { motion } from "framer-motion";
 import TypeIt from "typeit-react";
@@ -51,17 +51,24 @@ export default function Main() {
                       .pause(1500)
                       .type("web developer.")
                       .pause(1500)
-                      .delete(24, { speed: 200 })
-                      .type("n ai enthusiast.")
+                      .delete(14, { speed: 200 })
                       .pause(1500)
-                      .delete(18, { speed: 200 })
+                      .type("AI enthusiast.")
+                      .pause(500)
+                      .move(-15)
+                      .type("n")
+                      .pause(200)
+                      .move(16)
+                      .pause(1500)
+                      .delete(15, { speed: 200 })
+                      .pause(1500)
+                      .type("bot developer.")
                       .exec(
                         (instance) =>
                           (instance.getElement().style.color = "blue")
                       )
-                      .type(" bot developer.")
                       .pause(1500)
-                      .delete(17, { speed: 200 })
+                      .delete(18, { speed: 500 })
                       .exec(
                         (instance) =>
                           (instance.getElement().style.color = "#add8e6")
@@ -79,7 +86,16 @@ export default function Main() {
             </div>
             <div>
               <section id="projects">
-                <h2 className={styles.heading}>Projects</h2>
+                <div className="d-flex">
+                  <h2 className={`${styles.headingTwo} mt-5`}>Projects</h2>
+                  <a
+                    href="#top"
+                    className={`${styles.topLink}`}
+                    style={{ marginTop: "4.5rem" }}
+                  >
+                    top
+                  </a>
+                </div>
                 <Row md={3}>
                   <Card
                     bg="secondary"
@@ -123,10 +139,15 @@ export default function Main() {
                   >
                     <Card.Body>
                       <Card.Title>Discord Bot</Card.Title>
-                      <Card.Subtitle className="mb-2 text-light">
+                      <Card.Subtitle className="mb-3 text-light">
                         Node.js
                       </Card.Subtitle>
-                      <Card.Text>example text 3</Card.Text>
+                      <Card.Text>
+                        Build a bot from scratch that allowed moderators to
+                        perform tasks efficiently and allowed the server
+                        management to automate tasks such as role assignment and
+                        messages.
+                      </Card.Text>
                       <Card.Link
                         href="https://github.com/The-English-Hub-Dev/The-English-Hub"
                         target="_blank"
@@ -143,15 +164,15 @@ export default function Main() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <picture>
                   <source
-                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=300px&langs_count=7"
+                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=300px&langs_count=7&disable_animations=true"
                     media="(max-width: 430px)"
                   />
                   <source
-                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=400px&langs_count=7"
+                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=400px&langs_count=7&disable_animations=true"
                     media="(max-width: 550px)"
                   />
                   <source
-                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=500px&langs_count=7"
+                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=500px&langs_count=7&disable_animations=true"
                     media="(max-width: 800px)"
                   />
                   <source
@@ -167,45 +188,62 @@ export default function Main() {
                 </picture>
               </div>
               <section id="prevexp">
-                <h2 className={styles.heading}>Work Experience</h2>
-                <Card
-                  bg="light"
-                  text="dark"
-                  border="success"
-                  className={`mb-3 ${styles.expCard}`}
-                >
-                  <Card.Header>Pennsylvania State University</Card.Header>
-                  <Card.Body>
-                    <Card.Title>Learning Assistant</Card.Title>
-                    <Card.Text>
-                      Assisted TA&apos;s in an entry level computer science
-                      class along with holding reviews for students and
-                      reviewing submitted code.
-                    </Card.Text>
-                    <Card.Footer>August 2022 - December 2023</Card.Footer>
-                  </Card.Body>
-                </Card>
-                <Card
-                  bg="light"
-                  text="dark"
-                  border="success"
-                  className={`mb-2 ${styles.expCard}`}
-                >
-                  <Card.Header>Special Order Systems</Card.Header>
-                  <Card.Body>
-                    <Card.Title>Project Intern</Card.Title>
-                    <Card.Text>
-                      Assisted in the development of security system solutions
-                      for California state beaches using API interactions in
-                      Python and helped write code to connect to a weather API
-                      and relay data to beach systems and personnel.
-                    </Card.Text>
-                    <Card.Footer>July 2021 - December 2021</Card.Footer>
-                  </Card.Body>
-                </Card>
+                <div className="d-flex">
+                  <h2 className={styles.headingTwo}>Work Experience</h2>
+                  <a href="#top" className={`mt-4 ${styles.topLink}`}>
+                    top
+                  </a>
+                </div>
+                <Row>
+                  <Col>
+                    <Card
+                      bg="light"
+                      text="dark"
+                      border="success"
+                      className={`mb-3 ms-3 ${styles.expCard}`}
+                    >
+                      <Card.Header>Pennsylvania State University</Card.Header>
+                      <Card.Body>
+                        <Card.Title>Learning Assistant</Card.Title>
+                        <Card.Text>
+                          Assisted TA&apos;s in an entry level computer science
+                          class along with holding reviews for students and
+                          reviewing submitted code.
+                        </Card.Text>
+                        <Card.Footer>August 2022 - December 2023</Card.Footer>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                  <Col>
+                    <Card
+                      bg="light"
+                      text="dark"
+                      border="success"
+                      className={`mb-2 me-3 ${styles.expCard}`}
+                    >
+                      <Card.Header>Special Order Systems</Card.Header>
+                      <Card.Body>
+                        <Card.Title>Project Intern</Card.Title>
+                        <Card.Text>
+                          Assisted in the development of security system
+                          solutions for California state beaches using API
+                          interactions in Python and helped write code to
+                          connect to a weather API and relay data to beach
+                          systems and personnel.
+                        </Card.Text>
+                        <Card.Footer>July 2021 - December 2021</Card.Footer>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                </Row>
               </section>
               <section id="techstack">
-                <h2 className={styles.heading}>Dev Tools/Tech Stack</h2>
+                <div className="d-flex">
+                  <h2 className={styles.headingTwo}>Dev Tools/Tech Stack</h2>
+                  <a href="#top" className={`mt-4 ${styles.topLink}`}>
+                    top
+                  </a>
+                </div>
                 <CardGroup className="text-center">
                   {/* <Row className="text-center"> */}
                   <Card
