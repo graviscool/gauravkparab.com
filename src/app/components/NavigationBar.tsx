@@ -46,15 +46,20 @@ export default function NavigationBar() {
                 <SplitButton
                   title="View Resume"
                   variant="outline-success"
-                  href="documents/Gaurav_Parab_resume.pdf"
-                  target="_blank"
-                  rel="noreferrer noopener"
+                  href="/resume"
                 >
+                  <Dropdown.Item
+                    href="/documents/Gaurav_Parab_resume.pdf"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    View PDF Resume
+                  </Dropdown.Item>
                   <Dropdown.Item
                     href="/documents/Gaurav_Parab_resume.pdf"
                     download
                   >
-                    Download Resume
+                    Download PDF Resume
                   </Dropdown.Item>
                 </SplitButton>
               </Nav>

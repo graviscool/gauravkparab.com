@@ -1,10 +1,10 @@
 "use client";
 import { Navbar, Card, Container } from "react-bootstrap";
-import ResumeNavigationBar from "@/src/app/components/ResumeNavbar";
+import ResumeNavbar from "@/src/app/components/ResumeNavbar";
 export default function Resume() {
   return (
     <>
-      <ResumeNavigationBar />
+      <ResumeNavbar />
       <p>This page is currently a work in progress.</p>
     </>
   );
