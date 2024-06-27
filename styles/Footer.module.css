@@ -1,0 +1,7 @@
+.topLink {
+  opacity: 0.1;
+}
+
+.topLink:hover {
+  opacity: 0.9;
+}

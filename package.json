@@ -1,29 +1,40 @@
 {
   "name": "gauravkparab.com",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/graviscool/gauravkparab.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "homepage": "https://gauravkparab.com",
   "dependencies": {
-    "@vercel/analytics": "^1.1.3",
+    "@react-spring/web": "^9.7.3",
+    "@vercel/analytics": "^1.3.1",
     "bootstrap": "^5.3.3",
-    "next": "14.1.1",
-    "react": "^18",
-    "react-bootstrap": "^2.10.2",
-    "react-dom": "^18"
+    "framer-motion": "^11.2.12",
+    "next": "^14.2.4",
+    "react": "^18.3.1",
+    "react-bootstrap": "^2.10.3",
+    "react-dom": "^18.3.1",
+    "react-scroll-parallax": "^3.4.5",
+    "typeit-react": "^2.7.1"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "autoprefixer": "^10.0.1",
-    "eslint": "^8",
+    "@types/node": "^20.14.9",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
     "eslint-config-next": "14.1.0",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.2"
   }
 }
