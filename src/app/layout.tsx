@@ -10,6 +10,16 @@ export const metadata: Metadata = {
   title: "Gaurav Parab's website",
   description: "A portfolio website for Gaurav",
   icons: "images/gp-logo.png",
+  keywords: ["portfolio", "personal website"],
+  authors: { name: "Gaurav" },
+  metadataBase: new URL("https://gauravkparab.com"),
+  openGraph: {
+    title: "Gaurav Parab's website",
+    description: "A portfolio website for Gaurav",
+    images: "images/gp-logo.png",
+    locale: "en_US",
+    type: "website",
+  },
   twitter: {
     images: "images/gp-logo.png",
   },
