@@ -127,13 +127,20 @@ export default function Main() {
                     className={`mb-3 me-3 ${styles.projectCard}`}
                   >
                     <Card.Body>
-                      <Card.Title>Project 2</Card.Title>
+                      <Card.Title>Parser</Card.Title>
                       <Card.Subtitle className="mb-2 text-light">
-                        sub 2
+                        Python
                       </Card.Subtitle>
-                      <Card.Text>example text 2</Card.Text>
-                      <Card.Link href="#" className="link-warning">
-                        Card Link 1
+                      <Card.Text>
+                        Created an advanced parser system using a lexer to generate parse tables from a certain provided grammar.
+                      </Card.Text>
+                      <Card.Link
+                        href="https://github.com/graviscool/parser-project-2"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="link-warning"
+                      >
+                        Github Link
                       </Card.Link>
                     </Card.Body>
                   </Card>
