@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import React from "react";
 import {
   Button,
   Col,
@@ -35,38 +35,52 @@ export default function Contact() {
           </a>
           . I look forward to hearing from you!
         </p>
+        <br />
+        <p>OR, you can fill out the contact form below:</p>
         <div className="bg-secondary vh-100">
-          {/* <Form ref={contactForm} onSubmit={sendContactEmail}>
-          <Row className="g-2">
-            <Col>
-              <FormGroup controlId="formGroupText">
-                <Form.Label>Name</Form.Label>
-                <Form.Control required name="name"></Form.Control>
-              </FormGroup>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3" controlId="formGroupEmail">
-                <Form.Label>Email Address</Form.Label>
-                <Form.Control
-                  type="email"
-                  name="email"
-                  placeholder="name@example.com"
-                  required
-                />
-              </Form.Group>
-            </Col>
-          </Row>
-          <Form.Group className="mb-3" controlId="formGroupTextarea">
-            <Form.Label>Message</Form.Label>
-            <Form.Control as="textarea" rows={2} required name="message" />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form> */}
+          <Form onSubmit={sendContactEmail}>
+            <Row className="g-2">
+              <Col>
+                <FormGroup controlId="formGroupText">
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control required name="name"></Form.Control>
+                </FormGroup>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3" controlId="formGroupEmail">
+                  <Form.Label>Email Address</Form.Label>
+                  <Form.Control
+                    type="email"
+                    name="email"
+                    placeholder="name@example.com"
+                    required
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Form.Group className="mb-3" controlId="formGroupTextarea">
+              <Form.Label>Message</Form.Label>
+              <Form.Control as="textarea" rows={3} required name="message" />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
         </div>
       </Container>
       <ContactFooter />
     </>
   );
 }
+
+const sendContactEmail = (event: React.FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+
+  const formD = new FormData(event.currentTarget);
+
+  const name = formD.get("name") as string;
+  const email = formD.get("email") as string;
+  const message = formD.get("message") as string;
+
+  alert(`Name: ${name}\nEmail: ${email}\nMessage: ${message}`);
+};
