@@ -4,8 +4,18 @@
   margin-bottom: 0.5rem; /* Equivalent to mb-2 */
   font-size: 1rem; /* Equivalent to fs-6 */
   line-height: 1.5;
-  /* color: #98fb98; Darker gray for better readability */
+  opacity: 0;
   font-family: Arial, sans-serif; /* A clean, professional font */
+  animation: contactFadeIn 4s ease-in-out 1s forwards;
+}
+
+@keyframes contactFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Styling for the email link */
@@ -34,6 +44,16 @@
 
 .connectText {
   font-size: 7rem;
+  animation: connectFadeIn 4s ease-in-out forwards;
+}
+
+@keyframes connectFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 550px) {
@@ -44,4 +64,22 @@
 
 .formField {
   background-color: #d3d3d3;
+}
+
+.contactForm {
+  opacity: 0;
+  visibility: hidden;
+  padding-top: 50%;
+  animation: formFadeIn 4.1s ease-in-out 1.5s forwards;
+}
+
+@keyframes formFadeIn {
+  from {
+    opacity: 0;
+    visibility: visible;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
 }

@@ -60,7 +60,7 @@ export default function Contact() {
                   setShowErrorToast
                 )
               }
-              className="me-2 mt-3 pt-5 text-warning"
+              className={`me-2 mt-3 text-warning d-grid ${styles.contactForm}`}
               id="contactform"
             >
               <Row className="g-2">
