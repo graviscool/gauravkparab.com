@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import React, { useState } from "react";
 import {
   Button,
   Col,
@@ -8,65 +8,166 @@ import {
   FormGroup,
   Row,
   Toast,
+  ToastContainer,
 } from "react-bootstrap";
 import ContactNavbar from "../components/ContactNavbar";
 import styles from "@/styles/Contact.module.css";
 import ContactFooter from "../components/ContactFooter";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
+  const [showSuccessfulSubmitToast, setShowSuccessfulSubmitToast] =
+    useState(false);
+  const [showErrorToast, setShowErrorToast] = useState(false);
+
   return (
     <>
-      <Container fluid className="bg-secondary text-light">
+      <Container fluid className="bg-dark text-info vh-100">
         <ContactNavbar />
-        <p className={`mt-3 mb-2 fs-2 ms-2 ${styles.contactText}`}>
-          If you have any questions or would just like to reach out, feel free
-          to reach out to me at my email{" "}
-          <a href="mailto:gkparab1@gmail.com" className={styles.emailLink}>
-            gkparab1@gmail.com
-          </a>
-          . You can also contact me on{" "}
-          <a
-            href="https://www.linkedin.com/in/gparab"
-            target="_blank"
-            rel="noreferrer noopener"
-            className={styles.linkedinLink}
-          >
-            Linkedin
-          </a>
-          . I look forward to hearing from you!
-        </p>
-        <div className="bg-secondary vh-100">
-          {/* <Form ref={contactForm} onSubmit={sendContactEmail}>
-          <Row className="g-2">
-            <Col>
-              <FormGroup controlId="formGroupText">
-                <Form.Label>Name</Form.Label>
-                <Form.Control required name="name"></Form.Control>
-              </FormGroup>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3" controlId="formGroupEmail">
-                <Form.Label>Email Address</Form.Label>
+        <Row>
+          <Col>
+            <h1 className={`mt-4 ${styles.connectText}`}>
+              Let&apos;s Connect!
+            </h1>
+            <div className="text-light">
+              <p className={`mt-3 mb-2 fs-2 ms-2 ${styles.contactText}`}>
+                Email
+                <br />
+                <a href="mailto:gkparab1@gmail.com" className="text-light">
+                  gkparab1@gmail.com
+                </a>
+                <br />
+                <br />
+                Linkedin
+                <br />
+                <a
+                  href="https://www.linkedin.com/in/gparab"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="text-light"
+                >
+                  https://linkedin.com/in/gparab
+                </a>
+              </p>
+            </div>
+          </Col>
+          <Col>
+            <Form
+              onSubmit={(event) =>
+                sendContactEmail(
+                  event,
+                  setShowSuccessfulSubmitToast,
+                  setShowErrorToast
+                )
+              }
+              className="me-2 mt-3 pt-5 text-warning"
+              id="contactform"
+            >
+              <Row className="g-2">
+                <Col>
+                  <FormGroup controlId="formGroupText">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control
+                      required
+                      name="name"
+                      className={styles.formField}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col>
+                  <Form.Group className="mb-3" controlId="formGroupEmail">
+                    <Form.Label>Email Address</Form.Label>
+                    <Form.Control
+                      type="email"
+                      name="email"
+                      required
+                      className={styles.formField}
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Form.Group className="mb-3" controlId="formGroupTextarea">
+                <Form.Label>Message</Form.Label>
                 <Form.Control
-                  type="email"
-                  name="email"
-                  placeholder="name@example.com"
+                  as="textarea"
+                  rows={2}
                   required
+                  name="message"
+                  className={styles.formField}
                 />
               </Form.Group>
-            </Col>
-          </Row>
-          <Form.Group className="mb-3" controlId="formGroupTextarea">
-            <Form.Label>Message</Form.Label>
-            <Form.Control as="textarea" rows={2} required name="message" />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form> */}
-        </div>
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+        <ToastContainer position="bottom-end" className="text-light">
+          <Toast
+            bg="success"
+            show={showSuccessfulSubmitToast}
+            onClose={() => setShowSuccessfulSubmitToast(false)}
+            delay={7500}
+            autohide
+            className="mb-2"
+          >
+            <Toast.Header>
+              <strong className="me-auto">Request Sent</strong>
+              <small className="text-muted">just now</small>
+            </Toast.Header>
+            <Toast.Body>Your contact request was successfully sent!</Toast.Body>
+          </Toast>
+          <Toast
+            bg="danger"
+            show={showErrorToast}
+            onClose={() => setShowErrorToast(false)}
+            delay={10000}
+            autohide
+            className="mb-2"
+          >
+            <Toast.Header>
+              <strong className="me-auto">Request Unsuccessful</strong>
+              <small className="text-muted">just now</small>
+            </Toast.Header>
+            <Toast.Body>
+              Your contact request was not sent successfully. Please send an
+              email manually.
+            </Toast.Body>
+          </Toast>
+        </ToastContainer>
       </Container>
       <ContactFooter />
     </>
   );
 }
+
+const sendContactEmail = async (
+  event: React.FormEvent<HTMLFormElement>,
+  setShowSuccessful: React.Dispatch<React.SetStateAction<boolean>>,
+  setShowError: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+  event.preventDefault();
+
+  const formD = new FormData(event.currentTarget);
+
+  const name = formD.get("name") as string;
+  const email = formD.get("email") as string;
+  const message = formD.get("message") as string;
+
+  new Promise((resolve) => setTimeout(resolve, 1200));
+
+  await emailjs
+    .send(
+      "contact_send",
+      "template_contact",
+      { name: name, email: email, message: message },
+      {
+        publicKey: "BgT2UkxSM0t0kALG6",
+      }
+    )
+    .then(() => {
+      setShowSuccessful(true);
+    })
+    .catch(() => setShowError(true));
+  (document.getElementById("contactform") as HTMLFormElement)!.reset();
+};
