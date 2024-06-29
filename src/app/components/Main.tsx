@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
-import { Row, Col, Toast, ToastContainer } from "react-bootstrap";
+import { Row, Col, Toast, ToastContainer, Button } from "react-bootstrap";
 import styles from "@/styles/Main.module.css";
 import { motion } from "framer-motion";
-import TypeIt from "typeit-react";
+import TypeIt, { TypeItProps } from "typeit-react";
 import { ParallaxBanner } from "react-scroll-parallax";
 import Head from "next/head";
 
 export default function Main() {
   const [showMobileToast, setShowMobileToast] = useState(true);
+  const [typeItInstance, setTypeItInstance] = useState<any>(null);
+  const [typeFreezeText, setTypeFreezeText] = useState("Pause Animation");
+  const freezeOrUnfreezeText = () => {
+    if (typeItInstance.is("frozen")) {
+      typeItInstance.unfreeze();
+      setTypeFreezeText("Pause Animation");
+    } else {
+      typeItInstance.freeze();
+      setTypeFreezeText("Resume Animation");
+    }
+  };
 
   return (
     <>
@@ -36,9 +47,22 @@ export default function Main() {
                   alignItems: "center",
                 }}
               >
+                <Button
+                  variant="outline-warning"
+                  size="sm"
+                  className={styles.pauseTypeButton}
+                  id="pauseTypeButton"
+                  onClick={() => {
+                    freezeOrUnfreezeText();
+                  }}
+                  disabled={typeFreezeText == "Animation Complete"}
+                >
+                  {typeFreezeText}
+                </Button>
                 <TypeIt
                   as="h1"
                   getBeforeInit={(instance) => {
+                    // setTypeItInstance(instance);
                     instance
                       .pause(750)
                       .type("Hi! I'm Gaurav.")
@@ -78,8 +102,18 @@ export default function Main() {
                       .exec(
                         (instance) =>
                           (instance.getElement().style.color = "#add8e6")
-                      );
+                      )
+                      .exec((instance) => {
+                        setTypeFreezeText("Animation Complete");
+                        document.getElementById(
+                          "pauseTypeButton"
+                        )!.style.opacity = "0.5";
+                      });
 
+                    return instance;
+                  }}
+                  getAfterInit={(instance) => {
+                    setTypeItInstance(instance);
                     return instance;
                   }}
                   options={{

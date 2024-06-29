@@ -142,3 +142,13 @@
     display: block;
   }
 }
+
+.pauseTypeButton {
+  opacity: 0.05;
+  font-size: x-small;
+  margin-left: 2rem;
+}
+
+.pauseTypeButton:hover {
+  opacity: 0.4;
+}
