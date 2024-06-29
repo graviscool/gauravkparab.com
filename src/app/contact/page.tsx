@@ -163,7 +163,7 @@ const sendContactEmail = async (
       "template_contact",
       { name: name, email: email, message: message },
       {
-        publicKey: process.env.EMAILJS_PUBLIC_KEY,
+        publicKey: "BgT2UkxSM0t0kALG6",
       }
     )
     .then(() => {
