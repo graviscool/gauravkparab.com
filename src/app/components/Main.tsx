@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Toast, ToastContainer } from "react-bootstrap";
 import styles from "@/styles/Main.module.css";
 import { motion } from "framer-motion";
 import TypeIt from "typeit-react";
@@ -10,6 +10,8 @@ import { ParallaxBanner } from "react-scroll-parallax";
 import Head from "next/head";
 
 export default function Main() {
+  const [showMobileToast, setShowMobileToast] = useState(true);
+
   return (
     <>
       <Head>
@@ -377,6 +379,26 @@ export default function Main() {
             </div>
           </main>
         </div>
+        <ToastContainer position="bottom-end">
+          <Toast
+            bg="warning"
+            show={showMobileToast}
+            onClose={() => setShowMobileToast(false)}
+            delay={7500}
+            autohide
+            className={styles.mobileToast}
+          >
+            <Toast.Header>
+              <strong className="me-auto">Mobile Device Detected</strong>
+              <small className="text-muted">just now</small>
+            </Toast.Header>
+            <Toast.Body>
+              This page is not yet optimized for mobile devices.
+              <br /> For best experience, please use a computer to access this
+              website.
+            </Toast.Body>
+          </Toast>
+        </ToastContainer>
       </Container>
     </>
   );

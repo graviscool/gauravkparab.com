@@ -131,3 +131,14 @@
 .topLink:hover {
   opacity: 0.9;
 }
+
+.mobileToast {
+  display: none;
+  width: 275px;
+}
+
+@media (max-width: 600px) {
+  .mobileToast {
+    display: block;
+  }
+}

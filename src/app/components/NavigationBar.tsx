@@ -2,14 +2,11 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Alert, Dropdown, Image, SplitButton } from "react-bootstrap";
+import { Dropdown, Image, SplitButton } from "react-bootstrap";
 
 export default function NavigationBar() {
   return (
     <header>
-      <Alert variant="warning" dismissible className="d-block d-md-none">
-        This website is not yet optimized on mobile!
-      </Alert>
       <a id="top" content="top of page"></a>
       <Navbar
         expand="md"
