@@ -22,7 +22,7 @@ export default function Contact() {
 
   return (
     <>
-      <Container fluid className="bg-dark text-info">
+      <Container fluid className="bg-dark text-info vh-100">
         <ContactNavbar />
         <Row>
           <Col>
@@ -102,7 +102,6 @@ export default function Contact() {
             </Form>
           </Col>
         </Row>
-        <div className="bg-dark vh-100"></div>
         <ToastContainer position="bottom-end" className="text-light">
           <Toast
             bg="success"
