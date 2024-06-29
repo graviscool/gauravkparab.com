@@ -38,7 +38,7 @@ export default function Main() {
                   as="h1"
                   getBeforeInit={(instance) => {
                     instance
-                      .pause(550)
+                      .pause(750)
                       .type("Hi! I'm Gaurav.")
                       .break({ delay: 500 })
                       .type("A college student. 🎓")
