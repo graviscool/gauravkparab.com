@@ -52,6 +52,10 @@ export default function Main() {
                       .type("web developer.")
                       .pause(1500)
                       .delete(14, { speed: 200 })
+                      .exec(
+                        (instance) =>
+                          (instance.getElement().style.color = "#add8e6")
+                      )
                       .pause(1500)
                       .type("AI enthusiast.")
                       .pause(500)
@@ -132,7 +136,8 @@ export default function Main() {
                         Python
                       </Card.Subtitle>
                       <Card.Text>
-                        Created an advanced parser system using a lexer to generate parse tables from a certain provided grammar.
+                        Created an advanced parser system using a lexer to
+                        generate parse tables from a certain provided grammar.
                       </Card.Text>
                       <Card.Link
                         href="https://github.com/graviscool/parser-project-2"
