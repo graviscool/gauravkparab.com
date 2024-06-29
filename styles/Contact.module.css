@@ -36,6 +36,12 @@
   font-size: 7rem;
 }
 
+@media (max-width: 550px) {
+  .connectText {
+    font-size: 3rem;
+  }
+}
+
 .formField {
   background-color: #d3d3d3;
 }
