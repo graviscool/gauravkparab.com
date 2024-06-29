@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Col,
@@ -8,6 +8,7 @@ import {
   FormGroup,
   Row,
   Toast,
+  ToastContainer,
 } from "react-bootstrap";
 import ContactNavbar from "../components/ContactNavbar";
 import styles from "@/styles/Contact.module.css";
@@ -15,6 +16,10 @@ import ContactFooter from "../components/ContactFooter";
 import emailjs from "@emailjs/browser";
 
 export default function Contact() {
+  const [showSuccessfulSubmitToast, setShowSuccessfulSubmitToast] =
+    useState(false);
+  const [showErrorToast, setShowErrorToast] = useState(false);
+
   return (
     <>
       <Container fluid className="bg-dark text-info">
@@ -48,8 +53,15 @@ export default function Contact() {
           </Col>
           <Col>
             <Form
-              onSubmit={sendContactEmail}
-              className="me-2 mt-3 pt-5 text-success"
+              onSubmit={(event) =>
+                sendContactEmail(
+                  event,
+                  setShowSuccessfulSubmitToast,
+                  setShowErrorToast
+                )
+              }
+              className="me-2 mt-3 pt-5 text-warning"
+              id="contactform"
             >
               <Row className="g-2">
                 <Col>
@@ -91,13 +103,50 @@ export default function Contact() {
           </Col>
         </Row>
         <div className="bg-dark vh-100"></div>
+        <ToastContainer position="bottom-end" className="text-light">
+          <Toast
+            bg="success"
+            show={showSuccessfulSubmitToast}
+            onClose={() => setShowSuccessfulSubmitToast(false)}
+            delay={7500}
+            autohide
+            className="mb-2"
+          >
+            <Toast.Header>
+              <strong className="me-auto">Request Sent</strong>
+              <small className="text-muted">just now</small>
+            </Toast.Header>
+            <Toast.Body>Your contact request was successfully sent!</Toast.Body>
+          </Toast>
+          <Toast
+            bg="danger"
+            show={showErrorToast}
+            onClose={() => setShowErrorToast(false)}
+            delay={10000}
+            autohide
+            className="mb-2"
+          >
+            <Toast.Header>
+              <strong className="me-auto">Request Unsuccessful</strong>
+              <small className="text-muted">just now</small>
+            </Toast.Header>
+            <Toast.Body>
+              Your contact request was not sent successfully. Please send an
+              email manually.
+            </Toast.Body>
+          </Toast>
+        </ToastContainer>
       </Container>
       <ContactFooter />
     </>
   );
 }
 
-const sendContactEmail = async (event: React.FormEvent<HTMLFormElement>) => {
+const sendContactEmail = async (
+  event: React.FormEvent<HTMLFormElement>,
+  setShowSuccessful: React.Dispatch<React.SetStateAction<boolean>>,
+  setShowError: React.Dispatch<React.SetStateAction<boolean>>
+) => {
   event.preventDefault();
 
   const formD = new FormData(event.currentTarget);
@@ -106,12 +155,20 @@ const sendContactEmail = async (event: React.FormEvent<HTMLFormElement>) => {
   const email = formD.get("email") as string;
   const message = formD.get("message") as string;
 
-  await emailjs.send(
-    "contact_send",
-    "template_contact",
-    { name: name, email: email, message: message },
-    {
-      publicKey: process.env.EMAILJS_PUBLIC_KEY,
-    }
-  );
+  new Promise((resolve) => setTimeout(resolve, 1200));
+
+  await emailjs
+    .send(
+      "contact_send",
+      "template_contact",
+      { name: name, email: email, message: message },
+      {
+        publicKey: process.env.EMAILJS_PUBLIC_KEY,
+      }
+    )
+    .then(() => {
+      setShowSuccessful(true);
+    })
+    .catch(() => setShowError(true));
+  (document.getElementById("contactform") as HTMLFormElement)!.reset();
 };
