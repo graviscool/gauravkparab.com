@@ -345,10 +345,10 @@ export default function Main() {
                   >
                     <Card.Img
                       variant="top"
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg"
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
                     />
                     <Card.Body>
-                      <Card.Text>C</Card.Text>
+                      <Card.Text>React</Card.Text>
                     </Card.Body>
                   </Card>
                   <Card
@@ -359,10 +359,10 @@ export default function Main() {
                   >
                     <Card.Img
                       variant="top"
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg"
                     />
                     <Card.Body>
-                      <Card.Text>React</Card.Text>
+                      <Card.Text>C</Card.Text>
                     </Card.Body>
                   </Card>
                   <Card
