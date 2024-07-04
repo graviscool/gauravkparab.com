@@ -107,7 +107,7 @@ export default function Main() {
                         setTypeFreezeText("Animation Complete");
                         document.getElementById(
                           "pauseTypeButton"
-                        )!.style.opacity = "0.5";
+                        )!.style.opacity = "0.2";
                       });
 
                     return instance;
