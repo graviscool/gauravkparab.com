@@ -34,7 +34,7 @@ export default function ContactNavbar() {
             <Offcanvas.Body>
               <Nav className="me-auto">
                 <Nav.Link href="/">Home</Nav.Link>
-                {/* <Nav.Link href="/blurb">Blurb</Nav.Link> */}
+                <Nav.Link href="/introduction">Introduction</Nav.Link>
                 <Nav.Link href="/#projects">Projects</Nav.Link>
                 <Nav.Link href="/#prevexp">Previous Experience</Nav.Link>
               </Nav>

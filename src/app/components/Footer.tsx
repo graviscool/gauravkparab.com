@@ -8,9 +8,9 @@ export default function Footer() {
         <Row>
           <Col md={4}>
             <Nav>
-              {/* <Nav.Link href="/blurb" className="text-light">
-                Blurb
-              </Nav.Link> */}
+              <Nav.Link href="/introduction" className="text-light">
+                Introduction
+              </Nav.Link>
               <Nav.Link href="/contact" className="text-light">
                 Contact
               </Nav.Link>
@@ -34,7 +34,9 @@ export default function Footer() {
               Website Info
             </Button> */}
             <div className="text-end mb-0">
-              <a href="#top" className={`${styles.topLink} link-info`}>top</a>
+              <a href="#top" className={`${styles.topLink} link-info`}>
+                top
+              </a>
               <p>&copy; 2024 Gaurav Parab</p>
             </div>
           </Col>
