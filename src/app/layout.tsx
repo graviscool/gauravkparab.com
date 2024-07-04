@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   authors: { name: "Gaurav" },
   metadataBase: new URL("https://gauravkparab.com"),
   openGraph: {
-    title: "Gaurav Parab's website",
+    title: "Gaurav Parab",
     description: "A portfolio website for Gaurav",
     images: "images/gp-logo.png",
     locale: "en_US",
