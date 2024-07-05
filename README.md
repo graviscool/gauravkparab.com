@@ -1,6 +1,6 @@
 # Gaurav's Personal Website
 
-This is the source code for my personal website, built with Next.js and hosted on Vercel. You can visit the live website at .
+This is the source code for my personal website, built with Next.js and hosted on Vercel. You can visit the live website at https://gauravkparab.com.
 
 ## Project Structure
 
@@ -12,7 +12,7 @@ This is the source code for my personal website, built with Next.js and hosted o
 
 To run this website locally, follow these steps:
 
-1. Clone the repository: `git clone `
+1. Clone the repository using `git clone`
 2. Navigate into the directory: `cd gauravkparab.com`
 3. Install the dependencies: `npm install`
 4. Start the development server: `npm run dev`
@@ -20,7 +20,7 @@ To run this website locally, follow these steps:
 
 ## Deployment
 
-The website is deployed on Vercel. See the vercel project at https://vercel.com/gauravp-projects/gauravkparab-com
+The website is deployed on Vercel. See the vercel project at https://vercel.com/gauravp-projects/gauravkparab.com (You can only view this if you are an authorized member)
 
 ## Notice
 
