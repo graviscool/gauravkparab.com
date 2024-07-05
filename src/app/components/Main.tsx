@@ -296,7 +296,7 @@ export default function Main() {
                     top
                   </a>
                 </div>
-                <CardGroup className="text-center">
+                <CardGroup className="text-center mx-3">
                   {/* <Row className="text-center"> */}
                   <Card
                     className={`${styles.stackCard} mx-md-2 my-sm-3`}
