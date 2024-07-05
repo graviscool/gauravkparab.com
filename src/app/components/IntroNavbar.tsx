@@ -13,7 +13,6 @@ export default function IntroNavbar() {
         bg="dark"
         className="bg-body-tertiary mb-0 z-1"
         data-bs-theme="dark"
-        sticky="top"
         collapseOnSelect
       >
         <Container fluid>
