@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import { Row, Col, Toast, ToastContainer, Button } from "react-bootstrap";
 import styles from "@/styles/Main.module.css";
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import TypeIt, { TypeItProps } from "typeit-react";
 import { ParallaxBanner } from "react-scroll-parallax";
 import Head from "next/head";
@@ -23,6 +23,12 @@ export default function Main() {
     }
   };
 
+  const bgImageSection = useRef(null);
+  const { scrollYProgress: bgScrollProgress } = useScroll({
+    target: bgImageSection,
+    offset: ["start", "1.05 start"],
+  });
+
   return (
     <>
       <Head>
@@ -32,7 +38,7 @@ export default function Main() {
       <Container fluid className={styles.mainContainer}>
         <div className="overflow-hidden">
           <main>
-            <div>
+            <div ref={bgImageSection}>
               <div className="vw-100 position-relative">
                 <ParallaxBanner
                   layers={[{ image: "images/sf-night.jpg", speed: -20 }]}
@@ -125,6 +131,10 @@ export default function Main() {
               </div>
             </div>
             <div>
+              <motion.div
+                className={`${styles.imageScrollProgressBar}`}
+                style={{ scaleX: bgScrollProgress }}
+              />
               <section id="projects">
                 <div className="d-flex">
                   <h2 className={`${styles.headingTwo} mt-5`}>Projects</h2>
