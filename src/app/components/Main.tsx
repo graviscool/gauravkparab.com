@@ -26,7 +26,7 @@ export default function Main() {
   const bgImageSection = useRef(null);
   const { scrollYProgress: bgScrollProgress } = useScroll({
     target: bgImageSection,
-    offset: ["start", "1.05 start"],
+    offset: ["0.06 start", "1.05 start"],
   });
 
   return (
@@ -109,7 +109,7 @@ export default function Main() {
                         (instance) =>
                           (instance.getElement().style.color = "#add8e6")
                       )
-                      .exec((instance) => {
+                      .exec((_instance) => {
                         setTypeFreezeText("Animation Complete");
                         document.getElementById(
                           "pauseTypeButton"
