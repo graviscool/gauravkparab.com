@@ -1,11 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import { Row, Col, Toast, ToastContainer, Button } from "react-bootstrap";
 import styles from "@/styles/Main.module.css";
 import { motion } from "framer-motion";
-import TypeIt, { TypeItProps } from "typeit-react";
+import TypeIt from "typeit-react";
 import { ParallaxBanner } from "react-scroll-parallax";
 import Head from "next/head";
 
