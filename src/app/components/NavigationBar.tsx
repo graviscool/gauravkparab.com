@@ -2,14 +2,19 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Alert, Dropdown, Image, SplitButton } from "react-bootstrap";
+import { Dropdown, Image, SplitButton } from "react-bootstrap";
+import { FormControlLabel, Switch } from "@mui/material";
+import { Dispatch, SetStateAction } from "react";
 
-export default function NavigationBar() {
+export default function NavigationBar({
+  dark,
+  setDark,
+}: {
+  dark: boolean;
+  setDark: Dispatch<SetStateAction<boolean>>;
+}) {
   return (
     <header>
-      <Alert variant="warning" dismissible className="d-block d-md-none">
-        This website is not yet optimized on mobile!
-      </Alert>
       <a id="top" content="top of page"></a>
       <Navbar
         expand="md"
@@ -38,7 +43,7 @@ export default function NavigationBar() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="me-auto">
-                <Nav.Link href="/blurb">Blurb</Nav.Link>
+                {/* <Nav.Link href="/blurb">Blurb</Nav.Link> */}
                 <Nav.Link href="#projects">Projects</Nav.Link>
                 <Nav.Link href="#prevexp">Previous Experience</Nav.Link>
               </Nav>
@@ -94,6 +99,19 @@ export default function NavigationBar() {
               <Nav className="ms-2">
                 <Nav.Link href="/contact">Contact Me</Nav.Link>
               </Nav>
+              <FormControlLabel
+                value="Dark Mode Button"
+                className="ms-1"
+                control={
+                  <Switch
+                    color="primary"
+                    checked={dark}
+                    onChange={(e) => setDark(e.target.checked)}
+                  />
+                }
+                label={`${dark ? "Dark" : "Light"}`}
+                labelPlacement="end"
+              />
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>

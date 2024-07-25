@@ -5,3 +5,7 @@
 .topLink:hover {
   opacity: 0.9;
 }
+
+.bgDarkFooter {
+  background-color: #343232;
+}

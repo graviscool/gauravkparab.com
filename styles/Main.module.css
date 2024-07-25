@@ -3,7 +3,7 @@
   /* width: fit-content; */
 }
 
-.mainContainer {
+.mainContainerLight {
   background-color: #add8e6;
   padding: 0;
 }
@@ -49,17 +49,6 @@
   }
 }
 
-/* Tech Stack card hover transitions */
-
-.stackCard {
-  width: 6rem;
-  transition: transform 0.5s;
-}
-
-.stackCard:hover {
-  transform: scale(1.15);
-}
-
 /* Project card hover */
 .projectCard {
   transition: transform 0.5s;
@@ -100,7 +89,7 @@
   }
 }
 
-.headingTwo {
+.headingTwoLight {
   font-family: Georgia, "Times New Roman", Times, serif;
   padding: 10px 10px;
   /* border-bottom: 2px solid #007bff;
@@ -111,8 +100,27 @@
   -webkit-text-fill-color: transparent;
 }
 
-.headingTwo:hover {
+.headingTwoLight:hover {
   background: -webkit-linear-gradient(#2c3e50, #000000);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.headingTwoDark {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  padding: 10px 10px;
+  /* border-bottom: 2px solid #007bff;
+  padding-bottom: 5px; */
+  background: -webkit-linear-gradient(#fe6741, #feb47b);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.headingTwoDark:hover {
+  background: -webkit-linear-gradient(#ff9a8b, #efe8e3);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -130,4 +138,32 @@
 
 .topLink:hover {
   opacity: 0.9;
+}
+
+.mobileToast {
+  display: none;
+  width: 275px;
+}
+
+@media (max-width: 600px) {
+  .mobileToast {
+    display: block;
+  }
+}
+
+.pauseTypeButton {
+  opacity: 0.05;
+  font-size: x-small;
+  margin-left: 2rem;
+}
+
+.pauseTypeButton:hover {
+  opacity: 0.4;
+}
+
+.imageScrollProgressBar {
+  background-color: #2e4053;
+  height: 10px;
+  margin-top: 38px;
+  transform-origin: 0%;
 }

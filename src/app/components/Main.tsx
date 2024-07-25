@@ -1,25 +1,47 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-import CardGroup from "react-bootstrap/CardGroup";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Toast, ToastContainer, Button } from "react-bootstrap";
 import styles from "@/styles/Main.module.css";
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import TypeIt from "typeit-react";
 import { ParallaxBanner } from "react-scroll-parallax";
 import Head from "next/head";
+import TechStack from "./TechStack";
 
-export default function Main() {
+export default function Main({ darkMode }: { darkMode: boolean }) {
+  const [showMobileToast, setShowMobileToast] = useState(true);
+  const [typeItInstance, setTypeItInstance] = useState<any>(null);
+  const [typeFreezeText, setTypeFreezeText] = useState("Pause Animation");
+  const freezeOrUnfreezeText = () => {
+    if (typeItInstance.is("frozen")) {
+      typeItInstance.unfreeze();
+      setTypeFreezeText("Pause Animation");
+    } else {
+      typeItInstance.freeze();
+      setTypeFreezeText("Resume Animation");
+    }
+  };
+
+  const bgImageSection = useRef(null);
+  const { scrollYProgress: bgScrollProgress } = useScroll({
+    target: bgImageSection,
+    offset: ["0.06 start", "1.05 start"],
+  });
+
   return (
     <>
       <Head>
         <link rel="preload" href="/images/sf-night.jpg" as="image" />
         <link rel="preload" href="/images/langs/python.png" as="image" />
       </Head>
-      <Container fluid className={styles.mainContainer}>
+      <Container
+        fluid
+        className={`${darkMode ? "p-0 bg-dark" : styles.mainContainerLight}`}
+      >
         <div className="overflow-hidden">
           <main>
-            <div>
+            <div ref={bgImageSection}>
               <div className="vw-100 position-relative">
                 <ParallaxBanner
                   layers={[{ image: "images/sf-night.jpg", speed: -20 }]}
@@ -34,11 +56,24 @@ export default function Main() {
                   alignItems: "center",
                 }}
               >
+                <Button
+                  variant="outline-warning"
+                  size="sm"
+                  className={styles.pauseTypeButton}
+                  id="pauseTypeButton"
+                  onClick={() => {
+                    freezeOrUnfreezeText();
+                  }}
+                  disabled={typeFreezeText == "Animation Complete"}
+                >
+                  {typeFreezeText}
+                </Button>
                 <TypeIt
                   as="h1"
                   getBeforeInit={(instance) => {
+                    // setTypeItInstance(instance);
                     instance
-                      .pause(550)
+                      .pause(750)
                       .type("Hi! I'm Gaurav.")
                       .break({ delay: 500 })
                       .type("A college student. 🎓")
@@ -52,6 +87,10 @@ export default function Main() {
                       .type("web developer.")
                       .pause(1500)
                       .delete(14, { speed: 200 })
+                      .exec(
+                        (instance) =>
+                          (instance.getElement().style.color = "#add8e6")
+                      )
                       .pause(1500)
                       .type("AI enthusiast.")
                       .pause(500)
@@ -69,11 +108,22 @@ export default function Main() {
                       )
                       .pause(1500)
                       .delete(18, { speed: 500 })
+                      .type("!")
                       .exec(
                         (instance) =>
                           (instance.getElement().style.color = "#add8e6")
-                      );
+                      )
+                      .exec((_instance) => {
+                        setTypeFreezeText("Animation Complete");
+                        document.getElementById(
+                          "pauseTypeButton"
+                        )!.style.opacity = "0.2";
+                      });
 
+                    return instance;
+                  }}
+                  getAfterInit={(instance) => {
+                    setTypeItInstance(instance);
                     return instance;
                   }}
                   options={{
@@ -85,9 +135,19 @@ export default function Main() {
               </div>
             </div>
             <div>
+              <motion.div
+                className={`${styles.imageScrollProgressBar}`}
+                style={{ scaleX: bgScrollProgress }}
+              />
               <section id="projects">
                 <div className="d-flex">
-                  <h2 className={`${styles.headingTwo} mt-5`}>Projects</h2>
+                  <h2
+                    className={`${
+                      darkMode ? styles.headingTwoDark : styles.headingTwoLight
+                    } mt-5`}
+                  >
+                    Projects
+                  </h2>
                   <a
                     href="#top"
                     className={`${styles.topLink}`}
@@ -132,7 +192,8 @@ export default function Main() {
                         Python
                       </Card.Subtitle>
                       <Card.Text>
-                        Created an advanced parser system using a lexer to generate parse tables from a certain provided grammar.
+                        Created an advanced parser system using a lexer to
+                        generate parse tables from a certain provided grammar.
                       </Card.Text>
                       <Card.Link
                         href="https://github.com/graviscool/parser-project-2"
@@ -172,7 +233,12 @@ export default function Main() {
                   </Card>
                 </Row>
               </section>
-              <div className={styles.topLang}>
+              <motion.div
+                className={styles.topLang}
+                initial={{ translateX: "-100%" }}
+                whileInView={{ translateX: 0 }}
+                viewport={{ once: true }}
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <picture>
                   <source
@@ -198,10 +264,16 @@ export default function Main() {
                     alt="Top Languages Used"
                   />
                 </picture>
-              </div>
+              </motion.div>
               <section id="prevexp">
                 <div className="d-flex">
-                  <h2 className={styles.headingTwo}>Work Experience</h2>
+                  <h2
+                    className={`${
+                      darkMode ? styles.headingTwoDark : styles.headingTwoLight
+                    }`}
+                  >
+                    Work Experience
+                  </h2>
                   <a href="#top" className={`mt-4 ${styles.topLink}`}>
                     top
                   </a>
@@ -209,8 +281,8 @@ export default function Main() {
                 <Row>
                   <Col>
                     <Card
-                      bg="light"
-                      text="dark"
+                      bg={`${darkMode ? "secondary" : "light"}`}
+                      text={`${darkMode ? "light" : "dark"}`}
                       border="success"
                       className={`mb-3 ms-3 ${styles.expCard}`}
                     >
@@ -228,8 +300,8 @@ export default function Main() {
                   </Col>
                   <Col>
                     <Card
-                      bg="light"
-                      text="dark"
+                      bg={`${darkMode ? "secondary" : "light"}`}
+                      text={`${darkMode ? "light" : "dark"}`}
                       border="success"
                       className={`mb-2 me-3 ${styles.expCard}`}
                     >
@@ -250,128 +322,42 @@ export default function Main() {
               </section>
               <section id="techstack">
                 <div className="d-flex">
-                  <h2 className={styles.headingTwo}>Dev Tools/Tech Stack</h2>
+                  <h2
+                    className={`${
+                      darkMode ? styles.headingTwoDark : styles.headingTwoLight
+                    }`}
+                  >
+                    Dev Tools/Tech Stack
+                  </h2>
                   <a href="#top" className={`mt-4 ${styles.topLink}`}>
                     top
                   </a>
                 </div>
-                <CardGroup className="text-center">
-                  {/* <Row className="text-center"> */}
-                  <Card
-                    className={`${styles.stackCard} mx-md-2 my-sm-3`}
-                    bg="info"
-                    text="dark"
-                    border="success"
-                  >
-                    <Card.Img variant="top" src="/images/langs/python.png" />
-                    <Card.Body>
-                      <Card.Text>Python</Card.Text>
-                    </Card.Body>
-                  </Card>
-                  <Card
-                    className={`${styles.stackCard} mx-md-2 my-sm-3`}
-                    bg="info"
-                    text="dark"
-                    border="success"
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"
-                    />
-                    <Card.Body>
-                      <Card.Text>Java</Card.Text>
-                    </Card.Body>
-                  </Card>
-                  <Card
-                    className={`${styles.stackCard} mx-md-2 my-sm-3`}
-                    bg="info"
-                    text="dark"
-                    border="success"
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                    />
-                    <Card.Body>
-                      <Card.Text>Javascript</Card.Text>
-                    </Card.Body>
-                  </Card>
-                  <Card
-                    className={`${styles.stackCard} mx-md-2 my-sm-3`}
-                    bg="info"
-                    text="dark"
-                    border="success"
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg"
-                    />
-                    <Card.Body>
-                      <Card.Text>C</Card.Text>
-                    </Card.Body>
-                  </Card>
-                  <Card
-                    className={`${styles.stackCard} mx-md-2 my-sm-3`}
-                    bg="info"
-                    text="dark"
-                    border="success"
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
-                    />
-                    <Card.Body>
-                      <Card.Text>React</Card.Text>
-                    </Card.Body>
-                  </Card>
-                  <Card
-                    className={`${styles.stackCard} mx-md-2 my-sm-3`}
-                    bg="info"
-                    text="dark"
-                    border="success"
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg"
-                    />
-                    <Card.Body>
-                      <Card.Text>HTML</Card.Text>
-                    </Card.Body>
-                  </Card>
-                  <Card
-                    className={`${styles.stackCard} mx-md-2 my-sm-3`}
-                    bg="info"
-                    text="dark"
-                    border="success"
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg"
-                    />
-                    <Card.Body>
-                      <Card.Text>SQL</Card.Text>
-                    </Card.Body>
-                  </Card>
-                  <Card
-                    className={`${styles.stackCard} mx-md-2 my-sm-3`}
-                    bg="info"
-                    text="dark"
-                    border="success"
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-plain.svg"
-                    />
-                    <Card.Body>
-                      <Card.Text>Linux</Card.Text>
-                    </Card.Body>
-                  </Card>
-                  {/* </Row> */}
-                </CardGroup>
+                <TechStack darkMode={darkMode} />
               </section>
             </div>
           </main>
         </div>
+        <ToastContainer position="bottom-end">
+          <Toast
+            bg="warning"
+            show={showMobileToast}
+            onClose={() => setShowMobileToast(false)}
+            delay={10_000}
+            autohide
+            className={styles.mobileToast}
+          >
+            <Toast.Header>
+              <strong className="me-auto">Mobile Device Detected</strong>
+              <small className="text-muted">just now</small>
+            </Toast.Header>
+            <Toast.Body>
+              This page is not yet optimized for mobile devices.
+              <br /> For best experience, please use a computer to access this
+              website.
+            </Toast.Body>
+          </Toast>
+        </ToastContainer>
       </Container>
     </>
   );
