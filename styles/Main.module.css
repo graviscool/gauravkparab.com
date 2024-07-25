@@ -49,17 +49,6 @@
   }
 }
 
-/* Tech Stack card hover transitions */
-
-.stackCard {
-  width: 6rem;
-  transition: transform 0.5s;
-}
-
-.stackCard:hover {
-  transform: scale(1.15);
-}
-
 /* Project card hover */
 .projectCard {
   transition: transform 0.5s;
@@ -154,7 +143,7 @@
 }
 
 .imageScrollProgressBar {
-  background-color: #2E4053;
+  background-color: #2e4053;
   height: 10px;
   margin-top: 38px;
   transform-origin: 0%;

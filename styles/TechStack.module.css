@@ -1,0 +1,14 @@
+/* Tech Stack card hover transitions */
+
+.stackCard {
+  width: 6rem;
+  transition: transform 0.5s;
+}
+
+.stackCard:hover {
+  transform: scale(1.15);
+}
+
+.techstack-anim {
+  transform-origin: 0%;
+}
