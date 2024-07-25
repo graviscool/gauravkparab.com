@@ -3,11 +3,11 @@ import styles from "@/styles/TechStack.module.css";
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-export default function TechStack() {
+export default function TechStack({ darkMode }: { darkMode: boolean }) {
   const techStackRef = useRef(null);
   const { scrollYProgress: techStackScrollProgress } = useScroll({
     target: techStackRef,
-    offset: ["950px", "end"],
+    offset: ["950px", "end 1.07"],
   });
 
   const techStackTranslateProgress = useTransform(
@@ -32,15 +32,13 @@ export default function TechStack() {
   return (
     <>
       {animate ? (
-        <motion.div
-          className="techstack-anim"
-          style={{ translateX: techStackTranslateProgress }}
-        >
+        <motion.div style={{ translateX: techStackTranslateProgress }}>
           <CardGroup className="text-center mx-3">
             {/* <Row className="text-center"> */}
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3`}
-              bg="info"
+              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+                darkMode ? styles.bgCardDark : "bg-info"
+              }`}
               text="dark"
               border="success"
             >
@@ -50,8 +48,9 @@ export default function TechStack() {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3`}
-              bg="info"
+              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+                darkMode ? styles.bgCardDark : "bg-info"
+              }`}
               text="dark"
               border="success"
             >
@@ -64,8 +63,9 @@ export default function TechStack() {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3`}
-              bg="info"
+              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+                darkMode ? styles.bgCardDark : "bg-info"
+              }`}
               text="dark"
               border="success"
             >
@@ -78,8 +78,9 @@ export default function TechStack() {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3`}
-              bg="info"
+              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+                darkMode ? styles.bgCardDark : "bg-info"
+              }`}
               text="dark"
               border="success"
             >
@@ -92,8 +93,9 @@ export default function TechStack() {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3`}
-              bg="info"
+              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+                darkMode ? styles.bgCardDark : "bg-info"
+              }`}
               text="dark"
               border="success"
             >
@@ -106,8 +108,9 @@ export default function TechStack() {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3`}
-              bg="info"
+              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+                darkMode ? styles.bgCardDark : "bg-info"
+              }`}
               text="dark"
               border="success"
             >
@@ -120,8 +123,9 @@ export default function TechStack() {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3`}
-              bg="info"
+              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+                darkMode ? styles.bgCardDark : "bg-info"
+              }`}
               text="dark"
               border="success"
             >
@@ -134,8 +138,9 @@ export default function TechStack() {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3`}
-              bg="info"
+              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+                darkMode ? styles.bgCardDark : "bg-info"
+              }`}
               text="dark"
               border="success"
             >

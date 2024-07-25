@@ -333,7 +333,7 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                     top
                   </a>
                 </div>
-                <TechStack />
+                <TechStack darkMode={darkMode} />
               </section>
             </div>
           </main>
