@@ -1,9 +1,13 @@
 import styles from "@/styles/Footer.module.css";
 import { Button, Col, Container, Nav, Row } from "react-bootstrap";
 
-export default function Footer() {
+export default function Footer({ darkMode }: { darkMode: boolean }) {
   return (
-    <footer className="footer bg-dark text-light mt-auto py-2">
+    <footer
+      className={`footer ${
+        darkMode ? `${styles.bgDarkFooter} text-light` : "bg-dark text-light"
+      } mt-auto py-2`}
+    >
       <Container fluid>
         <Row>
           <Col md={4}>
@@ -34,7 +38,9 @@ export default function Footer() {
               Website Info
             </Button> */}
             <div className="text-end mb-0">
-              <a href="#top" className={`${styles.topLink} link-info`}>top</a>
+              <a href="#top" className={`${styles.topLink} link-info`}>
+                top
+              </a>
               <p>&copy; 2024 Gaurav Parab</p>
             </div>
           </Col>
