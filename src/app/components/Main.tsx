@@ -9,7 +9,7 @@ import { ParallaxBanner } from "react-scroll-parallax";
 import Head from "next/head";
 import TechStack from "./TechStack";
 
-export default function Main() {
+export default function Main({ darkMode }: { darkMode: boolean }) {
   const [showMobileToast, setShowMobileToast] = useState(true);
   const [typeItInstance, setTypeItInstance] = useState<any>(null);
   const [typeFreezeText, setTypeFreezeText] = useState("Pause Animation");
@@ -35,7 +35,10 @@ export default function Main() {
         <link rel="preload" href="/images/sf-night.jpg" as="image" />
         <link rel="preload" href="/images/langs/python.png" as="image" />
       </Head>
-      <Container fluid className={styles.mainContainer}>
+      <Container
+        fluid
+        className={`${darkMode ? "p-0 bg-dark" : styles.mainContainerLight}`}
+      >
         <div className="overflow-hidden">
           <main>
             <div ref={bgImageSection}>
@@ -105,6 +108,7 @@ export default function Main() {
                       )
                       .pause(1500)
                       .delete(18, { speed: 500 })
+                      .type("!")
                       .exec(
                         (instance) =>
                           (instance.getElement().style.color = "#add8e6")
@@ -137,7 +141,13 @@ export default function Main() {
               />
               <section id="projects">
                 <div className="d-flex">
-                  <h2 className={`${styles.headingTwo} mt-5`}>Projects</h2>
+                  <h2
+                    className={`${
+                      darkMode ? styles.headingTwoDark : styles.headingTwoLight
+                    } mt-5`}
+                  >
+                    Projects
+                  </h2>
                   <a
                     href="#top"
                     className={`${styles.topLink}`}
@@ -257,7 +267,13 @@ export default function Main() {
               </motion.div>
               <section id="prevexp">
                 <div className="d-flex">
-                  <h2 className={styles.headingTwo}>Work Experience</h2>
+                  <h2
+                    className={`${
+                      darkMode ? styles.headingTwoDark : styles.headingTwoLight
+                    }`}
+                  >
+                    Work Experience
+                  </h2>
                   <a href="#top" className={`mt-4 ${styles.topLink}`}>
                     top
                   </a>
@@ -265,8 +281,8 @@ export default function Main() {
                 <Row>
                   <Col>
                     <Card
-                      bg="light"
-                      text="dark"
+                      bg={`${darkMode ? "secondary" : "light"}`}
+                      text={`${darkMode ? "light" : "dark"}`}
                       border="success"
                       className={`mb-3 ms-3 ${styles.expCard}`}
                     >
@@ -284,8 +300,8 @@ export default function Main() {
                   </Col>
                   <Col>
                     <Card
-                      bg="light"
-                      text="dark"
+                      bg={`${darkMode ? "secondary" : "light"}`}
+                      text={`${darkMode ? "light" : "dark"}`}
                       border="success"
                       className={`mb-2 me-3 ${styles.expCard}`}
                     >
@@ -306,7 +322,13 @@ export default function Main() {
               </section>
               <section id="techstack">
                 <div className="d-flex">
-                  <h2 className={styles.headingTwo}>Dev Tools/Tech Stack</h2>
+                  <h2
+                    className={`${
+                      darkMode ? styles.headingTwoDark : styles.headingTwoLight
+                    }`}
+                  >
+                    Dev Tools/Tech Stack
+                  </h2>
                   <a href="#top" className={`mt-4 ${styles.topLink}`}>
                     top
                   </a>
@@ -321,7 +343,7 @@ export default function Main() {
             bg="warning"
             show={showMobileToast}
             onClose={() => setShowMobileToast(false)}
-            delay={7500}
+            delay={10_000}
             autohide
             className={styles.mobileToast}
           >
