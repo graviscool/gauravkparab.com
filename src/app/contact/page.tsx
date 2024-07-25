@@ -22,6 +22,7 @@ export default function Contact() {
 
   return (
     <>
+      <title>Contact Me - Gaurav Parab</title>
       <Container fluid className="bg-dark text-info vh-100">
         <ContactNavbar />
         <Row>

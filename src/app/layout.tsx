@@ -12,7 +12,10 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Gaurav Parab",
+  title: {
+    default: "Gaurav Parab",
+    template: "%s - Gaurav Parab",
+  },
   description: "A portfolio website for Gaurav",
   icons: "images/gp-logo.png",
   keywords: ["portfolio", "personal website"],
