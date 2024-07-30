@@ -163,22 +163,18 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                     className={`mb-3 me-3 ms-4 ${styles.projectCard}`}
                   >
                     <Card.Body>
-                      <Card.Title>Monopoly</Card.Title>
+                      <Card.Title>Dashboard</Card.Title>
                       <Card.Subtitle className="mb-2 text-light">
-                        Java
+                        Next.js
                       </Card.Subtitle>
                       <Card.Text>
-                        A class project in which me and my groupmates built the
-                        game of Monopoly from scratch in Java using GUIs. I
-                        wrote 30% of the code and assisted with debugging,
-                        writing documentation, and submitting reports.
+                        Created a dashboard for uses to view sensitive database
+                        data. The used Discord OAuth to authenticated users and
+                        check if they had the permissions to access the data.
                       </Card.Text>
-                      <Card.Link
-                        href="/projectfiles/MonopolyProject.jar"
-                        className="text-dark"
+                      {/* <Card.Link
                       >
-                        JAR file
-                      </Card.Link>
+                      </Card.Link> */}
                     </Card.Body>
                   </Card>
                   <Card
@@ -187,21 +183,21 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                     className={`mb-3 me-3 ${styles.projectCard}`}
                   >
                     <Card.Body>
-                      <Card.Title>Parser</Card.Title>
+                      <Card.Title>Monopoly</Card.Title>
                       <Card.Subtitle className="mb-2 text-light">
-                        Python
+                        Java
                       </Card.Subtitle>
                       <Card.Text>
-                        Created an advanced parser system using a lexer to
-                        generate parse tables from a certain provided grammar.
+                        Built the game of Monopoly from scratch in Java using
+                        GUI, with two other teammates. I wrote 30% of the code
+                        and assisted with debugging, writing documentation, and
+                        submitting reports.
                       </Card.Text>
                       <Card.Link
-                        href="https://github.com/graviscool/parser-project-2"
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        className="link-warning"
+                        href="/projectfiles/MonopolyProject.jar"
+                        className="text-dark"
                       >
-                        Github Link
+                        JAR file
                       </Card.Link>
                     </Card.Body>
                   </Card>
