@@ -109,7 +109,7 @@ export default function NavigationBar({
                     onChange={(e) => setDark(e.target.checked)}
                   />
                 }
-                label={`${dark ? "Dark" : "Light"}`}
+                label={dark ? "Dark" : "Light"}
                 labelPlacement="end"
               />
             </Offcanvas.Body>
