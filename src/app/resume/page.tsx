@@ -9,3 +9,4 @@ export default function Resume() {
       <p>This page is currently a work in progress.</p>
     </>
   );
+}
