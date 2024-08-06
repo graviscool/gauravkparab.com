@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Dropdown, Image, SplitButton } from "react-bootstrap";
+import { Button, Dropdown, Image, SplitButton } from "react-bootstrap";
 
 export default function ResumeNavbar() {
   return (
@@ -38,6 +38,20 @@ export default function ResumeNavbar() {
                 <Nav.Link href="#projects">Projects</Nav.Link>
                 <Nav.Link href="#prevexp">Previous Experience</Nav.Link>
               </Nav>
+              <SplitButton
+                title="View PDF Resume"
+                variant="outline-primary"
+                href="/documents/Gaurav_Parab_resume.pdf"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <Dropdown.Item
+                  href="/documents/Gaurav_Parab_resume.pdf"
+                  download
+                >
+                  Download PDF Resume
+                </Dropdown.Item>
+              </SplitButton>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
