@@ -1,15 +1,15 @@
 import React, { useRef, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-import CardGroup from "react-bootstrap/CardGroup";
 import { Row, Col, Toast, ToastContainer, Button } from "react-bootstrap";
 import styles from "@/styles/Main.module.css";
-import { motion } from "framer-motion";
-import TypeIt, { TypeItProps } from "typeit-react";
+import { motion, useScroll } from "framer-motion";
+import TypeIt from "typeit-react";
 import { ParallaxBanner } from "react-scroll-parallax";
 import Head from "next/head";
+import TechStack from "./TechStack";
 
-export default function Main() {
+export default function Main({ darkMode }: { darkMode: boolean }) {
   const [showMobileToast, setShowMobileToast] = useState(true);
   const [typeItInstance, setTypeItInstance] = useState<any>(null);
   const [typeFreezeText, setTypeFreezeText] = useState("Pause Animation");
@@ -23,16 +23,25 @@ export default function Main() {
     }
   };
 
+  const bgImageSection = useRef(null);
+  const { scrollYProgress: bgScrollProgress } = useScroll({
+    target: bgImageSection,
+    offset: ["0.06 start", "1.05 start"],
+  });
+
   return (
     <>
       <Head>
         <link rel="preload" href="/images/sf-night.jpg" as="image" />
         <link rel="preload" href="/images/langs/python.png" as="image" />
       </Head>
-      <Container fluid className={styles.mainContainer}>
+      <Container
+        fluid
+        className={`${darkMode ? "p-0 bg-dark" : styles.mainContainerLight}`}
+      >
         <div className="overflow-hidden">
           <main>
-            <div>
+            <div ref={bgImageSection}>
               <div className="vw-100 position-relative">
                 <ParallaxBanner
                   layers={[{ image: "images/sf-night.jpg", speed: -20 }]}
@@ -99,11 +108,12 @@ export default function Main() {
                       )
                       .pause(1500)
                       .delete(18, { speed: 500 })
+                      .type("!")
                       .exec(
                         (instance) =>
                           (instance.getElement().style.color = "#add8e6")
                       )
-                      .exec((instance) => {
+                      .exec((_instance) => {
                         setTypeFreezeText("Animation Complete");
                         document.getElementById(
                           "pauseTypeButton"
@@ -125,9 +135,19 @@ export default function Main() {
               </div>
             </div>
             <div>
+              <motion.div
+                className={`${styles.imageScrollProgressBar}`}
+                style={{ scaleX: bgScrollProgress }}
+              />
               <section id="projects">
                 <div className="d-flex">
-                  <h2 className={`${styles.headingTwo} mt-5`}>Projects</h2>
+                  <h2
+                    className={`${
+                      darkMode ? styles.headingTwoDark : styles.headingTwoLight
+                    } mt-5`}
+                  >
+                    Projects
+                  </h2>
                   <a
                     href="#top"
                     className={`${styles.topLink}`}
@@ -143,22 +163,18 @@ export default function Main() {
                     className={`mb-3 me-3 ms-4 ${styles.projectCard}`}
                   >
                     <Card.Body>
-                      <Card.Title>Monopoly</Card.Title>
+                      <Card.Title>Dashboard</Card.Title>
                       <Card.Subtitle className="mb-2 text-light">
-                        Java
+                        Next.js
                       </Card.Subtitle>
                       <Card.Text>
-                        A class project in which me and my groupmates built the
-                        game of Monopoly from scratch in Java using GUIs. I
-                        wrote 30% of the code and assisted with debugging,
-                        writing documentation, and submitting reports.
+                        Created a dashboard for uses to view sensitive database
+                        data. The used Discord OAuth to authenticated users and
+                        check if they had the permissions to access the data.
                       </Card.Text>
-                      <Card.Link
-                        href="/projectfiles/MonopolyProject.jar"
-                        className="text-dark"
+                      {/* <Card.Link
                       >
-                        JAR file
-                      </Card.Link>
+                      </Card.Link> */}
                     </Card.Body>
                   </Card>
                   <Card
@@ -167,21 +183,21 @@ export default function Main() {
                     className={`mb-3 me-3 ${styles.projectCard}`}
                   >
                     <Card.Body>
-                      <Card.Title>Parser</Card.Title>
+                      <Card.Title>Monopoly</Card.Title>
                       <Card.Subtitle className="mb-2 text-light">
-                        Python
+                        Java
                       </Card.Subtitle>
                       <Card.Text>
-                        Created an advanced parser system using a lexer to
-                        generate parse tables from a certain provided grammar.
+                        Built the game of Monopoly from scratch in Java using
+                        GUI, with two other teammates. I wrote 30% of the code
+                        and assisted with debugging, writing documentation, and
+                        submitting reports.
                       </Card.Text>
                       <Card.Link
-                        href="https://github.com/graviscool/parser-project-2"
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        className="link-warning"
+                        href="/projectfiles/MonopolyProject.jar"
+                        className="text-dark"
                       >
-                        Github Link
+                        JAR file
                       </Card.Link>
                     </Card.Body>
                   </Card>
@@ -213,7 +229,12 @@ export default function Main() {
                   </Card>
                 </Row>
               </section>
-              <div className={styles.topLang}>
+              <motion.div
+                className={styles.topLang}
+                initial={{ translateX: "-100%" }}
+                whileInView={{ translateX: 0 }}
+                viewport={{ once: true }}
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <picture>
                   <source
@@ -239,10 +260,16 @@ export default function Main() {
                     alt="Top Languages Used"
                   />
                 </picture>
-              </div>
+              </motion.div>
               <section id="prevexp">
                 <div className="d-flex">
-                  <h2 className={styles.headingTwo}>Work Experience</h2>
+                  <h2
+                    className={`${
+                      darkMode ? styles.headingTwoDark : styles.headingTwoLight
+                    }`}
+                  >
+                    Work Experience
+                  </h2>
                   <a href="#top" className={`mt-4 ${styles.topLink}`}>
                     top
                   </a>
@@ -250,8 +277,8 @@ export default function Main() {
                 <Row>
                   <Col>
                     <Card
-                      bg="light"
-                      text="dark"
+                      bg={`${darkMode ? "secondary" : "light"}`}
+                      text={`${darkMode ? "light" : "dark"}`}
                       border="success"
                       className={`mb-3 ms-3 ${styles.expCard}`}
                     >
@@ -269,8 +296,8 @@ export default function Main() {
                   </Col>
                   <Col>
                     <Card
-                      bg="light"
-                      text="dark"
+                      bg={`${darkMode ? "secondary" : "light"}`}
+                      text={`${darkMode ? "light" : "dark"}`}
                       border="success"
                       className={`mb-2 me-3 ${styles.expCard}`}
                     >
@@ -291,124 +318,18 @@ export default function Main() {
               </section>
               <section id="techstack">
                 <div className="d-flex">
-                  <h2 className={styles.headingTwo}>Dev Tools/Tech Stack</h2>
+                  <h2
+                    className={`${
+                      darkMode ? styles.headingTwoDark : styles.headingTwoLight
+                    }`}
+                  >
+                    Dev Tools/Tech Stack
+                  </h2>
                   <a href="#top" className={`mt-4 ${styles.topLink}`}>
                     top
                   </a>
                 </div>
-                <CardGroup className="text-center">
-                  {/* <Row className="text-center"> */}
-                  <Card
-                    className={`${styles.stackCard} mx-md-2 my-sm-3`}
-                    bg="info"
-                    text="dark"
-                    border="success"
-                  >
-                    <Card.Img variant="top" src="/images/langs/python.png" />
-                    <Card.Body>
-                      <Card.Text>Python</Card.Text>
-                    </Card.Body>
-                  </Card>
-                  <Card
-                    className={`${styles.stackCard} mx-md-2 my-sm-3`}
-                    bg="info"
-                    text="dark"
-                    border="success"
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"
-                    />
-                    <Card.Body>
-                      <Card.Text>Java</Card.Text>
-                    </Card.Body>
-                  </Card>
-                  <Card
-                    className={`${styles.stackCard} mx-md-2 my-sm-3`}
-                    bg="info"
-                    text="dark"
-                    border="success"
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                    />
-                    <Card.Body>
-                      <Card.Text>Javascript</Card.Text>
-                    </Card.Body>
-                  </Card>
-                  <Card
-                    className={`${styles.stackCard} mx-md-2 my-sm-3`}
-                    bg="info"
-                    text="dark"
-                    border="success"
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
-                    />
-                    <Card.Body>
-                      <Card.Text>React</Card.Text>
-                    </Card.Body>
-                  </Card>
-                  <Card
-                    className={`${styles.stackCard} mx-md-2 my-sm-3`}
-                    bg="info"
-                    text="dark"
-                    border="success"
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg"
-                    />
-                    <Card.Body>
-                      <Card.Text>C</Card.Text>
-                    </Card.Body>
-                  </Card>
-                  <Card
-                    className={`${styles.stackCard} mx-md-2 my-sm-3`}
-                    bg="info"
-                    text="dark"
-                    border="success"
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg"
-                    />
-                    <Card.Body>
-                      <Card.Text>HTML</Card.Text>
-                    </Card.Body>
-                  </Card>
-                  <Card
-                    className={`${styles.stackCard} mx-md-2 my-sm-3`}
-                    bg="info"
-                    text="dark"
-                    border="success"
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg"
-                    />
-                    <Card.Body>
-                      <Card.Text>SQL</Card.Text>
-                    </Card.Body>
-                  </Card>
-                  <Card
-                    className={`${styles.stackCard} mx-md-2 my-sm-3`}
-                    bg="info"
-                    text="dark"
-                    border="success"
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-plain.svg"
-                    />
-                    <Card.Body>
-                      <Card.Text>Linux</Card.Text>
-                    </Card.Body>
-                  </Card>
-                  {/* </Row> */}
-                </CardGroup>
+                <TechStack darkMode={darkMode} />
               </section>
             </div>
           </main>
@@ -418,7 +339,7 @@ export default function Main() {
             bg="warning"
             show={showMobileToast}
             onClose={() => setShowMobileToast(false)}
-            delay={7500}
+            delay={10_000}
             autohide
             className={styles.mobileToast}
           >

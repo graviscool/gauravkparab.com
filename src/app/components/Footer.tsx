@@ -1,9 +1,13 @@
 import styles from "@/styles/Footer.module.css";
 import { Button, Col, Container, Nav, Row } from "react-bootstrap";
 
-export default function Footer() {
+export default function Footer({ darkMode }: { darkMode: boolean }) {
   return (
-    <footer className="footer bg-dark text-light mt-auto py-2">
+    <footer
+      className={`footer ${
+        darkMode ? `${styles.bgDarkFooter} text-light` : "bg-dark text-light"
+      } mt-auto py-2`}
+    >
       <Container fluid>
         <Row>
           <Col md={4}>

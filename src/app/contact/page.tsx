@@ -22,6 +22,7 @@ export default function Contact() {
 
   return (
     <>
+      <title>Contact Me - Gaurav Parab</title>
       <Container fluid className="bg-dark text-info vh-100">
         <ContactNavbar />
         <Row>
@@ -96,7 +97,7 @@ export default function Contact() {
                   className={styles.formField}
                 />
               </Form.Group>
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" id="contact_submitbutton">
                 Submit
               </Button>
             </Form>
@@ -131,7 +132,7 @@ export default function Contact() {
             </Toast.Header>
             <Toast.Body>
               Your contact request was not sent successfully. Please send an
-              email manually.
+              email or linkedin request manually.
             </Toast.Body>
           </Toast>
         </ToastContainer>
@@ -148,13 +149,16 @@ const sendContactEmail = async (
 ) => {
   event.preventDefault();
 
+  document.getElementById("contact_submitbutton")!.innerText = "Sending...";
+  document
+    .getElementById("contact_submitbutton")!
+    .setAttribute("disabled", "true");
+
   const formD = new FormData(event.currentTarget);
 
   const name = formD.get("name") as string;
   const email = formD.get("email") as string;
   const message = formD.get("message") as string;
-
-  new Promise((resolve) => setTimeout(resolve, 1200));
 
   await emailjs
     .send(
@@ -167,7 +171,35 @@ const sendContactEmail = async (
     )
     .then(() => {
       setShowSuccessful(true);
+      document
+        .getElementById("contact_submitbutton")!
+        .classList.remove("btn-primary");
+      document
+        .getElementById("contact_submitbutton")!
+        .classList.add("btn-success");
+      document.getElementById("contact_submitbutton")!.innerText = "Sent!";
     })
-    .catch(() => setShowError(true));
+    .catch(() => {
+      setShowError(true);
+      document
+        .getElementById("contact_submitbutton")!
+        .classList.remove("btn-primary");
+      document
+        .getElementById("contact_submitbutton")!
+        .classList.add("btn-danger");
+      document
+        .getElementById("contact_submitbutton")!
+        .setAttribute("variant", "danger");
+      document.getElementById("contact_submitbutton")!.innerText = "Not Sent!";
+    });
+
   (document.getElementById("contactform") as HTMLFormElement)!.reset();
+  document.getElementById("contact_submitbutton")!.removeAttribute("disabled");
+
+  await new Promise((r) => setTimeout(r, 2000));
+  document
+    .getElementById("contact_submitbutton")!
+    .classList.remove("btn-success", "btn-danger");
+  document.getElementById("contact_submitbutton")!.classList.add("btn-primary");
+  document.getElementById("contact_submitbutton")!.innerText = "Submit";
 };

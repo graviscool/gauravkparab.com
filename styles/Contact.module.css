@@ -43,7 +43,7 @@
 }
 
 .connectText {
-  font-size: 7rem;
+  font-size: 6rem;
   animation: connectFadeIn 4s ease-in-out forwards;
 }
 
@@ -67,19 +67,21 @@
 }
 
 .contactForm {
-  opacity: 0;
+  /* opacity: 0; */
   visibility: hidden;
+  /* left: -100; */
+  /* position: absolute; */
   padding-top: 40%;
-  animation: formFadeIn 4.1s ease-in-out 1.5s forwards;
+  animation: formSlideIn 1s ease-in-out 2s forwards;
 }
 
-@keyframes formFadeIn {
+@keyframes formSlideIn {
   from {
-    opacity: 0;
     visibility: visible;
+    transform: translateX(110%);
   }
   to {
-    opacity: 1;
     visibility: visible;
+    transform: translateX(0);
   }
 }

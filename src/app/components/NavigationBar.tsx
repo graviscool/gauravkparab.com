@@ -3,8 +3,16 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Dropdown, Image, SplitButton } from "react-bootstrap";
+import { FormControlLabel, Switch } from "@mui/material";
+import { Dispatch, SetStateAction } from "react";
 
-export default function NavigationBar() {
+export default function NavigationBar({
+  dark,
+  setDark,
+}: {
+  dark: boolean;
+  setDark: Dispatch<SetStateAction<boolean>>;
+}) {
   return (
     <header>
       <a id="top" content="top of page"></a>
@@ -86,6 +94,19 @@ export default function NavigationBar() {
               <Nav className="ms-2">
                 <Nav.Link href="/contact">Contact Me</Nav.Link>
               </Nav>
+              <FormControlLabel
+                value="Dark Mode Button"
+                className="ms-1"
+                control={
+                  <Switch
+                    color="primary"
+                    checked={dark}
+                    onChange={(e) => setDark(e.target.checked)}
+                  />
+                }
+                label={dark ? "Dark" : "Light"}
+                labelPlacement="end"
+              />
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
