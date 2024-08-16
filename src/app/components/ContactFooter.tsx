@@ -10,9 +10,9 @@ export default function ContactFooter() {
               <Nav.Link href="/" className="text-light">
                 Home
               </Nav.Link>
-              {/* <Nav.Link href="/blurb" className="text-light">
-                Blurb
-              </Nav.Link> */}
+              <Nav.Link href="introduction" className="text-light">
+                Introduction
+              </Nav.Link>
               <Nav.Link
                 href="/documents/Gaurav_Parab_resume.pdf"
                 target="_blank"

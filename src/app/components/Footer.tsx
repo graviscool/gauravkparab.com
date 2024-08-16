@@ -12,9 +12,9 @@ export default function Footer({ darkMode }: { darkMode: boolean }) {
         <Row>
           <Col md={4}>
             <Nav>
-              {/* <Nav.Link href="/blurb" className="text-light">
-                Blurb
-              </Nav.Link> */}
+              <Nav.Link href="/introduction" className="text-light">
+                Introduction
+              </Nav.Link>
               <Nav.Link href="/contact" className="text-light">
                 Contact
               </Nav.Link>
