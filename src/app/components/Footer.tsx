@@ -41,7 +41,7 @@ export default function Footer({ darkMode }: { darkMode: boolean }) {
               <a href="#top" className={`${styles.topLink} link-info`}>
                 top
               </a>
-              <p>&copy; 2024 Gaurav Parab</p>
+              <p>&copy; {new Date().getFullYear()} Gaurav Parab</p>
             </div>
           </Col>
         </Row>
