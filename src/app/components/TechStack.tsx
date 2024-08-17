@@ -4,35 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function TechStack({ darkMode }: { darkMode: boolean }) {
-  const techStackRef = useRef(null);
-  const { scrollYProgress: techStackScrollProgress } = useScroll({
-    target: techStackRef,
-    offset: ["950px", "end 1.07"],
-  });
-
-  const techStackTranslateProgress = useTransform(
-    techStackScrollProgress,
-    [0, 1],
-    ["-100%", "0%"]
-  );
-
   const [animate, setAnimate] = useState(true);
-
-  useEffect(() => {
-    const handleWidthChange = () => {
-      setAnimate(window.innerWidth > 620);
-    };
-
-    window.addEventListener("resize", handleWidthChange);
-    handleWidthChange;
-
-    return () => window.removeEventListener("resize", handleWidthChange);
-  }, []);
 
   return (
     <>
       {animate ? (
-        <motion.div style={{ translateX: techStackTranslateProgress }}>
+        <div>
           <CardGroup className="text-center mx-3">
             {/* <Row className="text-center"> */}
             <Card
@@ -153,7 +130,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
           </CardGroup>
-        </motion.div>
+        </div>
       ) : (
         <div>
           <CardGroup className="text-center mx-3">
