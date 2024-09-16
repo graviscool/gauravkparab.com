@@ -78,6 +78,21 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
             >
               <Card.Img
                 variant="top"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
+              />
+              <Card.Body>
+                <Card.Text>Next.js</Card.Text>
+              </Card.Body>
+            </Card>
+            <Card
+              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+                darkMode ? styles.bgCardDark : "bg-info"
+              }`}
+              text="dark"
+              border="success"
+            >
+              <Card.Img
+                variant="top"
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg"
               />
               <Card.Body>
@@ -112,6 +127,21 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               />
               <Card.Body>
                 <Card.Text>SQL</Card.Text>
+              </Card.Body>
+            </Card>
+            <Card
+              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+                darkMode ? styles.bgCardDark : "bg-info"
+              }`}
+              text="dark"
+              border="success"
+            >
+              <Card.Img
+                variant="top"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-plain-wordmark.svg"
+              />
+              <Card.Body>
+                <Card.Text>MongoDB</Card.Text>
               </Card.Body>
             </Card>
             <Card
@@ -186,6 +216,20 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               />
               <Card.Body>
                 <Card.Text>React</Card.Text>
+              </Card.Body>
+            </Card>
+            <Card
+              className={`${styles.stackCard} mx-md-2 my-sm-3`}
+              bg="info"
+              text="dark"
+              border="success"
+            >
+              <Card.Img
+                variant="top"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
+              />
+              <Card.Body>
+                <Card.Text>Next.js</Card.Text>
               </Card.Body>
             </Card>
             <Card
