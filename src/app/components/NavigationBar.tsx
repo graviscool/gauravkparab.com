@@ -45,7 +45,7 @@ export default function NavigationBar({
               <Nav className="me-auto">
                 {/* <Nav.Link href="/blurb">Blurb</Nav.Link> */}
                 <Nav.Link href="#projects">Projects</Nav.Link>
-                <Nav.Link href="#prevexp">Previous Experience</Nav.Link>
+                <Nav.Link href="#prevexp">Experience</Nav.Link>
               </Nav>
               <Nav className="me-3">
                 <SplitButton
