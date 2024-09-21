@@ -229,38 +229,40 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                   </Card>
                 </Row>
               </section>
-              <motion.div
-                className={styles.topLang}
-                initial={{ translateX: "-100%" }}
-                whileInView={{ translateX: 0 }}
-                viewport={{ once: true }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <picture>
-                  <source
-                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=300px&langs_count=7&disable_animations=true"
-                    media="(max-width: 430px)"
-                  />
-                  <source
-                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=400px&langs_count=7&disable_animations=true"
-                    media="(max-width: 550px)"
-                  />
-                  <source
-                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=500px&langs_count=7&disable_animations=true"
-                    media="(max-width: 800px)"
-                  />
-                  <source
-                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=700px&langs_count=7"
-                    media="(max-width: 9999px)"
-                  />
+              <a href="/#">
+                <motion.div
+                  className={styles.topLang}
+                  initial={{ translateX: "-100%" }}
+                  whileInView={{ translateX: 0 }}
+                  viewport={{ once: true }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <picture>
+                    <source
+                      srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=300px&langs_count=7&disable_animations=true"
+                      media="(max-width: 430px)"
+                    />
+                    <source
+                      srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=400px&langs_count=7&disable_animations=true"
+                      media="(max-width: 550px)"
+                    />
+                    <source
+                      srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=500px&langs_count=7&disable_animations=true"
+                      media="(max-width: 800px)"
+                    />
+                    <source
+                      srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=700px&langs_count=7"
+                      media="(max-width: 9999px)"
+                    />
 
-                  <img
-                    height={200}
-                    src="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&langs_count=7"
-                    alt="Top Languages Used"
-                  />
-                </picture>
-              </motion.div>
+                    <img
+                      height={200}
+                      src="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&langs_count=7"
+                      alt="Top Languages Used"
+                    />
+                  </picture>
+                </motion.div>
+              </a>
               <section id="prevexp">
                 <div className="d-flex">
                   <h2
@@ -286,9 +288,8 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                       <Card.Body>
                         <Card.Title>Learning Assistant</Card.Title>
                         <Card.Text>
-                          Assisted TA&apos;s in an entry level computer science
-                          class along with holding reviews for students and
-                          reviewing submitted code.
+                          Worked as a Learning Assistant for an entry level
+                          Computer Science course at Penn State
                         </Card.Text>
                         <Card.Footer>August 2022 - December 2023</Card.Footer>
                       </Card.Body>
@@ -305,10 +306,8 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                       <Card.Body>
                         <Card.Title>Project Intern</Card.Title>
                         <Card.Text>
-                          Helped develop of security system solutions for
-                          California state beaches using API interactions in
-                          Python and helped write code to connect to a weather
-                          API and relay data to beach systems and personnel.
+                          My first project based internship, in which I worked
+                          with Python and API interactions.
                         </Card.Text>
                         <Card.Footer>July 2021 - December 2021</Card.Footer>
                       </Card.Body>
