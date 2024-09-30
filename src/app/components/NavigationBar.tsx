@@ -9,10 +9,10 @@ import { Dispatch, SetStateAction } from "react";
 export default function NavigationBar({
   dark,
   setDark,
-}: {
+}: Readonly<{
   dark: boolean;
   setDark: Dispatch<SetStateAction<boolean>>;
-}) {
+}>) {
   return (
     <header>
       <a id="top" content="top of page"></a>
@@ -21,7 +21,8 @@ export default function NavigationBar({
         bg="dark"
         className="bg-body-tertiary mb-0 z-1"
         data-bs-theme="dark"
-        sticky="top"
+        // sticky="top"
+        fixed="top"
         collapseOnSelect
       >
         <Container fluid>

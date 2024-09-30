@@ -169,7 +169,7 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                       </Card.Subtitle>
                       <Card.Text>
                         Created a dashboard for uses to view sensitive database
-                        data. The used Discord OAuth to authenticated users and
+                        data. It used Discord OAuth to authenticated users and
                         check if they had the permissions to access the data.
                       </Card.Text>
                       {/* <Card.Link
@@ -188,10 +188,11 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                         Java
                       </Card.Subtitle>
                       <Card.Text>
-                        Built the game of Monopoly from scratch in Java using
-                        GUI, with two other teammates. I wrote 30% of the code
-                        and assisted with debugging, writing documentation, and
-                        submitting reports.
+                        Built the game of Monopoly in Java using GUI, with two
+                        other teammates. I wrote 30% of the code and assisted
+                        with debugging, writing documentation, and submitting
+                        reports. It was a great experience making my first
+                        full-stack project.
                       </Card.Text>
                       <Card.Link
                         href="/projectfiles/MonopolyProject.jar"
@@ -212,10 +213,9 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                         Node.js
                       </Card.Subtitle>
                       <Card.Text>
-                        Built a bot from scratch that allowed moderators to
-                        perform tasks efficiently and allowed the server
-                        management to automate tasks such as role assignment and
-                        messages.
+                        Built a bot that allowed moderators to perform tasks
+                        efficiently and allowed the server management to
+                        automate tasks such as role assignment and messages.
                       </Card.Text>
                       <Card.Link
                         href="https://github.com/The-English-Hub-Dev/The-English-Hub"
@@ -229,40 +229,40 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                   </Card>
                 </Row>
               </section>
-              <a href="/#">
-                <motion.div
-                  className={styles.topLang}
-                  initial={{ translateX: "-100%" }}
-                  whileInView={{ translateX: 0 }}
-                  viewport={{ once: true }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <picture>
-                    <source
-                      srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=300px&langs_count=7&disable_animations=true"
-                      media="(max-width: 430px)"
-                    />
-                    <source
-                      srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=400px&langs_count=7&disable_animations=true"
-                      media="(max-width: 550px)"
-                    />
-                    <source
-                      srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=500px&langs_count=7&disable_animations=true"
-                      media="(max-width: 800px)"
-                    />
-                    <source
-                      srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=700px&langs_count=7"
-                      media="(max-width: 9999px)"
-                    />
+              {/* <a href="/#"> */}
+              <motion.div
+                className={styles.topLang}
+                initial={{ translateX: "-100%" }}
+                whileInView={{ translateX: 0 }}
+                viewport={{ once: true }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <picture>
+                  <source
+                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=300px&langs_count=7&disable_animations=true"
+                    media="(max-width: 430px)"
+                  />
+                  <source
+                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=400px&langs_count=7&disable_animations=true"
+                    media="(max-width: 550px)"
+                  />
+                  <source
+                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=500px&langs_count=7&disable_animations=true"
+                    media="(max-width: 800px)"
+                  />
+                  <source
+                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=700px&langs_count=7"
+                    media="(max-width: 9999px)"
+                  />
 
-                    <img
-                      height={200}
-                      src="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&langs_count=7"
-                      alt="Top Languages Used"
-                    />
-                  </picture>
-                </motion.div>
-              </a>
+                  <img
+                    height={200}
+                    src="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&langs_count=7"
+                    alt="Top Languages Used"
+                  />
+                </picture>
+              </motion.div>
+              {/* </a> */}
               <section id="prevexp">
                 <div className="d-flex">
                   <h2
@@ -288,8 +288,8 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                       <Card.Body>
                         <Card.Title>Learning Assistant</Card.Title>
                         <Card.Text>
-                          Worked as a Learning Assistant for an entry level
-                          Computer Science course at Penn State
+                          I worked as a Learning Assistant for an entry level
+                          Computer Science course at Penn State.
                         </Card.Text>
                         <Card.Footer>August 2022 - December 2023</Card.Footer>
                       </Card.Body>
