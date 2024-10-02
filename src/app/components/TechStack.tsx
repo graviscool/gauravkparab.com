@@ -13,7 +13,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
           <CardGroup className="text-center mx-3">
             {/* <Row className="text-center"> */}
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3 ${
                 darkMode ? styles.bgCardDark : "bg-info"
               }`}
               text="dark"
@@ -25,7 +25,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+              className={`${styles.stackCard} rounded-1 rounded-1 mx-md-2 my-sm-3 ${
                 darkMode ? styles.bgCardDark : "bg-info"
               }`}
               text="dark"
@@ -40,7 +40,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3 ${
                 darkMode ? styles.bgCardDark : "bg-info"
               }`}
               text="dark"
@@ -55,7 +55,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3 ${
                 darkMode ? styles.bgCardDark : "bg-info"
               }`}
               text="dark"
@@ -70,7 +70,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3 ${
                 darkMode ? styles.bgCardDark : "bg-info"
               }`}
               text="dark"
@@ -85,7 +85,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3 ${
                 darkMode ? styles.bgCardDark : "bg-info"
               }`}
               text="dark"
@@ -100,7 +100,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3 ${
                 darkMode ? styles.bgCardDark : "bg-info"
               }`}
               text="dark"
@@ -115,7 +115,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3 ${
                 darkMode ? styles.bgCardDark : "bg-info"
               }`}
               text="dark"
@@ -130,7 +130,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3 ${
                 darkMode ? styles.bgCardDark : "bg-info"
               }`}
               text="dark"
@@ -145,7 +145,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3 ${
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3 ${
                 darkMode ? styles.bgCardDark : "bg-info"
               }`}
               text="dark"
@@ -166,7 +166,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
           <CardGroup className="text-center mx-3">
             {/* <Row className="text-center"> */}
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3`}
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3`}
               bg="info"
               text="dark"
               border="success"
@@ -177,7 +177,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3`}
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3`}
               bg="info"
               text="dark"
               border="success"
@@ -191,7 +191,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3`}
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3`}
               bg="info"
               text="dark"
               border="success"
@@ -205,7 +205,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3`}
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3`}
               bg="info"
               text="dark"
               border="success"
@@ -219,7 +219,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3`}
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3`}
               bg="info"
               text="dark"
               border="success"
@@ -233,7 +233,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3`}
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3`}
               bg="info"
               text="dark"
               border="success"
@@ -247,7 +247,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3`}
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3`}
               bg="info"
               text="dark"
               border="success"
@@ -261,7 +261,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3`}
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3`}
               bg="info"
               text="dark"
               border="success"
@@ -275,7 +275,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               </Card.Body>
             </Card>
             <Card
-              className={`${styles.stackCard} mx-md-2 my-sm-3`}
+              className={`${styles.stackCard} rounded-1 mx-md-2 my-sm-3`}
               bg="info"
               text="dark"
               border="success"
