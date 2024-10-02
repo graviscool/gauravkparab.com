@@ -75,22 +75,14 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                     instance
                       .pause(750)
                       .type("Hi! I'm Gaurav.")
-                      .break({ delay: 500 })
+                      .break({ delay: 2000 })
                       .type("A college student. 🎓")
-                      .exec(
-                        (instance) =>
-                          (instance.getElement().style.color = "green")
-                      )
                       .pause(1500)
                       .delete(18, { speed: 200 })
                       .pause(1500)
                       .type("web developer.")
                       .pause(1500)
                       .delete(14, { speed: 200 })
-                      .exec(
-                        (instance) =>
-                          (instance.getElement().style.color = "#add8e6")
-                      )
                       .pause(1500)
                       .type("AI enthusiast.")
                       .pause(500)
@@ -102,17 +94,9 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                       .delete(16, { speed: 200 })
                       .pause(1500)
                       .type(" bot developer.")
-                      .exec(
-                        (instance) =>
-                          (instance.getElement().style.color = "blue")
-                      )
                       .pause(1500)
                       .delete(18, { speed: 500 })
                       .type("!")
-                      .exec(
-                        (instance) =>
-                          (instance.getElement().style.color = "#add8e6")
-                      )
                       .exec((_instance) => {
                         setTypeFreezeText("Animation Complete");
                         document.getElementById(
