@@ -18,9 +18,9 @@ export default function NavigationBar({
       <a id="top" content="top of page"></a>
       <Navbar
         expand="md"
-        bg="dark"
+        bg={dark ? "dark" : ""}
         className="bg-body-tertiary mb-0 z-1"
-        data-bs-theme="dark"
+        data-bs-theme={dark ? "dark" : "light"}
         // sticky="top"
         fixed="top"
         collapseOnSelect

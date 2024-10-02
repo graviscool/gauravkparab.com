@@ -304,7 +304,7 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                     >
                       <Card.Header>Special Order Systems</Card.Header>
                       <Card.Body>
-                        <Card.Title>Project Intern</Card.Title>
+                        <Card.Title>Software Intern</Card.Title>
                         <Card.Text>
                           My first project based internship, in which I worked
                           with Python and API interactions.
