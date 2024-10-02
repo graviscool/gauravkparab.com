@@ -8,6 +8,7 @@ import TypeIt from "typeit-react";
 import { ParallaxBanner } from "react-scroll-parallax";
 import Head from "next/head";
 import TechStack from "./TechStack";
+import ExperienceTimeline from "./ExperienceTimeline";
 
 export default function Main({ darkMode }: { darkMode: boolean }) {
   const [showMobileToast, setShowMobileToast] = useState(true);
@@ -276,44 +277,7 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                     top
                   </a>
                 </div>
-                <Row>
-                  <Col>
-                    <Card
-                      bg={`${darkMode ? "secondary" : "light"}`}
-                      text={`${darkMode ? "light" : "dark"}`}
-                      border="success"
-                      className={`mb-3 ms-3 ${styles.expCard}`}
-                    >
-                      <Card.Header>Pennsylvania State University</Card.Header>
-                      <Card.Body>
-                        <Card.Title>Learning Assistant</Card.Title>
-                        <Card.Text>
-                          I worked as a Learning Assistant for an entry level
-                          Computer Science course at Penn State.
-                        </Card.Text>
-                        <Card.Footer>August 2022 - December 2023</Card.Footer>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col>
-                    <Card
-                      bg={`${darkMode ? "secondary" : "light"}`}
-                      text={`${darkMode ? "light" : "dark"}`}
-                      border="success"
-                      className={`mb-2 me-3 ${styles.expCard}`}
-                    >
-                      <Card.Header>Special Order Systems</Card.Header>
-                      <Card.Body>
-                        <Card.Title>Software Intern</Card.Title>
-                        <Card.Text>
-                          My first project based internship, in which I worked
-                          with Python and API interactions.
-                        </Card.Text>
-                        <Card.Footer>July 2021 - December 2021</Card.Footer>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                </Row>
+                <ExperienceTimeline />
               </section>
               <section id="techstack">
                 <div className="d-flex">
