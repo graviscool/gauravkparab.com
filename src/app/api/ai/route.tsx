@@ -40,11 +40,6 @@ export async function POST(req: Request) {
     },
   });
 
-  for await (const chunk of result.stream) {
-    const chunkText = chunk.text();
-    console.log(chunkText);
-  }
-
   if (!result.stream) {
     return new NextResponse(
       JSON.stringify({ message: "Error calling AI", result }),

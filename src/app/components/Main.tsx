@@ -53,12 +53,11 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
     const decoder = new TextDecoder("utf-8");
 
     let read = false;
-    let curText = "";
 
     while (!read) {
       const { value, done: readDone } = await reader.read();
       read = readDone;
-      curText += decoder.decode(value, { stream: true });
+      const curText = decoder.decode(value, { stream: true });
 
       setAIResponse((prevText) => prevText + curText);
     }
@@ -157,16 +156,25 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
               className={`${styles.imageScrollProgressBar}`}
               style={{ scaleX: bgScrollProgress }}
             />
-            <Form onSubmit={handleAIRequest}>
-              <Form.Control
-                className={darkMode ? "bg-dark text-light" : ""}
-                name="message"
-                type="text"
-                maxLength={50}
-                required
-              ></Form.Control>
+            <Form onSubmit={handleAIRequest} className="pt-2">
+              <Row>
+                <Col xs={"auto"}>
+                  <Form.Label className="text-light p-1">
+                    Ask AI about me:
+                  </Form.Label>
+                </Col>
+                <Col>
+                  <Form.Control
+                    className={darkMode ? "bg-dark text-light" : ""}
+                    name="message"
+                    type="text"
+                    maxLength={50}
+                    required
+                  />
+                </Col>
+              </Row>
             </Form>
-            <p className={darkMode ? "text-light" : "text-dark"}>
+            <p className={darkMode ? "text-light p-2" : "text-dark p-2"}>
               {AIResponse}
             </p>
             <div>
