@@ -29,20 +29,31 @@ export async function POST(req: Request) {
 
   const result = await chatSession.sendMessageStream(message);
 
+  const encoder = new TextEncoder();
+  const streamRes = new ReadableStream({
+    async start(controller) {
+      for await (const chunk of result.stream) {
+        const chunkText = chunk.text();
+        controller.enqueue(encoder.encode(chunkText));
+      }
+      controller.close();
+    },
+  });
+
   for await (const chunk of result.stream) {
     const chunkText = chunk.text();
     console.log(chunkText);
   }
 
-  // if (!result.response) {
-  //   return new NextResponse(
-  //     JSON.stringify({ message: "Error calling AI", result }),
-  //     { status: 500, headers: { "Content-Type": "application/json" } }
-  //   );
-  // }
+  if (!result.stream) {
+    return new NextResponse(
+      JSON.stringify({ message: "Error calling AI", result }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
+  }
 
-  return new NextResponse(JSON.stringify({ response: "a" }), {
+  return new NextResponse(streamRes, {
     status: 200,
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "text/plain" },
   });
 }

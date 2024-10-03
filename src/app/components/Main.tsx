@@ -35,8 +35,6 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
     const formData = new FormData(event.currentTarget);
     const message = formData.get("message") as string;
 
-    setAIResponse("Loading...");
-
     const AIReq = await fetch("/api/ai", {
       method: "POST",
       headers: {
@@ -50,9 +48,20 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
       return;
     }
 
-    const responseText = (await AIReq.json()).response as string;
+    setAIResponse("");
+    const reader = AIReq.body!.getReader();
+    const decoder = new TextDecoder("utf-8");
 
-    setAIResponse(responseText);
+    let read = false;
+    let curText = "";
+
+    while (!read) {
+      const { value, done: readDone } = await reader.read();
+      read = readDone;
+      curText += decoder.decode(value, { stream: true });
+
+      setAIResponse((prevText) => prevText + curText);
+    }
   };
 
   return (
