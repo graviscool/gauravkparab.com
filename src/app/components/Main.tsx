@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-import { Row, Col, Toast, ToastContainer, Button } from "react-bootstrap";
+import { Row, Col, Toast, ToastContainer, Button, Form } from "react-bootstrap";
 import styles from "@/styles/Main.module.css";
 import { motion, useScroll } from "framer-motion";
 import TypeIt from "typeit-react";
@@ -9,7 +9,7 @@ import { ParallaxBanner } from "react-scroll-parallax";
 import Head from "next/head";
 import TechStack from "./TechStack";
 
-export default function Main({ darkMode }: { darkMode: boolean }) {
+export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
   const [showMobileToast, setShowMobileToast] = useState(true);
   const [typeItInstance, setTypeItInstance] = useState<any>(null);
   const [typeFreezeText, setTypeFreezeText] = useState("Pause Animation");
@@ -28,6 +28,32 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
     target: bgImageSection,
     offset: ["0.06 start", "1.05 start"],
   });
+
+  const [AIResponse, setAIResponse] = useState("");
+  const handleAIRequest = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const message = formData.get("message") as string;
+
+    setAIResponse("Loading...");
+
+    const AIReq = await fetch("/api/ai", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ message }),
+    });
+
+    if (AIReq.status == 500) {
+      setAIResponse("An error occurred, please try again later.");
+      return;
+    }
+
+    const responseText = (await AIReq.json()).response as string;
+
+    setAIResponse(responseText);
+  };
 
   return (
     <>
@@ -118,11 +144,23 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                 />
               </div>
             </div>
+            <motion.div
+              className={`${styles.imageScrollProgressBar}`}
+              style={{ scaleX: bgScrollProgress }}
+            />
+            <Form onSubmit={handleAIRequest}>
+              <Form.Control
+                className={darkMode ? "bg-dark text-light" : ""}
+                name="message"
+                type="text"
+                maxLength={50}
+                required
+              ></Form.Control>
+            </Form>
+            <p className={darkMode ? "text-light" : "text-dark"}>
+              {AIResponse}
+            </p>
             <div>
-              <motion.div
-                className={`${styles.imageScrollProgressBar}`}
-                style={{ scaleX: bgScrollProgress }}
-              />
               <section id="projects">
                 <div className="d-flex">
                   <h2
