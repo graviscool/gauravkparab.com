@@ -30,17 +30,19 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
   });
 
   const [AIResponse, setAIResponse] = useState("");
+  const [AIPrompt, setAIPrompt] = useState("");
+  const [AIHistory, setAIHistory] = useState<Object[]>([]);
   const handleAIRequest = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const message = formData.get("message") as string;
+    const message = AIPrompt;
+    setAIPrompt("");
 
     const AIReq = await fetch("/api/ai", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ message, history: AIHistory }),
     });
 
     if (AIReq.status == 500) {
@@ -49,6 +51,7 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
     }
 
     setAIResponse("");
+
     const reader = AIReq.body!.getReader();
     const decoder = new TextDecoder("utf-8");
 
@@ -61,6 +64,18 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
 
       setAIResponse((prevText) => prevText + curText);
     }
+
+    setAIHistory((prevHistory) => [
+      ...prevHistory,
+      {
+        role: "user",
+        parts: [{ text: message }],
+      },
+      {
+        role: "model",
+        parts: [{ text: AIResponse }],
+      },
+    ]);
   };
 
   return (
@@ -168,6 +183,7 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                     className={darkMode ? "bg-dark text-light" : ""}
                     name="message"
                     type="text"
+                    onChange={(e) => setAIPrompt(e.target.value)}
                     maxLength={50}
                     required
                   />
