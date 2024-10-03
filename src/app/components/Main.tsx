@@ -1,7 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-import { Row, Col, Toast, ToastContainer, Button, Form } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Toast,
+  ToastContainer,
+  Button,
+  Form,
+  Modal,
+} from "react-bootstrap";
 import styles from "@/styles/Main.module.css";
 import { motion, useScroll } from "framer-motion";
 import TypeIt from "typeit-react";
@@ -32,10 +40,13 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
   const [AIResponse, setAIResponse] = useState("");
   const [AIPrompt, setAIPrompt] = useState("");
   const [AIHistory, setAIHistory] = useState<Object[]>([]);
+  const [showAIModal, setShowAIModal] = useState(false);
   const handleAIRequest = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const message = AIPrompt;
-    setAIPrompt("");
+    // setAIPrompt("");
+    event.currentTarget.reset();
+    setShowAIModal(true);
 
     const AIReq = await fetch("/api/ai", {
       method: "POST",
@@ -77,6 +88,15 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
       },
     ]);
   };
+
+  useEffect(() => {
+    const modalContent = document.querySelector(
+      ".modal-content"
+    ) as HTMLDivElement | null;
+    if (darkMode && modalContent) {
+      modalContent.style.backgroundColor = "#384047";
+    }
+  }, [darkMode, showAIModal]);
 
   return (
     <>
@@ -173,8 +193,8 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
             />
             <Form onSubmit={handleAIRequest} className="pt-2">
               <Row>
-                <Col xs={"auto"}>
-                  <Form.Label className="text-light p-1">
+                <Col xs="auto">
+                  <Form.Label className={`p-1 ${darkMode ? "text-light" : ""}`}>
                     Ask AI about me:
                   </Form.Label>
                 </Col>
@@ -188,18 +208,60 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                     required
                   />
                 </Col>
+                <Col>
+                  <Button
+                    variant="outline-success"
+                    onClick={() => setShowAIModal(true)}
+                    hidden={AIResponse == ""}
+                  >
+                    View Conversation
+                  </Button>
+                </Col>
               </Row>
             </Form>
-            <p className={darkMode ? "text-light p-2" : "text-dark p-2"}>
-              {AIResponse}
-            </p>
+            <Modal
+              show={showAIModal}
+              onHide={() => setShowAIModal(false)}
+              size="xl"
+              data-bs-theme={darkMode ? "dark" : "light"}
+            >
+              <Modal.Header closeButton>
+                <Modal.Title className="text-info">AI Interaction</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Form onSubmit={handleAIRequest} className="pt-2">
+                  <Row>
+                    <Col xs={"auto"}>
+                      <Form.Label
+                        className={`p-1 ${darkMode ? "text-light" : ""}`}
+                      >
+                        Any other questions?
+                      </Form.Label>
+                    </Col>
+                    <Col>
+                      <Form.Control
+                        className={darkMode ? "bg-dark text-light" : ""}
+                        name="message"
+                        type="text"
+                        onChange={(e) => setAIPrompt(e.target.value)}
+                        maxLength={50}
+                        required
+                      />
+                    </Col>
+                  </Row>
+                </Form>
+                <p className={`pt-1 ${darkMode ? "text-light" : ""}`}>
+                  {AIResponse}
+                </p>
+              </Modal.Body>
+            </Modal>
             <div>
               <section id="projects">
                 <div className="d-flex">
                   <h2
                     className={`${
                       darkMode ? styles.headingTwoDark : styles.headingTwoLight
-                    } mt-5`}
+                    } mt-1`}
                   >
                     Projects
                   </h2>
