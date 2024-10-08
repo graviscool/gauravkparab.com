@@ -138,17 +138,6 @@
   opacity: 0.9;
 }
 
-.mobileToast {
-  display: none;
-  width: 275px;
-}
-
-@media (max-width: 600px) {
-  .mobileToast {
-    display: block;
-  }
-}
-
 .pauseTypeButton {
   opacity: 0.05;
   font-size: x-small;

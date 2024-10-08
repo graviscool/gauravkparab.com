@@ -17,8 +17,7 @@ import { ParallaxBanner } from "react-scroll-parallax";
 import Head from "next/head";
 import TechStack from "./TechStack";
 
-export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
-  const [showMobileToast, setShowMobileToast] = useState(true);
+export default function Main({ darkMode }: { darkMode: boolean }) {
   const [typeItInstance, setTypeItInstance] = useState<any>(null);
   const [typeFreezeText, setTypeFreezeText] = useState("Pause Animation");
   const freezeOrUnfreezeText = () => {
@@ -273,78 +272,87 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                     top
                   </a>
                 </div>
-                <Row md={3}>
-                  <Card
-                    bg="secondary"
-                    border="primary"
-                    className={`mb-3 me-3 ms-4 ${styles.projectCard}`}
-                  >
-                    <Card.Body>
-                      <Card.Title>Dashboard</Card.Title>
-                      <Card.Subtitle className="mb-2 text-light">
-                        Next.js
-                      </Card.Subtitle>
-                      <Card.Text>
-                        Created a dashboard for uses to view sensitive database
-                        data. It used Discord OAuth to authenticated users and
-                        check if they had the permissions to access the data.
-                      </Card.Text>
-                      {/* <Card.Link
+                <div className="px-3">
+                  <Row md={3} className="g-3">
+                    <Col xs={12} md={6} lg={4}>
+                      <Card
+                        bg="secondary"
+                        border="primary"
+                        className={`mb-3 me-3 w-100 ${styles.projectCard}`}
+                      >
+                        <Card.Body>
+                          <Card.Title>Dashboard</Card.Title>
+                          <Card.Subtitle className="mb-2 text-light">
+                            Next.js
+                          </Card.Subtitle>
+                          <Card.Text>
+                            Created a dashboard for uses to view sensitive
+                            database data. It used Discord OAuth to
+                            authenticated users and check if they had the
+                            permissions to access the data.
+                          </Card.Text>
+                          {/* <Card.Link
                       >
                       </Card.Link> */}
-                    </Card.Body>
-                  </Card>
-                  <Card
-                    bg="secondary"
-                    border="primary"
-                    className={`mb-3 me-3 ${styles.projectCard}`}
-                  >
-                    <Card.Body>
-                      <Card.Title>Monopoly</Card.Title>
-                      <Card.Subtitle className="mb-2 text-light">
-                        Java
-                      </Card.Subtitle>
-                      <Card.Text>
-                        Built the game of Monopoly in Java using GUI, with two
-                        other teammates. I wrote 30% of the code and assisted
-                        with debugging, writing documentation, and submitting
-                        reports. It was a great experience making my first
-                        full-stack project.
-                      </Card.Text>
-                      <Card.Link
-                        href="/projectfiles/MonopolyProject.jar"
-                        className="text-dark"
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                    <Col xs={12} md={6} lg={4}>
+                      <Card
+                        bg="secondary"
+                        border="primary"
+                        className={`mb-3 me-3 w-100 ${styles.projectCard}`}
                       >
-                        JAR file
-                      </Card.Link>
-                    </Card.Body>
-                  </Card>
-                  <Card
-                    bg="secondary"
-                    border="primary"
-                    className={`mb-3 ${styles.projectCard}`}
-                  >
-                    <Card.Body>
-                      <Card.Title>Discord Bot</Card.Title>
-                      <Card.Subtitle className="mb-3 text-light">
-                        Node.js
-                      </Card.Subtitle>
-                      <Card.Text>
-                        Built a bot that allowed moderators to perform tasks
-                        efficiently and allowed the server management to
-                        automate tasks such as role assignment and messages.
-                      </Card.Text>
-                      <Card.Link
-                        href="https://github.com/The-English-Hub-Dev/The-English-Hub"
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        className="link-info"
+                        <Card.Body>
+                          <Card.Title>Monopoly</Card.Title>
+                          <Card.Subtitle className="mb-2 text-light">
+                            Java
+                          </Card.Subtitle>
+                          <Card.Text>
+                            Built the game of Monopoly in Java using GUI, with
+                            two other teammates. I wrote 30% of the code and
+                            assisted with debugging, writing documentation, and
+                            submitting reports. It was a great experience making
+                            my first full-stack project.
+                          </Card.Text>
+                          <Card.Link
+                            href="/projectfiles/MonopolyProject.jar"
+                            className="text-dark"
+                          >
+                            JAR file
+                          </Card.Link>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                    <Col xs={12} md={6} lg={4}>
+                      <Card
+                        bg="secondary"
+                        border="primary"
+                        className={`mb-3 w-100 ${styles.projectCard}`}
                       >
-                        GitHub Link
-                      </Card.Link>
-                    </Card.Body>
-                  </Card>
-                </Row>
+                        <Card.Body>
+                          <Card.Title>Discord Bot</Card.Title>
+                          <Card.Subtitle className="mb-3 text-light">
+                            Node.js
+                          </Card.Subtitle>
+                          <Card.Text>
+                            Built a bot that allowed moderators to perform tasks
+                            efficiently and allowed the server management to
+                            automate tasks such as role assignment and messages.
+                          </Card.Text>
+                          <Card.Link
+                            href="https://github.com/The-English-Hub-Dev/The-English-Hub"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                            className="link-info"
+                          >
+                            GitHub Link
+                          </Card.Link>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  </Row>
+                </div>
               </section>
               {/* <a href="/#"> */}
               <motion.div
@@ -393,44 +401,46 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                     top
                   </a>
                 </div>
-                <Row>
-                  <Col>
-                    <Card
-                      bg={`${darkMode ? "secondary" : "light"}`}
-                      text={`${darkMode ? "light" : "dark"}`}
-                      border="success"
-                      className={`mb-3 ms-3 ${styles.expCard}`}
-                    >
-                      <Card.Header>Pennsylvania State University</Card.Header>
-                      <Card.Body>
-                        <Card.Title>Learning Assistant</Card.Title>
-                        <Card.Text>
-                          I worked as a Learning Assistant for an entry level
-                          Computer Science course at Penn State.
-                        </Card.Text>
-                        <Card.Footer>August 2022 - December 2023</Card.Footer>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col>
-                    <Card
-                      bg={`${darkMode ? "secondary" : "light"}`}
-                      text={`${darkMode ? "light" : "dark"}`}
-                      border="success"
-                      className={`mb-2 me-3 ${styles.expCard}`}
-                    >
-                      <Card.Header>Special Order Systems</Card.Header>
-                      <Card.Body>
-                        <Card.Title>Software Intern</Card.Title>
-                        <Card.Text>
-                          My first project based internship, in which I worked
-                          with Python and API interactions.
-                        </Card.Text>
-                        <Card.Footer>July 2021 - December 2021</Card.Footer>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                </Row>
+                <div className="px-3">
+                  <Row>
+                    <Col xs={12} md={6}>
+                      <Card
+                        bg={`${darkMode ? "secondary" : "light"}`}
+                        text={`${darkMode ? "light" : "dark"}`}
+                        border="success"
+                        className={`mb-3 ${styles.expCard}`}
+                      >
+                        <Card.Header>Pennsylvania State University</Card.Header>
+                        <Card.Body>
+                          <Card.Title>Learning Assistant</Card.Title>
+                          <Card.Text>
+                            I worked as a Learning Assistant for an entry level
+                            Computer Science course at Penn State.
+                          </Card.Text>
+                          <Card.Footer>August 2022 - December 2023</Card.Footer>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                    <Col xs={12} md={6}>
+                      <Card
+                        bg={`${darkMode ? "secondary" : "light"}`}
+                        text={`${darkMode ? "light" : "dark"}`}
+                        border="success"
+                        className={`mb-2 ${styles.expCard}`}
+                      >
+                        <Card.Header>Special Order Systems</Card.Header>
+                        <Card.Body>
+                          <Card.Title>Software Intern</Card.Title>
+                          <Card.Text>
+                            My first project based sofware internship, in which
+                            I worked with Python and API interactions.
+                          </Card.Text>
+                          <Card.Footer>July 2021 - December 2021</Card.Footer>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  </Row>
+                </div>
               </section>
               <section id="techstack">
                 <div className="d-flex">
@@ -450,26 +460,6 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
             </div>
           </main>
         </div>
-        <ToastContainer position="bottom-end">
-          <Toast
-            bg="warning"
-            show={showMobileToast}
-            onClose={() => setShowMobileToast(false)}
-            delay={10_000}
-            autohide
-            className={styles.mobileToast}
-          >
-            <Toast.Header>
-              <strong className="me-auto">Mobile Device Detected</strong>
-              <small className="text-muted">just now</small>
-            </Toast.Header>
-            <Toast.Body>
-              This page is not yet optimized for mobile devices.
-              <br /> For best experience, please use a computer to access this
-              website.
-            </Toast.Body>
-          </Toast>
-        </ToastContainer>
       </Container>
     </>
   );

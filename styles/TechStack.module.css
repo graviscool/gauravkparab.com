@@ -1,7 +1,7 @@
 /* Tech Stack card hover transitions */
 
 .stackCard {
-  width: 6rem;
+  width: 7rem;
   transition: transform 0.5s;
 }
 
