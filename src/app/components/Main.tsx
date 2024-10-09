@@ -279,10 +279,10 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                       >
                         <Card.Header>Pennsylvania State University</Card.Header>
                         <Card.Body>
-                          <Card.Title>Learning Assistant</Card.Title>
+                          <Card.Title>Teaching Assistant</Card.Title>
                           <Card.Text>
-                            I worked as a Learning Assistant for an entry level
-                            Computer Science course at Penn State.
+                            I worked as a Teaching Assistant for an entry level
+                            Python course at Penn State.
                           </Card.Text>
                           <Card.Footer>August 2022 - December 2023</Card.Footer>
                         </Card.Body>
