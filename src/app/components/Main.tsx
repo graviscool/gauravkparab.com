@@ -32,7 +32,6 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
     <>
       <Head>
         <link rel="preload" href="/images/sf-night.jpg" as="image" />
-        <link rel="preload" href="/images/langs/python.png" as="image" />
       </Head>
       <Container
         fluid
