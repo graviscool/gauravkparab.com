@@ -13,7 +13,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
             className={`${styles.stackCard} rounded-1 ${
               darkMode ? styles.bgCardDark : "bg-info"
             }`}
-            text="dark"
+            text="light"
             border="success"
           >
             <Card.Img
@@ -30,7 +30,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
             className={`${styles.stackCard} rounded-1 rounded-1  ${
               darkMode ? styles.bgCardDark : "bg-info"
             }`}
-            text="dark"
+            text="light"
             border="success"
           >
             <Card.Img
@@ -47,7 +47,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
             className={`${styles.stackCard} rounded-1  ${
               darkMode ? styles.bgCardDark : "bg-info"
             }`}
-            text="dark"
+            text="light"
             border="success"
           >
             <Card.Img
@@ -64,7 +64,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
             className={`${styles.stackCard} rounded-1  ${
               darkMode ? styles.bgCardDark : "bg-info"
             }`}
-            text="dark"
+            text="light"
             border="success"
           >
             <Card.Img
@@ -81,7 +81,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
             className={`${styles.stackCard} rounded-1  ${
               darkMode ? styles.bgCardDark : "bg-info"
             }`}
-            text="dark"
+            text="light"
             border="success"
           >
             <Card.Img
@@ -98,7 +98,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
             className={`${styles.stackCard} rounded-1  ${
               darkMode ? styles.bgCardDark : "bg-info"
             }`}
-            text="dark"
+            text="light"
             border="success"
           >
             <Card.Img
@@ -115,7 +115,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
             className={`${styles.stackCard} rounded-1  ${
               darkMode ? styles.bgCardDark : "bg-info"
             }`}
-            text="dark"
+            text="light"
             border="success"
           >
             <Card.Img
@@ -132,8 +132,8 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
             className={`${styles.stackCard} rounded-1  ${
               darkMode ? styles.bgCardDark : "bg-info"
             }`}
-            text="dark"
-            border="success"
+            text="light"
+            border ="success"
           >
             <Card.Img
               variant="top"
@@ -149,7 +149,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
             className={`${styles.stackCard} rounded-1  ${
               darkMode ? styles.bgCardDark : "bg-info"
             }`}
-            text="dark"
+            text="light"
             border="success"
           >
             <Card.Img
@@ -166,7 +166,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
             className={`${styles.stackCard} rounded-1  ${
               darkMode ? styles.bgCardDark : "bg-info"
             }`}
-            text="dark"
+            text="light"
             border="success"
           >
             <Card.Img
@@ -183,7 +183,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
             className={`${styles.stackCard} rounded-1  ${
               darkMode ? styles.bgCardDark : "bg-info"
             }`}
-            text="dark"
+            text="light"
             border="success"
           >
             <Card.Img
@@ -200,7 +200,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
             className={`${styles.stackCard} rounded-1  ${
               darkMode ? styles.bgCardDark : "bg-info"
             }`}
-            text="dark"
+            text="light"
             border="success"
           >
             <Card.Img
