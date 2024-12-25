@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Button,
   Col,
@@ -19,22 +19,39 @@ export default function Contact() {
   const [showSuccessfulSubmitToast, setShowSuccessfulSubmitToast] =
     useState(false);
   const [showErrorToast, setShowErrorToast] = useState(false);
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedMode = localStorage.getItem("darkMode");
+      setIsDark(savedMode ? JSON.parse(savedMode) : true);
+    }
+  }, []);
 
   return (
     <>
       <title>Contact Me - Gaurav Parab</title>
-      <Container fluid className="bg-dark text-info vh-100">
+      <Container
+        fluid
+        className={
+          isDark ? "bg-dark text-info" : "bg-light text-dark"
+        }
+        style={{ minHeight: "100vh" }}
+      >
         <ContactNavbar />
         <Row>
           <Col>
             <h1 className={`mt-4 ${styles.connectText}`}>
               Let&apos;s Connect!
             </h1>
-            <div className="text-light">
+            <div className={isDark ? "text-light" : "text-dark"}>
               <p className={`mt-3 mb-2 fs-2 ms-2 ${styles.contactText}`}>
                 Email
                 <br />
-                <a href="mailto:gkparab1@gmail.com" className="text-light">
+                <a
+                  href="mailto:gkparab1@gmail.com"
+                  className={isDark ? "text-light" : "text-dark"}
+                >
                   gkparab1@gmail.com
                 </a>
                 <br />
@@ -45,7 +62,7 @@ export default function Contact() {
                   href="https://www.linkedin.com/in/gparab"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="text-light"
+                  className={isDark ? "text-light" : "text-dark"}
                 >
                   https://linkedin.com/in/gparab
                 </a>
@@ -61,7 +78,9 @@ export default function Contact() {
                   setShowErrorToast
                 )
               }
-              className={`me-2 mt-3 text-warning d-grid ${styles.contactForm}`}
+              className={`me-2 mt-3 ${
+                isDark ? "text-warning" : "text-dark"
+              } d-grid ${styles.contactForm}`}
               id="contactform"
             >
               <Row className="g-2">
