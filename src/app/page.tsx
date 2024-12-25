@@ -2,11 +2,23 @@
 import NavigationBar from "@/src/app/components/NavigationBar";
 import Main from "@/src/app/components/Main";
 import Footer from "@/src/app/components/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Toast, ToastContainer } from "react-bootstrap";
 
 export default function Home() {
   const [dark, setDark] = useState(true);
+
+  const setGlobalDarkMode = () => {
+    setDark(!dark);
+    localStorage.setItem("darkMode", JSON.stringify(!dark));
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedMode = localStorage.getItem("darkMode");
+      setDark(savedMode ? JSON.parse(savedMode) : true);
+    }
+  }, []);
 
   return (
     <>
@@ -24,7 +36,7 @@ export default function Home() {
           </Toast>
         </ToastContainer>
       </noscript>
-      <NavigationBar dark={dark} setDark={setDark} />
+      <NavigationBar dark={dark} setDark={setGlobalDarkMode} />
       <Main darkMode={dark} />
       <Footer darkMode={dark} />
     </>

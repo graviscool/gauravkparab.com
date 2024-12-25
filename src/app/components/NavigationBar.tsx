@@ -9,19 +9,20 @@ import { Dispatch, SetStateAction } from "react";
 export default function NavigationBar({
   dark,
   setDark,
-}: {
+}: Readonly<{
   dark: boolean;
   setDark: Dispatch<SetStateAction<boolean>>;
-}) {
+}>) {
   return (
     <header>
       <a id="top" content="top of page"></a>
       <Navbar
         expand="md"
-        bg="dark"
+        bg={dark ? "dark" : ""}
         className="bg-body-tertiary mb-0 z-1"
-        data-bs-theme="dark"
-        sticky="top"
+        data-bs-theme={dark ? "dark" : "light"}
+        // sticky="top"
+        fixed="top"
         collapseOnSelect
       >
         <Container fluid>
@@ -45,7 +46,7 @@ export default function NavigationBar({
               <Nav className="me-auto">
                 {/* <Nav.Link href="/blurb">Blurb</Nav.Link> */}
                 <Nav.Link href="#projects">Projects</Nav.Link>
-                <Nav.Link href="#prevexp">Previous Experience</Nav.Link>
+                <Nav.Link href="#prevexp">Experience</Nav.Link>
               </Nav>
               <Nav className="me-3">
                 <SplitButton

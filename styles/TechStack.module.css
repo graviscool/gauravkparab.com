@@ -1,7 +1,7 @@
 /* Tech Stack card hover transitions */
 
 .stackCard {
-  width: 6rem;
+  width: 7rem;
   transition: transform 0.5s;
 }
 
@@ -10,9 +10,5 @@
 }
 
 .bgCardDark {
-  background-color: #2d7a96;
-}
-
-.bgCardDark:hover {
-  background-color: rgb(10, 215, 215);
+  background-color: #1b1e20;
 }

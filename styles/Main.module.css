@@ -1,5 +1,6 @@
 .projectCard {
   width: 30%;
+  height: 90%;
   /* width: fit-content; */
 }
 
@@ -16,13 +17,11 @@
   font-weight: bold;
   padding: 10px 20px;
   border-radius: 5px;
-  /* text-shadow: 2px 2px 4px #add8e6; */
+  text-shadow: 2px 2px 18px #000;
   -webkit-text-stroke: 1px black;
   color: #add8e6;
-  /* background: #add8e6; */
   /* -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; */
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
 }
 
 @media (max-width: 1200px) {
@@ -138,17 +137,6 @@
 
 .topLink:hover {
   opacity: 0.9;
-}
-
-.mobileToast {
-  display: none;
-  width: 275px;
-}
-
-@media (max-width: 600px) {
-  .mobileToast {
-    display: block;
-  }
 }
 
 .pauseTypeButton {

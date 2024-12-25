@@ -3,15 +3,25 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Dropdown, Image, SplitButton } from "react-bootstrap";
+import { useEffect, useState } from "react";
 
 export default function ContactNavbar() {
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedMode = localStorage.getItem("darkMode");
+      setIsDark(savedMode ? JSON.parse(savedMode) : true);
+    }
+  }, []);
+
   return (
     <header>
       <Navbar
         expand="md"
-        bg="dark"
+        bg={isDark ? "dark" : "light"}
         className="bg-body-tertiary mb-0"
-        data-bs-theme="dark"
+        data-bs-theme={isDark ? "dark" : "light"} 
         collapseOnSelect
       >
         <Container fluid>

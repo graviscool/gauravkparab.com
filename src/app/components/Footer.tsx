@@ -6,16 +6,16 @@ export default function Footer({ darkMode }: { darkMode: boolean }) {
     <footer
       className={`footer ${
         darkMode ? `${styles.bgDarkFooter} text-light` : "bg-dark text-light"
-      } mt-auto py-2`}
+      } mt-auto pt-0`}
     >
       <Container fluid>
         <Row>
-          <Col md={4}>
-            <Nav>
-              {/* <Nav.Link href="/blurb" className="text-light">
+          {/* <Col md={4}>
+            <Nav> */}
+          {/* <Nav.Link href="/blurb" className="text-light">
                 Blurb
               </Nav.Link> */}
-              <Nav.Link href="/contact" className="text-light">
+          {/* <Nav.Link href="/contact" className="text-light">
                 Contact
               </Nav.Link>
               <Nav.Link
@@ -27,7 +27,7 @@ export default function Footer({ darkMode }: { darkMode: boolean }) {
                 Resume
               </Nav.Link>
             </Nav>
-          </Col>
+          </Col> */}
           <Col>
             {/* <Button
               variant="outline-primary"
@@ -37,7 +37,7 @@ export default function Footer({ darkMode }: { darkMode: boolean }) {
             >
               Website Info
             </Button> */}
-            <div className="text-end mb-0">
+            <div className="text-end mb-0 mt-0">
               <a href="#top" className={`${styles.topLink} link-info`}>
                 top
               </a>
