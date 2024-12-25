@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Briefcase,
@@ -12,7 +12,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 
-const InteractiveResume = ({ darkMode }) => {
+const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
   const [expandedSection, setExpandedSection] = useState(null);
   const [hoveredSkill, setHoveredSkill] = useState(null);
 
@@ -101,7 +101,17 @@ const InteractiveResume = ({ darkMode }) => {
     },
   ];
 
-  const Section = ({ title, icon, content, id }) => (
+  const Section = ({
+    title,
+    icon,
+    content,
+    id,
+  }: {
+    title: string;
+    icon: ReactElement;
+    content: ReactElement;
+    id: any;
+  }) => (
     <motion.div
       className={`card mb-4 ${cardBgClass} border ${borderClass} w-100`}
       initial={{ opacity: 0, y: 20 }}
@@ -191,7 +201,7 @@ const InteractiveResume = ({ darkMode }) => {
           icon={<GraduationCap size={24} />}
           content={
             <div>
-              <h3 className="h5 fw-bold">The Pennsylvania State University</h3>
+              <h3 className={`h5 fw-bold`}>The Pennsylvania State University</h3>
               <p className={`${textMutedClass} mb-1`}>
                 Bachelor of Science (B.S.), Computer Science
               </p>

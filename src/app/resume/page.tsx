@@ -10,7 +10,7 @@ export default function Resume() {
   return (
     <>
       <ResumeNavbar />
-      <InteractiveResume darkMode={true} />
+      <InteractiveResume darkMode={false} />
     </>
   );
 }
