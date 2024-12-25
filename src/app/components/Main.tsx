@@ -271,10 +271,11 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                   <Row>
                     <Col xs={12} md={6}>
                       <Card
-                        bg={`${darkMode ? "secondary" : "light"}`}
                         text={`${darkMode ? "light" : "dark"}`}
-                        border="success"
-                        className={`mb-3 ${styles.expCard}`}
+                        border="primary"
+                        className={`mb-3 ${
+                          darkMode ? styles.expCard : styles.expCardLight
+                        }`}
                       >
                         <Card.Header>Pennsylvania State University</Card.Header>
                         <Card.Body>
@@ -289,10 +290,11 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                     </Col>
                     <Col xs={12} md={6}>
                       <Card
-                        bg={`${darkMode ? "secondary" : "light"}`}
                         text={`${darkMode ? "light" : "dark"}`}
-                        border="success"
-                        className={`mb-2 ${styles.expCard}`}
+                        border="primary"
+                        className={`mb-2 ${
+                          darkMode ? styles.expCard : styles.expCardLight
+                        }`}
                       >
                         <Card.Header>Special Order Systems</Card.Header>
                         <Card.Body>
