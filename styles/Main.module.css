@@ -2,6 +2,7 @@
   width: 30%;
   height: 90%;
   /* width: fit-content; */
+  background-color: #1b1e20;
 }
 
 .mainContainerLight {
@@ -154,4 +155,12 @@
   height: 10px;
   margin-top: 38px;
   transform-origin: 0%;
+}
+
+.expCard {
+  background-color: #1b1e20;
+}
+
+.expCardLight {
+  background-color: #f8f9fa;
 }
