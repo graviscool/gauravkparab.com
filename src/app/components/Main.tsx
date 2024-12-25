@@ -272,7 +272,7 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                     <Col xs={12} md={6}>
                       <Card
                         text={`${darkMode ? "light" : "dark"}`}
-                        border="success"
+                        border="primary"
                         className={`mb-3 ${
                           darkMode ? styles.expCard : styles.expCardLight
                         }`}
@@ -291,7 +291,7 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                     <Col xs={12} md={6}>
                       <Card
                         text={`${darkMode ? "light" : "dark"}`}
-                        border="success"
+                        border="primary"
                         className={`mb-2 ${
                           darkMode ? styles.expCard : styles.expCardLight
                         }`}
