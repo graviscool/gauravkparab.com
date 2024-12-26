@@ -148,7 +148,7 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                           darkMode ? styles.expCard : styles.expCardLight
                         } ${styles.projectCard}`}
                       >
-                        <Card.Header>Next.js Application</Card.Header>
+                        <Card.Header>Web Application</Card.Header>
                         <Card.Body>
                           <Card.Title>Dashboard</Card.Title>
                           <Card.Text>
@@ -183,7 +183,9 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                             my first full-stack project.
                           </Card.Text>
                           <Card.Footer className="d-flex justify-content-between align-items-center">
-                            <span className="text-success">Technology: Java</span>
+                            <span className="text-success">
+                              Technology: Java
+                            </span>
                             <Card.Link
                               href="/projectfiles/MonopolyProject.jar"
                               className={`${
@@ -255,7 +257,7 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                           {/* <Card.Link
                       >
                       </Card.Link> */}
-                      {/* </Card.Body> 
+                {/* </Card.Body> 
                       </Card>
                     </Col>
                     <Col xs={12} md={6} lg={4}>
