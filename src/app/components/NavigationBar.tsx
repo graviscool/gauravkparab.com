@@ -52,15 +52,20 @@ export default function NavigationBar({
                 <SplitButton
                   title="View Resume"
                   variant="outline-success"
-                  href="documents/Gaurav_Parab_resume.pdf"
-                  target="_blank"
-                  rel="noreferrer noopener"
+                  href="/resume"
                 >
+                  <Dropdown.Item
+                    href="/documents/Gaurav_Parab_resume.pdf"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    View PDF Resume
+                  </Dropdown.Item>
                   <Dropdown.Item
                     href="/documents/Gaurav_Parab_resume.pdf"
                     download
                   >
-                    Download Resume
+                    Download PDF Resume
                   </Dropdown.Item>
                 </SplitButton>
               </Nav>
@@ -88,7 +93,9 @@ export default function NavigationBar({
                   src="/images/github-logo-white.png"
                   width="30"
                   height="30"
-                  className="d-inline-block align-top"
+                  className={`d-inline-block align-top ${
+                    !dark ? "bg-dark opacity-25" : ""
+                  }`}
                   alt="Github"
                 />
               </Navbar.Brand>
@@ -97,7 +104,7 @@ export default function NavigationBar({
               </Nav>
               <FormControlLabel
                 value="Dark Mode Button"
-                className="ms-1"
+                className={`ms-1 ${dark ? "text-light" : "text-dark"}`}
                 control={
                   <Switch
                     color="primary"

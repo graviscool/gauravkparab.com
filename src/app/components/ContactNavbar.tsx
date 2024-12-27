@@ -21,7 +21,7 @@ export default function ContactNavbar() {
         expand="md"
         bg={isDark ? "dark" : "light"}
         className="bg-body-tertiary mb-0"
-        data-bs-theme={isDark ? "dark" : "light"} 
+        data-bs-theme={isDark ? "dark" : "light"}
         collapseOnSelect
       >
         <Container fluid>
@@ -52,10 +52,13 @@ export default function ContactNavbar() {
                 <SplitButton
                   title="View Resume"
                   variant="outline-success"
-                  href="documents/Gaurav_Parab_resume.pdf"
+                  href="/resume"
                   target="_blank"
                   rel="noreferrer noopener"
                 >
+                  <Dropdown.Item href="/documents/Gaurav_Parab_resume.pdf">
+                    View PDF Resume
+                  </Dropdown.Item>
                   <Dropdown.Item
                     href="/documents/Gaurav_Parab_resume.pdf"
                     download

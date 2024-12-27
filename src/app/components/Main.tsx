@@ -325,7 +325,7 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                 viewport={{ once: true }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                {/*<picture>
+              {/*<picture>
                   <source
                     srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=300px&langs_count=7&disable_animations=true"
                     media="(max-width: 430px)"
@@ -358,7 +358,7 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                       darkMode ? styles.headingTwoDark : styles.headingTwoLight
                     }`}
                   >
-                    Work Experience
+                    Professional Experience
                   </h2>
                   <a href="#top" className={`mt-4 ${styles.topLink}`}>
                     top

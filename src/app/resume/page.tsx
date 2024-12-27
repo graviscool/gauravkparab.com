@@ -1,13 +1,24 @@
 "use client";
-import { Navbar, Card, Container } from "react-bootstrap";
-import ResumeNavigationBar from "@/src/app/components/ResumeNavbar";
-import { permanentRedirect } from "next/navigation";
+import ResumeNavbar from "@/src/app/components/ResumeNavbar";
+import { useEffect, useState } from "react";
+import styles from "../../../styles/Resume.module.css";
+import InteractiveResume from "../components/InteractiveResume";
+
 export default function Resume() {
-  return permanentRedirect("/documents/Gaurav_Parab_Resume.pdf");
-  // return (
-  //   <>
-  //     <ResumeNavigationBar />
-  //     <p>This page is currently a work in progress.</p>
-  //   </>
-  // );
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedMode = localStorage.getItem("darkMode");
+      setIsDark(savedMode ? JSON.parse(savedMode) : true);
+    }
+  }, []);
+
+  return (
+    <>
+      <ResumeNavbar setDark={setIsDark} />
+      {/* <InteractiveResume darkMode={false} /> */}
+      <InteractiveResume darkMode={isDark} />
+    </>
+  );
 }
