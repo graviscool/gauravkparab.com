@@ -366,7 +366,7 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                 </div>
                 <div
                   className={`${
-                    darkMode ? "text-white" : "bg-white text-gray-900"
+                    darkMode ? "text-white" : "text-gray-900"
                   } mb-4 mx-3`}
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
