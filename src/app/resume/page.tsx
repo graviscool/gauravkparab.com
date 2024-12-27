@@ -1,17 +1,24 @@
 "use client";
-import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import ResumeNavbar from "@/src/app/components/ResumeNavbar";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../../styles/Resume.module.css";
 import InteractiveResume from "../components/InteractiveResume";
 
 export default function Resume() {
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedMode = localStorage.getItem("darkMode");
+      setIsDark(savedMode ? JSON.parse(savedMode) : true);
+    }
+  }, []);
+
   return (
     <>
-      <ResumeNavbar />
+      <ResumeNavbar setDark={setIsDark} />
       {/* <InteractiveResume darkMode={false} /> */}
-      <InteractiveResume />
+      <InteractiveResume darkMode={isDark} />
     </>
   );
 }

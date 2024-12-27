@@ -1,137 +1,179 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Briefcase, GraduationCap, Code, Award, ChevronDown, ChevronUp, Mail, Globe, Linkedin, Moon, Sun, Terminal } from 'lucide-react';
-import { Section } from './resume/Section';
-import { SkillBubble } from './resume/SkillBubble';
-import { ExperienceCard } from './resume/ExperienceCard';
-import { ProjectCard } from './resume/ProjectCard';
-import { SkillsVisualization } from './resume/SkillsVisualization';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  Briefcase,
+  GraduationCap,
+  Code,
+  Award,
+  Mail,
+  Terminal,
+  MapPin,
+} from "lucide-react";
+import { Section } from "./resume/Section";
+import { SkillBubble } from "./resume/SkillBubble";
+import { ExperienceCard } from "./resume/ExperienceCard";
+import { ProjectCard } from "./resume/ProjectCard";
+import { SkillsVisualization } from "./resume/SkillsVisualization";
+import Image from "next/image";
 
-const InteractiveResume = () => {
+const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
-  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
-  const [darkMode, setDarkMode] = useState(false);
 
   const colors = {
-    background: darkMode ? 'bg-gray-900' : 'bg-gray-50',
-    cardBg: darkMode ? 'bg-gray-800' : 'bg-white',
-    cardHover: darkMode ? 'bg-gray-700' : 'bg-gray-100',
+    background: darkMode ? "bg-neutral-900" : "bg-slate-50",
+    cardBg: darkMode ? "bg-neutral-800" : "bg-white",
+    cardHover: darkMode ? "bg-neutral-700" : "bg-slate-100",
     text: {
-      primary: darkMode ? 'text-gray-100' : 'text-gray-800',
-      secondary: darkMode ? 'text-gray-300' : 'text-gray-600',
-      tertiary: darkMode ? 'text-gray-400' : 'text-gray-500'
+      primary: darkMode ? "text-slate-100" : "text-slate-800",
+      secondary: darkMode ? "text-slate-300" : "text-slate-600",
+      tertiary: darkMode ? "text-slate-400" : "text-slate-500",
     },
     accent: {
-      primary: darkMode ? 'from-blue-400 to-teal-400' : 'from-blue-500 to-teal-500',
-      secondary: darkMode ? 'from-purple-400 to-pink-400' : 'from-purple-500 to-pink-500'
+      primary: darkMode
+        ? "from-slate-400 to-blue-400"
+        : "from-slate-500 to-blue-500",
+      secondary: darkMode
+        ? "from-slate-400 to-blue-400"
+        : "from-slate-500 to-blue-500",
     },
-    border: darkMode ? 'border-gray-700' : 'border-gray-200',
+    border: darkMode ? "border-neutral-700" : "border-slate-200",
     skill: {
-      bg: darkMode ? 'bg-gray-700' : 'bg-gray-200',
-      hoverBg: darkMode ? 'bg-gray-600' : 'bg-gray-300'
+      bg: darkMode ? "bg-neutral-700" : "bg-slate-200",
+      hoverBg: darkMode ? "bg-neutral-600" : "bg-slate-300",
     },
     project: {
-      bg: darkMode ? 'bg-gray-800' : 'bg-gray-100',
-      hoverBg: darkMode ? 'bg-gray-700' : 'bg-white'
-    }
+      bg: darkMode ? "bg-neutral-800" : "bg-slate-100",
+      hoverBg: darkMode ? "bg-neutral-700" : "bg-white",
+    },
   };
 
   const skills = {
-    languages: ['Python', 'Java', 'JavaScript', 'TypeScript', 'C', 'HTML/CSS', 'Verilog', 'Bash', 'C++ (Basic)', 'R (Basic)'],
-    tools: ['Git', 'Node.js', 'Docker', 'React', 'Next.js', 'MongoDB'],
-    nonTechnical: ['Tennis', 'Photography', 'Hindi', 'Marathi', 'Spanish']
+    languages: [
+      "Python",
+      "Java",
+      "JavaScript",
+      "TypeScript",
+      "C",
+      "HTML/CSS",
+      "Verilog",
+      "Bash",
+      "C++ (Basic)",
+      "R (Basic)",
+    ],
+    tools: ["Git", "Node.js", "Docker", "React", "Next.js", "MongoDB"],
+    "Non-Technical": ["Tennis", "Photography", "Hindi", "Marathi", "Spanish"],
   };
 
   const experiences = [
     {
-      title: "Software Engineering Intern",
-      company: "Vercel",
-      location: "Remote",
-      date: "May 2023 - August 2023",
-      details: [
-        "Developed and maintained features for Next.js, improving developer experience and performance.",
-        "Collaborated with cross-functional teams to implement new functionalities and resolve issues.",
-        "Contributed to open-source projects and participated in code reviews."
-      ]
+      title: "Tactical Software Engineering Co-op",
+      company: "General Dynamics Electric Boat",
+      location: "New London, CT",
+      date: "January 2025 - May 2025 (Incoming)",
+      details: ["Incoming Winter 2025"],
     },
     {
-      title: "Research Assistant",
-      company: "Penn State University",
+      title: "Teaching Assistant",
+      company: "Pennsylvania State University",
       location: "University Park, PA",
-      date: "September 2022 - Present",
+      date: "August 2022 - December 2023",
       details: [
-        "Assisted in developing machine learning models for natural language processing tasks.",
-        "Implemented data preprocessing pipelines and conducted experiments to improve model accuracy.",
-        "Presented research findings at departmental seminars and contributed to academic publications."
-      ]
-    }
+        "Led weekly Python programming recitations for approximately 200 students.",
+        "Conducted review sessions and code reviews, ensuring clarity in programming concepts.",
+        "Conducted code reviews for 100+ Python assignments per week, providing valuable feedback",
+      ],
+    },
+    {
+      title: "Software Intern",
+      company: "Special Order Systems",
+      location: "Sacramento, CA",
+      date: "July 2021 - December 2021",
+      details: [
+        "Developed security solutions for California state beaches, ensuring data integrity and safety.",
+        "Automated weather data retrieval processes, improving efficiency and accuracy.",
+      ],
+    },
   ];
 
   const projects = [
     {
-      title: "AI-Powered Chess Tutor",
-      date: "January 2023 - Present",
-      tech: "Python, TensorFlow, React",
+      title: "React/Next.js Dashboard",
+      date: "July 2024 - Present",
+      tech: "React, Next.js, OAuth",
       details: [
-        "Developed a machine learning model to analyze chess games and provide personalized feedback.",
-        "Created a web interface for users to upload games and receive analysis.",
-        "Implemented real-time game analysis using WebSockets."
-      ]
+        "Designed a secure dashboard for managing sensitive punishment documents with Discord OAuth integration.",
+        "Focused on enhancing user experience and security for administrators.",
+      ],
     },
     {
-      title: "Blockchain-based Voting System",
-      date: "September 2022 - December 2022",
-      tech: "Solidity, Ethereum, Web3.js, React",
+      title: "JBOD System in C",
+      date: "September 2023 - December 2023",
+      tech: "C, Networking",
       details: [
-        "Designed and implemented a secure, transparent voting system using blockchain technology.",
-        "Developed smart contracts to manage voter registration, vote casting, and vote counting.",
-        "Created a user-friendly front-end interface for voters and election administrators."
-      ]
-    }
+        "Created a simulated multi-disk system with read and write capabilities",
+        "Implemented networking features to enable server communication.",
+        "Focused on optimizing system performance and debugging complex issues.",
+      ],
+    },
+    {
+      title: "Monopoly Board Game",
+      date: "May 2022",
+      tech: "Java",
+      details: [
+        "Collaborated with a team to create a GUI-based Monopoly board game.",
+        "Implemented gameplay mechanics and interactive features.",
+      ],
+    },
   ];
 
   return (
-    <div className={`${colors.background} min-h-screen transition-colors duration-300`}>
-      <div className="max-w-5xl mx-auto p-6">
+    <div
+      className={`${colors.background} min-h-screen transition-colors duration-300`}
+    >
+      <div className="max-w-8xl mx-auto p-3">
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-12 relative"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className={`text-5xl font-bold mb-4 bg-gradient-to-r ${colors.accent.secondary} bg-clip-text text-transparent`}>
+          <h1
+            className={`text-5xl font-bold mb-4 bg-gradient-to-r ${colors.accent.secondary} bg-clip-text text-transparent`}
+          >
             Gaurav Parab
           </h1>
           <div className="flex justify-center space-x-6 mb-4">
-            <a href="mailto:gkparab1@gmail.com" 
-               className={`${colors.text.secondary} hover:text-blue-500 transition-colors flex items-center`}>
+            <MapPin size={18} className={`mr-2 ${colors.text.secondary}`} />
+            <span className={`${colors.text.secondary} ms-0`}>
+              San Jose, CA
+            </span>
+            {/* <p className={`flex items-center mb-0 ${colors.text.secondary}`}>
+              San Jose, CA
+            </p> */}
+            <a
+              href="mailto:gkparab1@gmail.com"
+              className={`${colors.text.secondary} hover:text-blue-500 transition-colors flex items-center`}
+            >
               <Mail size={18} className="mr-2" /> gkparab1@gmail.com
             </a>
-            <a href="https://gauravkparab.com" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               className={`${colors.text.secondary} hover:text-blue-500 transition-colors flex items-center`}>
-              <Globe size={18} className="mr-2" /> gauravkparab.com
-            </a>
-            <a href="https://linkedin.com/in/gparab" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               className={`${colors.text.secondary} hover:text-blue-500 transition-colors flex items-center`}>
-              <Linkedin size={18} className="mr-2" /> LinkedIn
+            <a
+              href="https://linkedin.com/in/gparab"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${colors.text.secondary} hover:text-blue-500 transition-colors flex items-center`}
+            >
+              <Image
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg"
+                alt="Linkedin"
+                className="mr-2"
+                width={18}
+                height={18}
+              />
+              Linkedin
             </a>
           </div>
-          <p className={`${colors.text.secondary} max-w-2xl mx-auto`}>
-            Passionate Computer Science student at Penn State University, specializing in software development and AI. 
-            Seeking opportunities to apply my skills in innovative tech projects.
-          </p>
-          <button 
-            onClick={() => setDarkMode(!darkMode)}
-            className="absolute top-0 right-0 p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300"
-            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-          >
-            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
+          {/* <p className={`${colors.text.secondary} max-w-2xl mx-auto`}></p> */}
         </motion.div>
 
         {/* Main Content */}
@@ -143,24 +185,71 @@ const InteractiveResume = () => {
           setExpandedSection={setExpandedSection}
           colors={colors}
           content={
-            <div className={colors.text.primary}>
-              <h3 className="font-semibold text-xl mb-2">The Pennsylvania State University</h3>
-              <p className={`${colors.text.secondary} text-lg`}>Bachelor of Science (B.S.), Computer Science</p>
-              <p className={`${colors.text.secondary} mb-2`}>Minor in Cybersecurity | GPA: 3.66</p>
-              <p className={`${colors.text.tertiary} mb-4`}>July 2022 – May 2026</p>
-              <div className="mt-4">
-                <p className="font-medium text-lg mb-2">Relevant Coursework:</p>
-                <ul className={`${colors.text.secondary} list-disc list-inside`}>
-                  <li>Data Structures and Algorithms</li>
-                  <li>Computational Theory</li>
-                  <li>Systems Programming</li>
-                  <li>Computer Organization and Design</li>
-                  <li>OOP with Web-Based Applications</li>
-                  <li>Digital Design</li>
-                  <li>Computing with Quantum Computers</li>
-                </ul>
-              </div>
-            </div>
+            <motion.div
+              className={`${colors.cardBg} p-6 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl ${colors.text.primary}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              // whileHover={{ scale: 1.02 }}
+            >
+              <motion.h3
+                className="font-bold text-2xl mb-3 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
+                The Pennsylvania State University
+              </motion.h3>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                <p className={`${colors.text.secondary} text-lg font-semibold`}>
+                  Bachelor of Science (B.S.), Computer Science
+                </p>
+                <p className={`${colors.text.secondary} mb-2`}>
+                  Minors in Cybersecurity, Engineering Leadership Development |
+                  GPA: 3.66
+                </p>
+                <p className={`${colors.text.tertiary} mb-4`}>
+                  July 2022 - May 2026
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="mt-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+              >
+                <p className="font-medium text-lg mb-3">Relevant Coursework:</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  {[
+                    "Data Structures and Algorithms",
+                    "Computational Theory",
+                    "Systems Programming",
+                    "Computer Organization and Design",
+                    "OOP with Web-Based Applications",
+                    "Digital Design",
+                    "Computing with Quantum Computers",
+                  ].map((course, index) => (
+                    <motion.div
+                      key={course}
+                      className={`${colors.skill.bg} p-2 rounded-md cursor-pointer transition-colors duration-200 hover:${colors.skill.hoverBg}`}
+                      whileHover={{ scale: 1.02 }}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 * index }}
+                    >
+                      <p className={`${colors.text.secondary} text-sm`}>
+                        {course}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
           }
         />
 
@@ -176,14 +265,18 @@ const InteractiveResume = () => {
               <SkillsVisualization skills={skills} colors={colors} />
               {Object.entries(skills).map(([category, skillList]) => (
                 <div key={category}>
-                  <h3 className={`font-semibold mb-3 capitalize text-lg ${colors.text.primary}`}>{category}:</h3>
+                  <h3
+                    className={`font-semibold mb-3 capitalize text-lg ${colors.text.primary}`}
+                  >
+                    {category}:
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {skillList.map((skill) => (
                       <SkillBubble
                         key={skill}
                         skill={skill}
                         colors={colors}
-                        setHoveredSkill={setHoveredSkill}
+                        // setHoveredSkill={setHoveredSkill}
                       />
                     ))}
                   </div>
@@ -203,7 +296,12 @@ const InteractiveResume = () => {
           content={
             <div className="space-y-6">
               {experiences.map((exp, index) => (
-                <ExperienceCard key={index} experience={exp} colors={colors} index={index} />
+                <ExperienceCard
+                  key={index}
+                  experience={exp}
+                  colors={colors}
+                  index={index}
+                />
               ))}
             </div>
           }
@@ -235,17 +333,27 @@ const InteractiveResume = () => {
           content={
             <div className="space-y-6">
               <div>
-                <h3 className={`font-semibold text-lg mb-2 ${colors.text.primary}`}>Nittany AI Student Society</h3>
+                <h3
+                  className={`font-semibold text-lg mb-2 ${colors.text.primary}`}
+                >
+                  Nittany AI Student Society
+                </h3>
                 <p className={colors.text.secondary}>
-                  Actively engaged in workshops and bootcamps, collaborating with fellow participants 
-                  to further understanding of machine learning and artificial intelligence applications.
+                  Actively engaged in workshops and bootcamps, collaborating
+                  with fellow participants to further understanding of machine
+                  learning and artificial intelligence applications.
                 </p>
               </div>
               <div>
-                <h3 className={`font-semibold text-lg mb-2 ${colors.text.primary}`}>Club Tennis</h3>
+                <h3
+                  className={`font-semibold text-lg mb-2 ${colors.text.primary}`}
+                >
+                  Club Tennis
+                </h3>
                 <p className={colors.text.secondary}>
-                  Attended weekly tennis practices, interacting with club members to refine tennis 
-                  skills and contribute to a collaborative team environment. Participated in inter-college tournaments.
+                  Attended weekly tennis practices, interacting with club
+                  members to refine tennis skills and contribute to a
+                  collaborative team environment.
                 </p>
               </div>
             </div>
@@ -257,4 +365,3 @@ const InteractiveResume = () => {
 };
 
 export default InteractiveResume;
-

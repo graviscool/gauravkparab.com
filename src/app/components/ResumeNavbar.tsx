@@ -2,16 +2,37 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Button, Dropdown, Image, SplitButton } from "react-bootstrap";
+import { Dropdown, SplitButton } from "react-bootstrap";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { FormControlLabel, Switch } from "@mui/material";
 
-export default function ResumeNavbar() {
+export default function ResumeNavbar({
+  setDark,
+}: Readonly<{
+  setDark: Dispatch<SetStateAction<boolean>>;
+}>) {
+  const [isDark, setIsDark] = useState(true);
+
+  const setDarkMode = (newMode: boolean) => {
+    setIsDark(newMode);
+    setDark(newMode);
+    localStorage.setItem("darkMode", JSON.stringify(newMode));
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedMode = localStorage.getItem("darkMode");
+      setIsDark(savedMode ? JSON.parse(savedMode) : true);
+    }
+  }, []);
+
   return (
     <header>
       <Navbar
         expand="md"
-        bg="dark"
+        bg={isDark ? "dark" : ""}
         className="bg-body-tertiary mb-0"
-        data-bs-theme="dark"
+        data-bs-theme={isDark ? "dark" : "light"}
         collapseOnSelect
       >
         <Container fluid>
@@ -34,9 +55,6 @@ export default function ResumeNavbar() {
             <Offcanvas.Body>
               <Nav className="me-auto">
                 <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="#about">About</Nav.Link>
-                <Nav.Link href="#projects">Projects</Nav.Link>
-                <Nav.Link href="#prevexp">Previous Experience</Nav.Link>
               </Nav>
               <SplitButton
                 title="View PDF Resume"
@@ -52,6 +70,19 @@ export default function ResumeNavbar() {
                   Download PDF Resume
                 </Dropdown.Item>
               </SplitButton>
+              <FormControlLabel
+                value="Dark Mode Button"
+                className={`ms-1 ${isDark ? "text-light" : "text-dark"}`}
+                control={
+                  <Switch
+                    color="primary"
+                    checked={isDark}
+                    onChange={(e) => setDarkMode(e.target.checked)}
+                  />
+                }
+                label={isDark ? "Dark" : "Light"}
+                labelPlacement="end"
+              />
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>

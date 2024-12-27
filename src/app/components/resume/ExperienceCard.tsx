@@ -1,7 +1,30 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export const ExperienceCard = ({ experience, colors, index }) => (
+interface Experience {
+  title: string;
+  company: string;
+  location: string;
+  date: string;
+  details: string[];
+}
+
+interface Colors {
+  border: string;
+  text: {
+    primary: string;
+    secondary: string;
+    tertiary: string;
+  };
+}
+
+interface ExperienceCardProps {
+  experience: Experience;
+  colors: Colors;
+  index: number;
+}
+
+export const ExperienceCard = ({ experience, colors, index }: ExperienceCardProps) => (
   <motion.div
     className={`border-l-2 ${colors.border} pl-4`}
     initial={{ opacity: 0, x: -20 }}
@@ -14,7 +37,7 @@ export const ExperienceCard = ({ experience, colors, index }) => (
     <ul className="space-y-2">
       {experience.details.map((detail, i) => (
         <li key={i} className={`${colors.text.secondary} flex items-start`}>
-          <span className="mr-2 mt-1.5">•</span>
+          <span className="mr-2">•</span>
           <span>{detail}</span>
         </li>
       ))}

@@ -1,9 +1,33 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
-export const Section = ({ id, title, icon, content, expandedSection, setExpandedSection, colors }) => (
-  <motion.div 
+interface SectionProps {
+  id: string;
+  title: string;
+  icon: React.ReactElement;
+  content: React.ReactNode;
+  expandedSection: string | null;
+  setExpandedSection: (section: string | null) => void;
+  colors: {
+    cardBg: string;
+    border: string;
+    accent: {
+      primary: string;
+    };
+  };
+}
+
+export const Section: React.FC<SectionProps> = ({
+  id,
+  title,
+  icon,
+  content,
+  expandedSection,
+  setExpandedSection,
+  colors,
+}) => (
+  <motion.div
     className={`mb-8 ${colors.cardBg} rounded-lg shadow-md overflow-hidden border ${colors.border}`}
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -18,12 +42,13 @@ export const Section = ({ id, title, icon, content, expandedSection, setExpanded
         {React.cloneElement(icon, { className: "text-white" })}
         <h2 className="text-xl font-semibold">{title}</h2>
       </div>
-      {expandedSection === id ? 
-        <ChevronUp size={20} className="text-white" /> : 
+      {expandedSection === id ? (
+        <ChevronUp size={20} className="text-white" />
+      ) : (
         <ChevronDown size={20} className="text-white" />
-      }
+      )}
     </motion.div>
-    
+
     <AnimatePresence>
       {expandedSection === id && (
         <motion.div
@@ -39,4 +64,3 @@ export const Section = ({ id, title, icon, content, expandedSection, setExpanded
     </AnimatePresence>
   </motion.div>
 );
-

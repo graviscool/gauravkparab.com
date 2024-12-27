@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function TechStack({ darkMode }: { darkMode: boolean }) {
   return (
-    <div className="px-3">
+    <div className="px-3 pb-3">
       {/* <Row className="text-center"> */}
       <Row className="g-3">
         <Col xs={6} sm={4} md={3} lg={2}>
