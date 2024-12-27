@@ -142,6 +142,103 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                   <Row md={3} className="g-3">
                     <Col xs={12} md={6} lg={4}>
                       <Card
+                        text={darkMode ? "light" : "dark"}
+                        border="primary"
+                        className={`mb-3 w-100 ${
+                          darkMode ? styles.expCard : styles.expCardLight
+                        } ${styles.projectCard}`}
+                      >
+                        <Card.Header>Web Application</Card.Header>
+                        <Card.Body>
+                          <Card.Title>Dashboard</Card.Title>
+                          <Card.Text>
+                            Created a dashboard for uses to view sensitive
+                            database data. It used Discord OAuth to
+                            authenticated users and check if they had the
+                            permissions to access the data.
+                          </Card.Text>
+                          <Card.Footer className="text-success">
+                            Technologies: Next.js, React
+                          </Card.Footer>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+
+                    <Col xs={12} md={6} lg={4}>
+                      <Card
+                        text={darkMode ? "light" : "dark"}
+                        border="primary"
+                        className={`mb-3 w-100 ${
+                          darkMode ? styles.expCard : styles.expCardLight
+                        } ${styles.projectCard}`}
+                      >
+                        <Card.Header>Java Game Development</Card.Header>
+                        <Card.Body>
+                          <Card.Title>Monopoly</Card.Title>
+                          <Card.Text>
+                            Built the game of Monopoly in Java using GUI, with
+                            two other teammates. I wrote 30% of the code and
+                            assisted with debugging, writing documentation, and
+                            submitting reports. It was a great experience making
+                            my first full-stack project.
+                          </Card.Text>
+                          <Card.Footer className="d-flex justify-content-between align-items-center">
+                            <span className="text-success">
+                              Technology: Java
+                            </span>
+                            <Card.Link
+                              href="/projectfiles/MonopolyProject.jar"
+                              className={`${
+                                darkMode ? "text-info" : "text-primary"
+                              }`}
+                            >
+                              JAR file
+                            </Card.Link>
+                          </Card.Footer>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+
+                    <Col xs={12} md={6} lg={4}>
+                      <Card
+                        text={darkMode ? "light" : "dark"}
+                        border="primary"
+                        className={`mb-3 w-100 ${
+                          darkMode ? styles.expCard : styles.expCardLight
+                        } ${styles.projectCard}`}
+                      >
+                        <Card.Header>Node.js Development</Card.Header>
+                        <Card.Body>
+                          <Card.Title>Discord Bot</Card.Title>
+                          <Card.Text>
+                            Built a bot that allowed moderators to perform tasks
+                            efficiently and allowed the server management to
+                            automate tasks such as role assignment and messages.
+                          </Card.Text>
+                          <Card.Footer className="d-flex justify-content-between align-items-center">
+                            <span className="text-success">
+                              Technology: Node.js
+                            </span>
+                            <Card.Link
+                              href="https://github.com/The-English-Hub-Dev/The-English-Hub"
+                              target="_blank"
+                              rel="noreferrer noopener"
+                              className={`${
+                                darkMode ? "text-info" : "text-primary"
+                              }`}
+                            >
+                              GitHub Link
+                            </Card.Link>
+                          </Card.Footer>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  </Row>
+                </div>
+                {/* <div className="px-3">
+                  <Row md={3} className="g-3">
+                    <Col xs={12} md={6} lg={4}>
+                      <Card
                         bg="secondary"
                         border="primary"
                         className={`mb-3 me-3 w-100 ${styles.projectCard}`}
@@ -160,7 +257,7 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                           {/* <Card.Link
                       >
                       </Card.Link> */}
-                        </Card.Body>
+                {/* </Card.Body> 
                       </Card>
                     </Col>
                     <Col xs={12} md={6} lg={4}>
@@ -218,17 +315,17 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                       </Card>
                     </Col>
                   </Row>
-                </div>
+                </div> */}
               </section>
               {/* <a href="/#"> */}
-              <motion.div
+              {/* <motion.div
                 className={styles.topLang}
                 initial={{ translateX: "-100%" }}
                 whileInView={{ translateX: 0 }}
                 viewport={{ once: true }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <picture>
+                {/*<picture>
                   <source
                     srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=300px&langs_count=7&disable_animations=true"
                     media="(max-width: 430px)"
@@ -252,7 +349,7 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                     alt="Top Languages Used"
                   />
                 </picture>
-              </motion.div>
+              </motion.div> */}
               {/* </a> */}
               <section id="prevexp">
                 <div className="d-flex">
@@ -267,47 +364,55 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                     top
                   </a>
                 </div>
-                <div className="px-3">
-                  <Row>
-                    <Col xs={12} md={6}>
-                      <Card
-                        text={`${darkMode ? "light" : "dark"}`}
-                        border="primary"
-                        className={`mb-3 ${
-                          darkMode ? styles.expCard : styles.expCardLight
+                <div
+                  className={`${
+                    darkMode ? "text-white" : "text-gray-900"
+                  } mb-4 mx-3`}
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {[
+                      {
+                        company: "Pennsylvania State University",
+                        title: "Teaching Assistant",
+                        description:
+                          "I worked as a Teaching Assistant for an entry level Python course at Penn State.",
+                        date: "August 2022 - December 2023",
+                      },
+                      {
+                        company: "Special Order Systems",
+                        title: "Software Intern",
+                        description:
+                          "My first project based software internship, in which I worked with Python and API interactions.",
+                        date: "July 2021 - December 2021",
+                      },
+                    ].map((job, index) => (
+                      <div
+                        key={index}
+                        className={`${
+                          darkMode ? "bg-gray-800" : "bg-white"
+                        } rounded-lg shadow-lg overflow-hidden ${
+                          styles.workExpCard
                         }`}
                       >
-                        <Card.Header>Pennsylvania State University</Card.Header>
-                        <Card.Body>
-                          <Card.Title>Teaching Assistant</Card.Title>
-                          <Card.Text>
-                            I worked as a Teaching Assistant for an entry level
-                            Python course at Penn State.
-                          </Card.Text>
-                          <Card.Footer>August 2022 - December 2023</Card.Footer>
-                        </Card.Body>
-                      </Card>
-                    </Col>
-                    <Col xs={12} md={6}>
-                      <Card
-                        text={`${darkMode ? "light" : "dark"}`}
-                        border="primary"
-                        className={`mb-2 ${
-                          darkMode ? styles.expCard : styles.expCardLight
-                        }`}
-                      >
-                        <Card.Header>Special Order Systems</Card.Header>
-                        <Card.Body>
-                          <Card.Title>Software Intern</Card.Title>
-                          <Card.Text>
-                            My first project based sofware internship, in which
-                            I worked with Python and API interactions.
-                          </Card.Text>
-                          <Card.Footer>July 2021 - December 2021</Card.Footer>
-                        </Card.Body>
-                      </Card>
-                    </Col>
-                  </Row>
+                        <div className="p-6">
+                          <h3 className="text-xl font-semibold mb-2">
+                            {job.company}
+                          </h3>
+                          <h4 className="text-lg font-medium mb-2">
+                            {job.title}
+                          </h4>
+                          <p
+                            className={`mb-4 ${
+                              darkMode ? "text-gray-300" : "text-gray-600"
+                            }`}
+                          >
+                            {job.description}
+                          </p>
+                          <p className="text-sm text-gray-500">{job.date}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </section>
               <section id="techstack">

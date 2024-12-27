@@ -156,11 +156,18 @@
   margin-top: 38px;
   transform-origin: 0%;
 }
-
 .expCard {
   background-color: #1b1e20;
 }
 
 .expCardLight {
   background-color: #f8f9fa;
+}
+
+.workExpCard {
+  transition: transform 0.5s;
+}
+
+.workExpCard:hover {
+  transform: scale(1.02);
 }
