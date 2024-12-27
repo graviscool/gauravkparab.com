@@ -1,250 +1,190 @@
-import React, { ReactElement, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Briefcase,
-  GraduationCap,
-  Code,
-  Award,
-  Languages,
-  Terminal,
-  ChevronDown,
-  ChevronUp,
-  ExternalLink,
-} from "lucide-react";
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Briefcase, GraduationCap, Code, Award, ChevronDown, ChevronUp, Mail, Globe, Linkedin, Moon, Sun, Terminal } from 'lucide-react';
+import { Section } from './resume/Section';
+import { SkillBubble } from './resume/SkillBubble';
+import { ExperienceCard } from './resume/ExperienceCard';
+import { ProjectCard } from './resume/ProjectCard';
+import { SkillsVisualization } from './resume/SkillsVisualization';
 
-const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
-  const [expandedSection, setExpandedSection] = useState(null);
-  const [hoveredSkill, setHoveredSkill] = useState(null);
+const InteractiveResume = () => {
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [darkMode, setDarkMode] = useState(false);
 
-  const theme = darkMode ? "dark" : "light";
-  const bgClass = darkMode ? "bg-dark text-light" : "bg-light text-dark";
-  const cardBgClass = darkMode ? "bg-dark" : "bg-white";
-  const borderClass = darkMode ? "border-secondary" : "border-primary";
-  const textMutedClass = darkMode ? "text-light opacity-75" : "text-muted";
-  const headerBgClass = darkMode ? "bg-secondary" : "bg-primary";
+  const colors = {
+    background: darkMode ? 'bg-gray-900' : 'bg-gray-50',
+    cardBg: darkMode ? 'bg-gray-800' : 'bg-white',
+    cardHover: darkMode ? 'bg-gray-700' : 'bg-gray-100',
+    text: {
+      primary: darkMode ? 'text-gray-100' : 'text-gray-800',
+      secondary: darkMode ? 'text-gray-300' : 'text-gray-600',
+      tertiary: darkMode ? 'text-gray-400' : 'text-gray-500'
+    },
+    accent: {
+      primary: darkMode ? 'from-blue-400 to-teal-400' : 'from-blue-500 to-teal-500',
+      secondary: darkMode ? 'from-purple-400 to-pink-400' : 'from-purple-500 to-pink-500'
+    },
+    border: darkMode ? 'border-gray-700' : 'border-gray-200',
+    skill: {
+      bg: darkMode ? 'bg-gray-700' : 'bg-gray-200',
+      hoverBg: darkMode ? 'bg-gray-600' : 'bg-gray-300'
+    },
+    project: {
+      bg: darkMode ? 'bg-gray-800' : 'bg-gray-100',
+      hoverBg: darkMode ? 'bg-gray-700' : 'bg-white'
+    }
+  };
 
   const skills = {
-    languages: [
-      "Python",
-      "Java",
-      "JavaScript",
-      "TypeScript",
-      "C",
-      "HTML/CSS",
-      "Verilog",
-      "Bash",
-      "C++ (Basic)",
-      "R (Basic)",
-    ],
-    tools: ["Git", "Node.js", "Docker", "React", "Next.js", "MongoDB"],
-    nonTechnical: ["Tennis", "Photography", "Hindi", "Marathi", "Spanish"],
+    languages: ['Python', 'Java', 'JavaScript', 'TypeScript', 'C', 'HTML/CSS', 'Verilog', 'Bash', 'C++ (Basic)', 'R (Basic)'],
+    tools: ['Git', 'Node.js', 'Docker', 'React', 'Next.js', 'MongoDB'],
+    nonTechnical: ['Tennis', 'Photography', 'Hindi', 'Marathi', 'Spanish']
   };
 
   const experiences = [
     {
-      title: "Tactical Software Engineering Co-op",
-      company: "General Dynamics Electric Boat",
-      location: "New London, CT",
-      date: "January 2025 - May 2025",
-      details: ["Incoming Winter 2025"],
+      title: "Software Engineering Intern",
+      company: "Vercel",
+      location: "Remote",
+      date: "May 2023 - August 2023",
+      details: [
+        "Developed and maintained features for Next.js, improving developer experience and performance.",
+        "Collaborated with cross-functional teams to implement new functionalities and resolve issues.",
+        "Contributed to open-source projects and participated in code reviews."
+      ]
     },
     {
-      title: "Teaching Assistant",
-      company: "The Pennsylvania State University",
+      title: "Research Assistant",
+      company: "Penn State University",
       location: "University Park, PA",
-      date: "August 2022 – December 2023",
+      date: "September 2022 - Present",
       details: [
-        "Facilitated weekly recitation for ~200 students learning Python programming fundamentals",
-        "Led three weekly review sessions to help students understand new material",
-        "Conducted code reviews for 100+ Python assignments per week",
-      ],
-    },
-    {
-      title: "Software Intern",
-      company: "Special Order Systems",
-      location: "Sacramento, CA",
-      date: "July 2021 – December 2021",
-      details: [
-        "Developed API-based security system solutions for California state beaches, improving efficiency by 10%",
-        "Created Python scripts to automate weather data retrieval via APIs",
-      ],
-    },
+        "Assisted in developing machine learning models for natural language processing tasks.",
+        "Implemented data preprocessing pipelines and conducted experiments to improve model accuracy.",
+        "Presented research findings at departmental seminars and contributed to academic publications."
+      ]
+    }
   ];
 
   const projects = [
     {
-      title: "Dashboard",
-      tech: "React, Next.js",
-      date: "July 2024 – Present",
+      title: "AI-Powered Chess Tutor",
+      date: "January 2023 - Present",
+      tech: "Python, TensorFlow, React",
       details: [
-        "Designed a responsive dashboard to securely display over 200 sensitive punishment documents",
-        "Used Discord OAuth to lock sensitive data behind authentication",
-      ],
+        "Developed a machine learning model to analyze chess games and provide personalized feedback.",
+        "Created a web interface for users to upload games and receive analysis.",
+        "Implemented real-time game analysis using WebSockets."
+      ]
     },
     {
-      title: "JBOD System",
-      tech: "C",
-      date: "September 2023 – December 2023",
+      title: "Blockchain-based Voting System",
+      date: "September 2022 - December 2022",
+      tech: "Solidity, Ethereum, Web3.js, React",
       details: [
-        "Created a simulated multi-disk system with read and write capabilities",
-        "Implemented networking which enabled server communication with the system",
-      ],
-    },
-    {
-      title: "Monopoly Board Game",
-      tech: "Java",
-      date: "May 2022",
-      details: [
-        "Collaborated with 3 teammates to create a full-stack Monopoly project",
-        "Developed 40% of the codebase for the GUI-based game",
-      ],
-    },
+        "Designed and implemented a secure, transparent voting system using blockchain technology.",
+        "Developed smart contracts to manage voter registration, vote casting, and vote counting.",
+        "Created a user-friendly front-end interface for voters and election administrators."
+      ]
+    }
   ];
 
-  const Section = ({
-    title,
-    icon,
-    content,
-    id,
-  }: {
-    title: string;
-    icon: ReactElement;
-    content: ReactElement;
-    id: any;
-  }) => (
-    <motion.div
-      className={`card mb-4 ${cardBgClass} border ${borderClass} w-100`}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <motion.div
-        className={`card-header d-flex justify-content-between align-items-center ${headerBgClass} text-white cursor-pointer`}
-        onClick={() => setExpandedSection(expandedSection === id ? null : id)}
-        whileHover={{ scale: 1.01 }}
-        style={{ cursor: "pointer" }}
-      >
-        <div className="d-flex align-items-center gap-2">
-          {icon}
-          <h5 className="mb-0">{title}</h5>
-        </div>
-        {expandedSection === id ? (
-          <ChevronUp size={20} />
-        ) : (
-          <ChevronDown size={20} />
-        )}
-      </motion.div>
-
-      <AnimatePresence>
-        {expandedSection === id && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="card-body"
-          >
-            {content}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
-  );
-
   return (
-    <div className={`container-fluid p-0 ${bgClass}`}>
-      <div className="container-fluid px-4 py-5">
+    <div className={`${colors.background} min-h-screen transition-colors duration-300`}>
+      <div className="max-w-5xl mx-auto p-6">
         {/* Header */}
-        <motion.div
-          className="text-center mb-5"
+        <motion.div 
+          className="text-center mb-12 relative"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="display-4 fw-bold mb-3">Gaurav Parab</h1>
-          <div className="d-flex justify-content-center gap-4 flex-wrap">
-            <a
-              href="mailto:gkparab1@gmail.com"
-              className={`${
-                darkMode ? "text-light" : "text-primary"
-              } text-decoration-none`}
-            >
-              gkparab1@gmail.com
+          <h1 className={`text-5xl font-bold mb-4 bg-gradient-to-r ${colors.accent.secondary} bg-clip-text text-transparent`}>
+            Gaurav Parab
+          </h1>
+          <div className="flex justify-center space-x-6 mb-4">
+            <a href="mailto:gkparab1@gmail.com" 
+               className={`${colors.text.secondary} hover:text-blue-500 transition-colors flex items-center`}>
+              <Mail size={18} className="mr-2" /> gkparab1@gmail.com
             </a>
-            <a
-              href="https://gauravkparab.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${
-                darkMode ? "text-light" : "text-primary"
-              } text-decoration-none d-flex align-items-center`}
-            >
-              gauravkparab.com <ExternalLink size={16} className="ms-1" />
+            <a href="https://gauravkparab.com" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               className={`${colors.text.secondary} hover:text-blue-500 transition-colors flex items-center`}>
+              <Globe size={18} className="mr-2" /> gauravkparab.com
             </a>
-            <a
-              href="https://linkedin.com/in/gparab"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${
-                darkMode ? "text-light" : "text-primary"
-              } text-decoration-none d-flex align-items-center`}
-            >
-              LinkedIn <ExternalLink size={16} className="ms-1" />
+            <a href="https://linkedin.com/in/gparab" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               className={`${colors.text.secondary} hover:text-blue-500 transition-colors flex items-center`}>
+              <Linkedin size={18} className="mr-2" /> LinkedIn
             </a>
           </div>
+          <p className={`${colors.text.secondary} max-w-2xl mx-auto`}>
+            Passionate Computer Science student at Penn State University, specializing in software development and AI. 
+            Seeking opportunities to apply my skills in innovative tech projects.
+          </p>
+          <button 
+            onClick={() => setDarkMode(!darkMode)}
+            className="absolute top-0 right-0 p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300"
+            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
         </motion.div>
 
-        {/* Education */}
+        {/* Main Content */}
         <Section
           id="education"
           title="Education"
           icon={<GraduationCap size={24} />}
+          expandedSection={expandedSection}
+          setExpandedSection={setExpandedSection}
+          colors={colors}
           content={
-            <div>
-              <h3 className={`h5 fw-bold`}>The Pennsylvania State University</h3>
-              <p className={`${textMutedClass} mb-1`}>
-                Bachelor of Science (B.S.), Computer Science
-              </p>
-              <p className={`${textMutedClass} mb-1`}>
-                Minor in Cybersecurity | GPA: 3.66
-              </p>
-              <p className={`${textMutedClass} mb-3`}>July 2022 – May 2026</p>
-              <div>
-                <p className="fw-bold mb-1">Relevant Coursework:</p>
-                <p className={textMutedClass}>
-                  Data Structures and Algorithms, Computational Theory, Systems
-                  Programming, Computer Organization and Design, OOP with
-                  Web-Based Applications, Digital Design, Computing with Quantum
-                  Computers
-                </p>
+            <div className={colors.text.primary}>
+              <h3 className="font-semibold text-xl mb-2">The Pennsylvania State University</h3>
+              <p className={`${colors.text.secondary} text-lg`}>Bachelor of Science (B.S.), Computer Science</p>
+              <p className={`${colors.text.secondary} mb-2`}>Minor in Cybersecurity | GPA: 3.66</p>
+              <p className={`${colors.text.tertiary} mb-4`}>July 2022 – May 2026</p>
+              <div className="mt-4">
+                <p className="font-medium text-lg mb-2">Relevant Coursework:</p>
+                <ul className={`${colors.text.secondary} list-disc list-inside`}>
+                  <li>Data Structures and Algorithms</li>
+                  <li>Computational Theory</li>
+                  <li>Systems Programming</li>
+                  <li>Computer Organization and Design</li>
+                  <li>OOP with Web-Based Applications</li>
+                  <li>Digital Design</li>
+                  <li>Computing with Quantum Computers</li>
+                </ul>
               </div>
             </div>
           }
         />
 
-        {/* Skills */}
         <Section
           id="skills"
           title="Technical Skills"
           icon={<Code size={24} />}
+          expandedSection={expandedSection}
+          setExpandedSection={setExpandedSection}
+          colors={colors}
           content={
-            <div className="row g-4">
+            <div className="space-y-6">
+              <SkillsVisualization skills={skills} colors={colors} />
               {Object.entries(skills).map(([category, skillList]) => (
-                <div key={category} className="col-12">
-                  <h3 className="h6 fw-bold text-capitalize mb-3">
-                    {category}:
-                  </h3>
-                  <div className="d-flex flex-wrap gap-2">
+                <div key={category}>
+                  <h3 className={`font-semibold mb-3 capitalize text-lg ${colors.text.primary}`}>{category}:</h3>
+                  <div className="flex flex-wrap gap-2">
                     {skillList.map((skill) => (
-                      <motion.span
+                      <SkillBubble
                         key={skill}
-                        className={`badge ${
-                          darkMode ? "bg-secondary" : "bg-primary"
-                        } p-2`}
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        {skill}
-                      </motion.span>
+                        skill={skill}
+                        colors={colors}
+                        setHoveredSkill={setHoveredSkill}
+                      />
                     ))}
                   </div>
                 </div>
@@ -253,105 +193,59 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
           }
         />
 
-        {/* Experience */}
         <Section
           id="experience"
           title="Professional Experience"
           icon={<Briefcase size={24} />}
+          expandedSection={expandedSection}
+          setExpandedSection={setExpandedSection}
+          colors={colors}
           content={
-            <div className="d-flex flex-column gap-4">
+            <div className="space-y-6">
               {experiences.map((exp, index) => (
-                <motion.div
-                  key={index}
-                  className={`border-start border-4 ${borderClass} ps-4`}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <h3 className="h5 fw-bold mb-1">{exp.title}</h3>
-                  <p className={`${textMutedClass} mb-1`}>
-                    {exp.company} - {exp.location}
-                  </p>
-                  <p className={`${textMutedClass} small mb-2`}>{exp.date}</p>
-                  <ul className="list-unstyled">
-                    {exp.details.map((detail, i) => (
-                      <li key={i} className="mb-1">
-                        • {detail}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
+                <ExperienceCard key={index} experience={exp} colors={colors} index={index} />
               ))}
             </div>
           }
         />
 
-        {/* Projects */}
         <Section
           id="projects"
           title="Projects"
           icon={<Terminal size={24} />}
+          expandedSection={expandedSection}
+          setExpandedSection={setExpandedSection}
+          colors={colors}
           content={
-            <div className="row g-4">
+            <div className="space-y-6">
               {projects.map((project, index) => (
-                <motion.div
-                  key={index}
-                  className="col-12"
-                  whileHover={{ scale: 1.01 }}
-                >
-                  <div
-                    className={`card h-100 ${cardBgClass} border ${borderClass}`}
-                  >
-                    <div className="card-body">
-                      <div className="d-flex justify-content-between align-items-start mb-2">
-                        <h3 className="h5 fw-bold mb-0">{project.title}</h3>
-                        <span className={`${textMutedClass} small`}>
-                          {project.date}
-                        </span>
-                      </div>
-                      <p
-                        className={`${
-                          darkMode ? "text-light" : "text-primary"
-                        } small mb-2`}
-                      >
-                        {project.tech}
-                      </p>
-                      <ul className="list-unstyled mb-0">
-                        {project.details.map((detail, i) => (
-                          <li key={i} className="mb-1">
-                            • {detail}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </motion.div>
+                <ProjectCard key={index} project={project} colors={colors} />
               ))}
             </div>
           }
         />
 
-        {/* Extracurricular */}
         <Section
           id="extracurricular"
           title="Extracurricular Activities"
           icon={<Award size={24} />}
+          expandedSection={expandedSection}
+          setExpandedSection={setExpandedSection}
+          colors={colors}
           content={
-            <div className="row g-4">
-              <div className="col-12">
-                <h3 className="h5 fw-bold">Nittany AI Student Society</h3>
-                <p className={textMutedClass}>
-                  Actively engaged in workshops and bootcamps, collaborating
-                  with fellow participants to further understanding of machine
-                  learning
+            <div className="space-y-6">
+              <div>
+                <h3 className={`font-semibold text-lg mb-2 ${colors.text.primary}`}>Nittany AI Student Society</h3>
+                <p className={colors.text.secondary}>
+                  Actively engaged in workshops and bootcamps, collaborating with fellow participants 
+                  to further understanding of machine learning and artificial intelligence applications.
                 </p>
               </div>
-              <div className="col-12">
-                <h3 className="h5 fw-bold">Club Tennis</h3>
-                <p className={textMutedClass}>
-                  Attended weekly tennis practices, interacting with club
-                  members to refine tennis skills and contribute to a
-                  collaborative team environment
+              <div>
+                <h3 className={`font-semibold text-lg mb-2 ${colors.text.primary}`}>Club Tennis</h3>
+                <p className={colors.text.secondary}>
+                  Attended weekly tennis practices, interacting with club members to refine tennis 
+                  skills and contribute to a collaborative team environment. Participated in inter-college tournaments.
                 </p>
               </div>
             </div>
@@ -363,3 +257,4 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
 };
 
 export default InteractiveResume;
+
