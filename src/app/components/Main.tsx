@@ -318,14 +318,14 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                 </div> */}
               </section>
               {/* <a href="/#"> */}
-              <motion.div
+              {/* <motion.div
                 className={styles.topLang}
                 initial={{ translateX: "-100%" }}
                 whileInView={{ translateX: 0 }}
                 viewport={{ once: true }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <picture>
+                {/*<picture>
                   <source
                     srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=300px&langs_count=7&disable_animations=true"
                     media="(max-width: 430px)"
@@ -349,7 +349,7 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                     alt="Top Languages Used"
                   />
                 </picture>
-              </motion.div>
+              </motion.div> */}
               {/* </a> */}
               <section id="prevexp">
                 <div className="d-flex">
