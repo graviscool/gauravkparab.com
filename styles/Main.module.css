@@ -157,10 +157,10 @@
   transform-origin: 0%;
 }
 
-.expCard {
-  background-color: #1b1e20;
+.workExpCard {
+  transition: transform 0.5s;
 }
 
-.expCardLight {
-  background-color: #f8f9fa;
+.workExpCard:hover {
+  transform: scale(1.02);
 }

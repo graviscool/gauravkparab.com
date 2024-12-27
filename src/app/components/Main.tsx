@@ -364,47 +364,55 @@ export default function Main({ darkMode }: { darkMode: boolean }) {
                     top
                   </a>
                 </div>
-                <div className="px-3">
-                  <Row>
-                    <Col xs={12} md={6}>
-                      <Card
-                        text={`${darkMode ? "light" : "dark"}`}
-                        border="primary"
-                        className={`mb-3 ${
-                          darkMode ? styles.expCard : styles.expCardLight
+                <div
+                  className={`${
+                    darkMode ? "text-white" : "bg-white text-gray-900"
+                  } mb-4 mx-3`}
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {[
+                      {
+                        company: "Pennsylvania State University",
+                        title: "Teaching Assistant",
+                        description:
+                          "I worked as a Teaching Assistant for an entry level Python course at Penn State.",
+                        date: "August 2022 - December 2023",
+                      },
+                      {
+                        company: "Special Order Systems",
+                        title: "Software Intern",
+                        description:
+                          "My first project based software internship, in which I worked with Python and API interactions.",
+                        date: "July 2021 - December 2021",
+                      },
+                    ].map((job, index) => (
+                      <div
+                        key={index}
+                        className={`${
+                          darkMode ? "bg-gray-800" : "bg-white"
+                        } rounded-lg shadow-lg overflow-hidden ${
+                          styles.workExpCard
                         }`}
                       >
-                        <Card.Header>Pennsylvania State University</Card.Header>
-                        <Card.Body>
-                          <Card.Title>Teaching Assistant</Card.Title>
-                          <Card.Text>
-                            I worked as a Teaching Assistant for an entry level
-                            Python course at Penn State.
-                          </Card.Text>
-                          <Card.Footer>August 2022 - December 2023</Card.Footer>
-                        </Card.Body>
-                      </Card>
-                    </Col>
-                    <Col xs={12} md={6}>
-                      <Card
-                        text={`${darkMode ? "light" : "dark"}`}
-                        border="primary"
-                        className={`mb-2 ${
-                          darkMode ? styles.expCard : styles.expCardLight
-                        }`}
-                      >
-                        <Card.Header>Special Order Systems</Card.Header>
-                        <Card.Body>
-                          <Card.Title>Software Intern</Card.Title>
-                          <Card.Text>
-                            My first project based sofware internship, in which
-                            I worked with Python and API interactions.
-                          </Card.Text>
-                          <Card.Footer>July 2021 - December 2021</Card.Footer>
-                        </Card.Body>
-                      </Card>
-                    </Col>
-                  </Row>
+                        <div className="p-6">
+                          <h3 className="text-xl font-semibold mb-2">
+                            {job.company}
+                          </h3>
+                          <h4 className="text-lg font-medium mb-2">
+                            {job.title}
+                          </h4>
+                          <p
+                            className={`mb-4 ${
+                              darkMode ? "text-gray-300" : "text-gray-600"
+                            }`}
+                          >
+                            {job.description}
+                          </p>
+                          <p className="text-sm text-gray-500">{job.date}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </section>
               <section id="techstack">
