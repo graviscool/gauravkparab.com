@@ -56,11 +56,7 @@ export default function ContactNavbar() {
                   target="_blank"
                   rel="noreferrer noopener"
                 >
-                  <Dropdown.Item
-                    href="/documents/Gaurav_Parab_resume.pdf"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
+                  <Dropdown.Item href="/documents/Gaurav_Parab_resume.pdf">
                     View PDF Resume
                   </Dropdown.Item>
                   <Dropdown.Item

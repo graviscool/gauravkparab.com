@@ -1,9 +1,7 @@
 import { Card, CardGroup, Col, Row } from "react-bootstrap";
 import styles from "@/styles/TechStack.module.css";
-import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 
-export default function TechStack({ darkMode }: { darkMode: boolean }) {
+export default function TechStack({ darkMode }: Readonly<{ darkMode: boolean }>) {
   return (
     <div className="px-3 pb-3">
       {/* <Row className="text-center"> */}
@@ -133,7 +131,7 @@ export default function TechStack({ darkMode }: { darkMode: boolean }) {
               darkMode ? styles.bgCardDark : "bg-info"
             }`}
             text="light"
-            border ="success"
+            border="success"
           >
             <Card.Img
               variant="top"
