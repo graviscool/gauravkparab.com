@@ -55,6 +55,7 @@ export default function ResumeNavbar({
             <Offcanvas.Body>
               <Nav className="me-auto">
                 <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/contact">Contact</Nav.Link>
               </Nav>
               <SplitButton
                 title="View PDF Resume"

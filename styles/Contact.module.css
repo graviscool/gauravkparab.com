@@ -1,87 +1,21 @@
-/* Styling for the main paragraph */
-.contactText {
-  margin-top: 1rem; /* Equivalent to mt-3 */
-  margin-bottom: 0.5rem; /* Equivalent to mb-2 */
-  font-size: 1rem; /* Equivalent to fs-6 */
-  line-height: 1.5;
-  opacity: 0;
-  font-family: Arial, sans-serif; /* A clean, professional font */
-  animation: contactFadeIn 4s ease-in-out 1s forwards;
+.linkStyle {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.linkStyle:hover {
+  text-decoration: underline;
+}
+
+.contactCard {
+  animation: contactFadeIn 3s ease-in-out forwards;
 }
 
 @keyframes contactFadeIn {
   from {
-    opacity: 0;
+    opacity: 0.2;
   }
   to {
     opacity: 1;
-  }
-}
-
-/* Styling for the email link */
-.emailLink {
-  /* color: #dc3545; Bootstrap's danger color */
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.emailLink:hover {
-  text-decoration: underline;
-  /* color: #a71d2a; Darker red on hover */
-}
-
-/* Styling for the LinkedIn link */
-.linkedinLink {
-  /* color: #0d6efd; Bootstrap's primary color */
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.linkedinLink:hover {
-  text-decoration: underline;
-  color: #0a58ca; /* Darker blue on hover */
-}
-
-.connectText {
-  font-size: 6rem;
-  animation: connectFadeIn 4s ease-in-out forwards;
-}
-
-@keyframes connectFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@media (max-width: 550px) {
-  .connectText {
-    font-size: 3rem;
-  }
-}
-
-.formField {
-  background-color: #d3d3d3;
-}
-
-.contactForm {
-  /* opacity: 0; */
-  visibility: hidden;
-  /* left: -100; */
-  /* position: absolute; */
-  padding-top: 40%;
-  animation: formSlideIn 1s ease-in-out 2s forwards;
-}
-
-@keyframes formSlideIn {
-  from {
-    visibility: visible;
-    transform: translateX(110%);
-  }
-  to {
-    visibility: visible;
-    transform: translateX(0);
   }
 }

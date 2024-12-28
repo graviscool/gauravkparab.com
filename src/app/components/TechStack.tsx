@@ -1,7 +1,9 @@
-import { Card, CardGroup, Col, Row } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import styles from "@/styles/TechStack.module.css";
 
-export default function TechStack({ darkMode }: Readonly<{ darkMode: boolean }>) {
+export default function TechStack({
+  darkMode,
+}: Readonly<{ darkMode: boolean }>) {
   return (
     <div className="px-3 pb-3">
       {/* <Row className="text-center"> */}

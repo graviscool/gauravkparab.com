@@ -1,8 +1,12 @@
-import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Offcanvas from "react-bootstrap/Offcanvas";
-import { Dropdown, Image, SplitButton } from "react-bootstrap";
+import {
+  Container,
+  Navbar,
+  Nav,
+  Offcanvas,
+  Dropdown,
+  Image,
+  SplitButton,
+} from "react-bootstrap";
 import { useEffect, useState } from "react";
 
 export default function ContactNavbar() {
@@ -53,8 +57,6 @@ export default function ContactNavbar() {
                   title="View Resume"
                   variant="outline-success"
                   href="/resume"
-                  target="_blank"
-                  rel="noreferrer noopener"
                 >
                   <Dropdown.Item href="/documents/Gaurav_Parab_resume.pdf">
                     View PDF Resume

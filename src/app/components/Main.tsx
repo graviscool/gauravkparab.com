@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-import { Row, Col, Toast, ToastContainer, Button } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import styles from "@/styles/Main.module.css";
 import { motion, useScroll } from "framer-motion";
 import TypeIt from "typeit-react";
@@ -9,7 +9,7 @@ import { ParallaxBanner } from "react-scroll-parallax";
 import Head from "next/head";
 import TechStack from "./TechStack";
 
-export default function Main({ darkMode }: { darkMode: boolean }) {
+export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
   const [typeItInstance, setTypeItInstance] = useState<any>(null);
   const [typeFreezeText, setTypeFreezeText] = useState("Pause Animation");
   const freezeOrUnfreezeText = () => {

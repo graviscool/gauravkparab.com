@@ -21,7 +21,6 @@ export const SkillsVisualization: React.FC<SkillsVisualizationProps> = ({
   skills,
   colors,
 }) => {
-  const allSkills = Object.values(skills).flat();
   const maxSkills = Math.max(...Object.values(skills).map((arr) => arr.length));
 
   const gradients = [

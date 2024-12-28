@@ -1,7 +1,7 @@
 import styles from "@/styles/Footer.module.css";
-import { Button, Col, Container, Nav, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 
-export default function Footer({ darkMode }: { darkMode: boolean }) {
+export default function Footer({ darkMode }: Readonly<{ darkMode: boolean }>) {
   return (
     <footer
       className={`footer ${
