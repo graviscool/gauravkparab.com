@@ -236,7 +236,7 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
                   ].map((course, index) => (
                     <motion.div
                       key={course}
-                      className={`${colors.skill.bg} p-2 rounded-md cursor-pointer transition-colors duration-200 hover:${colors.skill.hoverBg}`}
+                      className={`${colors.skill.bg} p-2 rounded-md transition-colors duration-200 hover:${colors.skill.hoverBg}`}
                       whileHover={{ scale: 1.02 }}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
