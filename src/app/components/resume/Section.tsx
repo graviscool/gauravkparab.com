@@ -34,7 +34,7 @@ export const Section: React.FC<SectionProps> = ({
     transition={{ duration: 0.5 }}
   >
     <motion.div
-      className={`flex items-center justify-between p-4 cursor-pointer bg-gradient-to-r ${colors.accent.primary}`}
+      className={`flex items-center justify-between p-3 cursor-pointer bg-gradient-to-r ${colors.accent.primary}`}
       onClick={() => setExpandedSection(expandedSection === id ? null : id)}
       whileHover={{ scale: 1.01 }}
     >

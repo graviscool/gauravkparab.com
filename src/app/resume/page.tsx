@@ -16,8 +16,8 @@ export default function Resume() {
 
   return (
     <>
+      <title>Resume - Gaurav Parab</title>
       <ResumeNavbar setDark={setIsDark} />
-      {/* <InteractiveResume darkMode={false} /> */}
       <InteractiveResume darkMode={isDark} />
     </>
   );
