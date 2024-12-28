@@ -38,7 +38,7 @@ export default function Home() {
       </noscript>
       <NavigationBar dark={dark} setDark={setGlobalDarkMode} />
       <Main darkMode={dark} />
-      <Footer darkMode={dark} />
+      <Footer />
     </>
   );
 }
