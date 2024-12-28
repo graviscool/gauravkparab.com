@@ -69,9 +69,7 @@ export default function Footer() {
             isDark ? "border-t border-gray-700" : "border-t border-gray-300"
           }`}
         >
-          <p>
-            &copy; {new Date().getFullYear()} Gaurav Parab. All rights reserved.
-          </p>
+          <p>&copy; {new Date().getFullYear()} Gaurav Parab</p>
         </div>
       </div>
     </footer>
