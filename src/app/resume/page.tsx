@@ -2,6 +2,7 @@
 import ResumeNavbar from "@/src/app/components/ResumeNavbar";
 import { useEffect, useState } from "react";
 import InteractiveResume from "../components/InteractiveResume";
+import Footer from "../components/Footer";
 
 export default function Resume() {
   const [isDark, setIsDark] = useState(true);
@@ -18,6 +19,7 @@ export default function Resume() {
       <title>Resume - Gaurav Parab</title>
       <ResumeNavbar setDark={setIsDark} />
       <InteractiveResume darkMode={isDark} />
+      <Footer />
     </>
   );
 }

@@ -10,6 +10,7 @@ import ContactNavbar from "../components/ContactNavbar";
 import emailjs from "@emailjs/browser";
 import styles from "@/styles/Contact.module.css";
 import { CardImg } from "react-bootstrap";
+import Footer from "../components/Footer";
 
 export default function Contact() {
   const [isDark, setIsDark] = useState(true);
@@ -198,7 +199,7 @@ export default function Contact() {
             </Card>
           </div>
         </div>
-        <div className="container">
+        <div className="container pb-3">
           <Card
             className={`${
               isDark ? "bg-slate-800" : "bg-white"
@@ -236,6 +237,7 @@ export default function Contact() {
           </Card>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

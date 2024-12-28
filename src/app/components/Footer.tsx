@@ -1,53 +1,79 @@
-import styles from "@/styles/Footer.module.css";
-import { Col, Container, Row } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { ArrowUp } from "lucide-react";
 
-export default function Footer({ darkMode }: Readonly<{ darkMode: boolean }>) {
+export default function Footer() {
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedMode = localStorage.getItem("darkMode");
+      setIsDark(savedMode ? JSON.parse(savedMode) : true);
+    }
+  }, []);
+
   return (
     <footer
-      className={`footer ${
-        darkMode ? `${styles.bgDarkFooter} text-light` : "bg-dark text-light"
-      } mt-auto pt-0`}
+      className={`mt-auto py-6 transition-colors duration-200 ${
+        isDark ? "bg-gray-900 text-gray-300" : "bg-gray-100 text-gray-700"
+      }`}
     >
-      <Container fluid>
-        <Row>
-          {/* <Col md={4}>
-            <Nav> */}
-          {/* <Nav.Link href="/blurb" className="text-light">
-                Blurb
-              </Nav.Link> */}
-          {/* <Nav.Link href="/contact" className="text-light">
-                Contact
-              </Nav.Link>
-              <Nav.Link
-                href="/documents/Gaurav_Parab_resume.pdf"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="text-light"
-              >
-                Resume
-              </Nav.Link>
-            </Nav>
-          </Col> */}
-          <Col>
-            {/* <Button
-              variant="outline-primary"
-              className="mr-1"
-              style={{ justifyContent: "right" }}
-              onClick={handleWebsiteInfoButtonClick}
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-1 md:mb-0">
+            <p
+              className={`text-lg font-semibold transition-colors ${
+                isDark ? "hover:text-blue-400" : "hover:text-blue-600"
+              }`}
             >
-              Website Info
-            </Button> */}
-            <div className="text-end mb-0 mt-0">
-              <a href="#top" className={`${styles.topLink} link-info`}>
-                top
-              </a>
-              <p>&copy; {new Date().getFullYear()} Gaurav Parab</p>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+              Gaurav Parab
+            </p>
+          </div>
+          <nav className="mb-1 md:mb-0">
+            <ul className="flex space-x-4">
+              <li>
+                <Link
+                  href="/contact"
+                  className={`transition-colors ${
+                    isDark ? "hover:text-blue-400" : "hover:text-blue-600"
+                  }`}
+                >
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/resume"
+                  className={`transition-colors ${
+                    isDark ? "hover:text-blue-400" : "hover:text-blue-600"
+                  }`}
+                >
+                  Resume
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          <div className="flex items-center">
+            <a
+              href="#top"
+              className={`flex items-center text-sm transition-colors ${
+                isDark ? "hover:text-blue-400" : "hover:text-blue-600"
+              }`}
+            >
+              Back to Top <ArrowUp size={16} className="ml-1" />
+            </a>
+          </div>
+        </div>
+        <div
+          className={`mt-6 pt-6 text-center text-sm ${
+            isDark ? "border-t border-gray-700" : "border-t border-gray-300"
+          }`}
+        >
+          <p>
+            &copy; {new Date().getFullYear()} Gaurav Parab. All rights reserved.
+          </p>
+        </div>
+      </div>
     </footer>
   );
 }
-
-const handleWebsiteInfoButtonClick = () => {};

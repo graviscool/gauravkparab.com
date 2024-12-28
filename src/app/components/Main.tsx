@@ -8,6 +8,7 @@ import TypeIt from "typeit-react";
 import { ParallaxBanner } from "react-scroll-parallax";
 import Head from "next/head";
 import TechStack from "./TechStack";
+import { ArrowUp } from "lucide-react";
 
 export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
   const [typeItInstance, setTypeItInstance] = useState<any>(null);
@@ -136,6 +137,7 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                     style={{ marginTop: "4.5rem" }}
                   >
                     top
+                    <ArrowUp size={16} className="ml-1" />
                   </a>
                 </div>
                 <div className="px-3">
@@ -362,6 +364,7 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                   </h2>
                   <a href="#top" className={`mt-4 ${styles.topLink}`}>
                     top
+                    <ArrowUp size={16} className="ml-1" />
                   </a>
                 </div>
                 <div
@@ -426,6 +429,7 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                   </h2>
                   <a href="#top" className={`mt-4 ${styles.topLink}`}>
                     top
+                    <ArrowUp size={16} className="ml-1" />
                   </a>
                 </div>
                 <TechStack darkMode={darkMode} />
