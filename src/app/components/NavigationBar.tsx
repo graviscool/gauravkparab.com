@@ -5,6 +5,39 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { Dropdown, Image, SplitButton } from "react-bootstrap";
 import { FormControlLabel, Switch } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
+import Link from "next/link";
+
+const NextNavLink = ({
+  href,
+  children,
+  ...props
+}: {
+  href: string;
+  children: React.ReactNode;
+  [key: string]: any;
+}) => {
+  return (
+    <Link href={href} passHref legacyBehavior>
+      <Nav.Link {...props}>{children}</Nav.Link>
+    </Link>
+  );
+};
+
+const NextBrandLink = ({
+  href,
+  children,
+  ...props
+}: {
+  href: string;
+  children: React.ReactNode;
+  [key: string]: any;
+}) => {
+  return (
+    <Link href={href} passHref legacyBehavior>
+      <Navbar.Brand {...props}>{children}</Navbar.Brand>
+    </Link>
+  );
+};
 
 export default function NavigationBar({
   dark,
@@ -26,9 +59,9 @@ export default function NavigationBar({
         collapseOnSelect
       >
         <Container fluid>
-          <Navbar.Brand className="ms-2" href="/">
+          <NextBrandLink className="ms-2" href="/">
             Gaurav Parab
-          </Navbar.Brand>
+          </NextBrandLink>
           <Navbar.Toggle aria-controls={"offcanvasNavbar-expand-lg"} />
           <Navbar.Offcanvas
             id="offcanvasNavbar-expand-lg"
@@ -49,25 +82,23 @@ export default function NavigationBar({
                 <Nav.Link href="#prevexp">Experience</Nav.Link>
               </Nav>
               <Nav className="me-3">
-                <SplitButton
-                  title="View Resume"
-                  variant="outline-success"
-                  href="/resume"
-                >
-                  <Dropdown.Item
-                    href="/documents/Gaurav_Parab_resume.pdf"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    View PDF Resume
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    href="/documents/Gaurav_Parab_resume.pdf"
-                    download
-                  >
-                    Download PDF Resume
-                  </Dropdown.Item>
-                </SplitButton>
+                <Link href="/resume" passHref legacyBehavior>
+                  <SplitButton title="View Resume" variant="outline-success">
+                    <Dropdown.Item
+                      href="/documents/Gaurav_Parab_resume.pdf"
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      View PDF Resume
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      href="/documents/Gaurav_Parab_resume.pdf"
+                      download
+                    >
+                      Download PDF Resume
+                    </Dropdown.Item>
+                  </SplitButton>
+                </Link>
               </Nav>
               <Navbar.Brand
                 href="https://www.linkedin.com/in/gparab"
@@ -100,7 +131,7 @@ export default function NavigationBar({
                 />
               </Navbar.Brand>
               <Nav className="ms-2">
-                <Nav.Link href="/contact">Contact Me</Nav.Link>
+                <NextNavLink href="/contact">Contact Me</NextNavLink>
               </Nav>
               <FormControlLabel
                 value="Dark Mode Button"

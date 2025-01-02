@@ -8,6 +8,39 @@ import {
   SplitButton,
 } from "react-bootstrap";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+
+const NextNavLink = ({
+  href,
+  children,
+  ...props
+}: {
+  href: string;
+  children: React.ReactNode;
+  [key: string]: any;
+}) => {
+  return (
+    <Link href={href} passHref legacyBehavior>
+      <Nav.Link {...props}>{children}</Nav.Link>
+    </Link>
+  );
+};
+
+const NextBrandLink = ({
+  href,
+  children,
+  ...props
+}: {
+  href: string;
+  children: React.ReactNode;
+  [key: string]: any;
+}) => {
+  return (
+    <Link href={href} passHref legacyBehavior>
+      <Navbar.Brand {...props}>{children}</Navbar.Brand>
+    </Link>
+  );
+};
 
 export default function ContactNavbar() {
   const [isDark, setIsDark] = useState(true);
@@ -29,9 +62,9 @@ export default function ContactNavbar() {
         collapseOnSelect
       >
         <Container fluid>
-          <Navbar.Brand className="ms-2" href="/">
+          <NextBrandLink className="ms-2" href="/">
             Gaurav Parab
-          </Navbar.Brand>
+          </NextBrandLink>
           <Navbar.Toggle aria-controls={"offcanvasNavbar-expand-lg"} />
           <Navbar.Offcanvas
             id="offcanvasNavbar-expand-md"
@@ -47,27 +80,28 @@ export default function ContactNavbar() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="me-auto">
-                <Nav.Link href="/">Home</Nav.Link>
-                {/* <Nav.Link href="/blurb">Blurb</Nav.Link> */}
-                <Nav.Link href="/#projects">Projects</Nav.Link>
-                <Nav.Link href="/#prevexp">Previous Experience</Nav.Link>
+                <NextNavLink href="/">Home</NextNavLink>
+                <NextNavLink href="/#projects">Projects</NextNavLink>
+                <NextNavLink href="/#prevexp">Previous Experience</NextNavLink>
               </Nav>
               <Nav className="me-3">
-                <SplitButton
-                  title="View Resume"
-                  variant="outline-success"
-                  href="/resume"
-                >
-                  <Dropdown.Item href="/documents/Gaurav_Parab_resume.pdf">
-                    View PDF Resume
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    href="/documents/Gaurav_Parab_resume.pdf"
-                    download
+                <Link href="/resume" passHref legacyBehavior>
+                  <SplitButton
+                    title="View Resume"
+                    variant="outline-success"
+                    href="/resume"
                   >
-                    Download Resume
-                  </Dropdown.Item>
-                </SplitButton>
+                    <Dropdown.Item href="/documents/Gaurav_Parab_resume.pdf">
+                      View PDF Resume
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      href="/documents/Gaurav_Parab_resume.pdf"
+                      download
+                    >
+                      Download Resume
+                    </Dropdown.Item>
+                  </SplitButton>
+                </Link>
               </Nav>
               <Navbar.Brand
                 href="/linkedin"

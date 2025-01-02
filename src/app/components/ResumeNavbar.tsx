@@ -5,6 +5,39 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { Dropdown, SplitButton } from "react-bootstrap";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { FormControlLabel, Switch } from "@mui/material";
+import Link from "next/link";
+
+const NextNavLink = ({
+  href,
+  children,
+  ...props
+}: {
+  href: string;
+  children: React.ReactNode;
+  [key: string]: any;
+}) => {
+  return (
+    <Link href={href} passHref legacyBehavior>
+      <Nav.Link {...props}>{children}</Nav.Link>
+    </Link>
+  );
+};
+
+const NextBrandLink = ({
+  href,
+  children,
+  ...props
+}: {
+  href: string;
+  children: React.ReactNode;
+  [key: string]: any;
+}) => {
+  return (
+    <Link href={href} passHref legacyBehavior>
+      <Navbar.Brand {...props}>{children}</Navbar.Brand>
+    </Link>
+  );
+};
 
 export default function ResumeNavbar({
   setDark,
@@ -36,9 +69,9 @@ export default function ResumeNavbar({
         collapseOnSelect
       >
         <Container fluid>
-          <Navbar.Brand className="ms-2" href="/">
+          <NextBrandLink className="ms-2" href="/">
             Gaurav Parab
-          </Navbar.Brand>
+          </NextBrandLink>
           <Navbar.Toggle aria-controls={"offcanvasNavbar-expand-lg"} />
           <Navbar.Offcanvas
             id="offcanvasNavbar-expand-lg"
@@ -54,8 +87,8 @@ export default function ResumeNavbar({
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="me-auto">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/contact">Contact</Nav.Link>
+                <NextNavLink href="/">Home</NextNavLink>
+                <NextNavLink href="/contact">Contact</NextNavLink>
               </Nav>
               <SplitButton
                 title="View PDF Resume"
