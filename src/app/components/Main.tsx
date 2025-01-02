@@ -154,10 +154,9 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                         <Card.Body>
                           <Card.Title>Dashboard</Card.Title>
                           <Card.Text>
-                            Created a dashboard for uses to view sensitive
-                            database data. It used Discord OAuth to
-                            authenticated users and check if they had the
-                            permissions to access the data.
+                            Created a dashboard for users to view sensitive
+                            database data. Implemented Discord OAuth for
+                            authentication.
                           </Card.Text>
                           <Card.Footer className="text-success">
                             Technologies: Next.js, React
@@ -178,11 +177,8 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                         <Card.Body>
                           <Card.Title>Monopoly</Card.Title>
                           <Card.Text>
-                            Built the game of Monopoly in Java using GUI, with
-                            two other teammates. I wrote 30% of the code and
-                            assisted with debugging, writing documentation, and
-                            submitting reports. It was a great experience making
-                            my first full-stack project.
+                            Built a GUI-based game of Monopoly in Java. First
+                            full-stack project experience.
                           </Card.Text>
                           <Card.Footer className="d-flex justify-content-between align-items-center">
                             <span className="text-success">
@@ -213,9 +209,9 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                         <Card.Body>
                           <Card.Title>Discord Bot</Card.Title>
                           <Card.Text>
-                            Built a bot that allowed moderators to perform tasks
-                            efficiently and allowed the server management to
-                            automate tasks such as role assignment and messages.
+                            Built a bot to streamline server management and
+                            tasks by automating moderator tasks and role
+                            assignments.
                           </Card.Text>
                           <Card.Footer className="d-flex justify-content-between align-items-center">
                             <span className="text-success">
