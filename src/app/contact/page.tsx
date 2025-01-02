@@ -11,6 +11,7 @@ import emailjs from "@emailjs/browser";
 import styles from "@/styles/Contact.module.css";
 import { CardImg } from "react-bootstrap";
 import Footer from "../components/Footer";
+import Head from "next/head";
 
 export default function Contact() {
   const [isDark, setIsDark] = useState(true);
@@ -55,6 +56,9 @@ export default function Contact() {
 
   return (
     <>
+      <Head>
+        <link rel="preload" href="/images/profPhoto.png" as="image" />
+      </Head>
       <title>Contact - Gaurav Parab</title>
       <ContactNavbar />
       <div
