@@ -102,13 +102,13 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
       tech: "React, Next.js, OAuth",
       details: [
         "Designed a secure dashboard for managing sensitive punishment documents with Discord OAuth integration.",
-        "Focused on enhancing user experience and security for administrators.",
+        "Focused on enhancing user experience for server administrators.",
       ],
     },
     {
       title: "JBOD System in C",
       date: "September 2023 - December 2023",
-      tech: "C, Networking",
+      tech: "C",
       details: [
         "Created a simulated multi-disk system with read and write capabilities",
         "Implemented networking features to enable server communication.",
