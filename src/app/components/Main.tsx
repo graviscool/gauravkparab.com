@@ -370,14 +370,14 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                         company: "Pennsylvania State University",
                         title: "Teaching Assistant",
                         description:
-                          "I worked as a Teaching Assistant for an entry level Python course at Penn State.",
+                          "TA for an entry level Python course at Penn State.",
                         date: "August 2022 - December 2023",
                       },
                       {
                         company: "Special Order Systems",
                         title: "Software Intern",
                         description:
-                          "My first project based software internship, in which I worked with Python and API interactions.",
+                          "My first project based software internship, in which I worked with Python and APIs.",
                         date: "July 2021 - December 2021",
                       },
                     ].map((job, index) => (
