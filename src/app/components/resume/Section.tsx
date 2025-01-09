@@ -5,7 +5,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 interface SectionProps {
   id: string;
   title: string;
-  icon: React.ReactElement<React.SVGProps<SVGSVGElement>>;
+  icon: React.ReactElement;
   content: React.ReactNode;
   expandedSection: string | null;
   setExpandedSection: (section: string | null) => void;
