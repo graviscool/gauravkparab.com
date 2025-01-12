@@ -127,14 +127,6 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                   >
                     Projects
                   </h2>
-                  <a
-                    href="#top"
-                    className={`${styles.topLink}`}
-                    style={{ marginTop: "4.5rem" }}
-                  >
-                    top
-                    <ArrowUp size={16} className="ml-1" />
-                  </a>
                 </div>
                 <div className="px-3">
                   <Row md={3} className="g-3">
@@ -354,10 +346,6 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                   >
                     Professional Experience
                   </h2>
-                  <a href="#top" className={`mt-4 ${styles.topLink}`}>
-                    top
-                    <ArrowUp size={16} className="ml-1" />
-                  </a>
                 </div>
                 <div
                   className={`${
@@ -367,7 +355,7 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {[
                       {
-                        company: "Pennsylvania State University",
+                        company: "The Pennsylvania State University",
                         title: "Teaching Assistant",
                         description:
                           "TA for an entry level Python course at Penn State.",
@@ -419,10 +407,6 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                   >
                     Dev Tools/Tech Stack
                   </h2>
-                  <a href="#top" className={`mt-4 ${styles.topLink}`}>
-                    top
-                    <ArrowUp size={16} className="ml-1" />
-                  </a>
                 </div>
                 <TechStack darkMode={darkMode} />
               </section>
