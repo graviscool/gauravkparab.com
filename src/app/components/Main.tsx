@@ -8,7 +8,6 @@ import TypeIt from "typeit-react";
 import { ParallaxBanner } from "react-scroll-parallax";
 import Head from "next/head";
 import TechStack from "./TechStack";
-import { ArrowUp } from "lucide-react";
 
 export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
   const [typeItInstance, setTypeItInstance] = useState<any>(null);
@@ -32,7 +31,7 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
   return (
     <>
       <Head>
-        <link rel="preload" href="/images/sf-night.jpg" as="image" />
+        <link rel="preload" href="/images/sf-night.webp" as="image" />
       </Head>
       <Container
         fluid
@@ -43,7 +42,7 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
             <div ref={bgImageSection}>
               <div className="vw-100 position-relative">
                 <ParallaxBanner
-                  layers={[{ image: "images/sf-night.jpg", speed: -20 }]}
+                  layers={[{ image: "images/sf-night.webp", speed: -20 }]}
                   className={`${styles.bgImage} vh-100`}
                 />
               </div>

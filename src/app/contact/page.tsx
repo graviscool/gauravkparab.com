@@ -57,7 +57,7 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <link rel="preload" href="/images/profPhoto.png" as="image" />
+        <link rel="preload" href="/images/profPhoto.webp" as="image" />
       </Head>
       <title>Contact - Gaurav Parab</title>
       <ContactNavbar />
@@ -211,7 +211,7 @@ export default function Contact() {
           >
             <div className="flex items-center">
               <CardImg
-                src="/images/profPhoto.png"
+                src="/images/profPhoto.webp"
                 style={{ width: "15%", marginRight: "1rem" }}
               />
               <div>
