@@ -57,8 +57,8 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
       "HTML/CSS",
       "Verilog",
       "Bash",
-      "C++ (Basic)",
-      "R (Basic)",
+      "C++",
+      "R",
     ],
     tools: ["Git", "Node.js", "Docker", "React", "Next.js", "MongoDB"],
     "Non-Technical": ["Tennis", "Photography", "Hindi", "Marathi", "Spanish"],
@@ -68,8 +68,8 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
     {
       title: "Tactical Software Engineering Co-op",
       company: "General Dynamics Electric Boat",
-      location: "New London, CT",
-      date: "January 2025 - May 2025 (Incoming)",
+      location: "Groton, CT",
+      date: "January 2025 - Present",
       details: ["Incoming Winter 2025"],
     },
     {
@@ -131,7 +131,6 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
       className={`${colors.background} min-h-screen transition-colors duration-300`}
     >
       <div className="max-w-8xl mx-auto p-3">
-        {/* Header */}
         <motion.div
           className="text-center mb-12 relative"
           initial={{ opacity: 0, y: -20 }}
@@ -148,9 +147,6 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
             <span className={`${colors.text.secondary} ms-0`}>
               San Jose, CA
             </span>
-            {/* <p className={`flex items-center mb-0 ${colors.text.secondary}`}>
-              San Jose, CA
-            </p> */}
             <a
               href="mailto:gkparab1@gmail.com"
               className={`${colors.text.secondary} hover:text-blue-500 transition-colors flex items-center`}
@@ -173,10 +169,8 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
               Linkedin
             </a>
           </div>
-          {/* <p className={`${colors.text.secondary} max-w-2xl mx-auto`}></p> */}
         </motion.div>
 
-        {/* Main Content */}
         <Section
           id="education"
           title="Education"
