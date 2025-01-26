@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowUp } from "lucide-react";
 
-export default function Footer() {
+export default function Footer({
+  page,
+}: {
+  page: "home" | "contact" | "resume";
+}) {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
@@ -32,7 +36,17 @@ export default function Footer() {
           </div>
           <nav className="mb-1 md:mb-0">
             <ul className="flex space-x-4">
-              <li>
+              <li hidden={page === "home"}>
+                <Link
+                  href="/"
+                  className={`transition-colors ${
+                    isDark ? "hover:text-blue-400" : "hover:text-blue-600"
+                  }`}
+                >
+                  Home
+                </Link>
+              </li>
+              <li hidden={page === "contact"}>
                 <Link
                   href="/contact"
                   className={`transition-colors ${
@@ -42,7 +56,7 @@ export default function Footer() {
                   Contact
                 </Link>
               </li>
-              <li>
+              <li hidden={page === "resume"}>
                 <Link
                   href="/resume"
                   className={`transition-colors ${

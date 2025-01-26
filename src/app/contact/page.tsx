@@ -241,7 +241,7 @@ export default function Contact() {
           </Card>
         </div>
       </div>
-      <Footer />
+      <Footer page="contact" />
     </>
   );
 }
