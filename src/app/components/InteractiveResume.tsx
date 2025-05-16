@@ -203,7 +203,7 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
                   Bachelor of Science (B.S.), Computer Science
                 </p>
                 <p className={`${colors.text.secondary} mb-2`}>
-                  Minors in Cybersecurity, Engineering Leadership Development |
+                  Minors in Engineering Leadership Development |
                   GPA: 3.66
                 </p>
                 <p className={`${colors.text.tertiary} mb-4`}>
