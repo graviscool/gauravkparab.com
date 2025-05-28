@@ -9,6 +9,30 @@ import { ParallaxBanner } from "react-scroll-parallax";
 import Head from "next/head";
 import TechStack from "./TechStack";
 
+const profExperiences = [
+  {
+    company: "General Dynamics Electric Boat",
+    title: "Tactical Software Engineer Co-op",
+    description:
+      "Internal tooling & software for the US Navy's nuclear submarines.",
+    date: "January 2025 - May 2025",
+  },
+  {
+    company: "The Pennsylvania State University",
+    title: "Teaching Assistant",
+    description:
+      "Assisted teaching operations for an entry level Python course at Penn State.",
+    date: "August 2022 - December 2023",
+  },
+  {
+    company: "Special Order Systems",
+    title: "Software Intern",
+    description:
+      "Project based software internship, in which I worked with Python and APIs.",
+    date: "July 2021 - December 2021",
+  },
+];
+
 export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
   const [typeItInstance, setTypeItInstance] = useState<any>(null);
   const [typeFreezeText, setTypeFreezeText] = useState("Pause Animation");
@@ -117,6 +141,52 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                 className={`${styles.imageScrollProgressBar}`}
                 style={{ scaleX: bgScrollProgress }}
               />
+              <section id="prevexp">
+                <div className="d-flex">
+                  <h2
+                    className={`${
+                      darkMode ? styles.headingTwoDark : styles.headingTwoLight
+                    }`}
+                  >
+                    Professional Experience
+                  </h2>
+                </div>
+                <div
+                  className={`${
+                    darkMode ? "text-white" : "text-gray-900"
+                  } mb-4 mx-3`}
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {profExperiences.map((job, index) => (
+                      <div
+                        key={index}
+                        className={`${
+                          darkMode ? "bg-gray-800" : "bg-white"
+                        } rounded-lg shadow-lg overflow-hidden ${
+                          styles.workExpCard
+                        }`}
+                      >
+                        <div className="p-6">
+                          <h3 className="text-xl font-semibold mb-2">
+                            {job.company}
+                          </h3>
+                          <h4 className="text-lg font-medium mb-2">
+                            {job.title}
+                          </h4>
+                          <p
+                            className={`mb-4 ${
+                              darkMode ? "text-gray-300" : "text-gray-600"
+                            }`}
+                          >
+                            {job.description}
+                          </p>
+                          <p className="text-sm text-gray-500">{job.date}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
               <section id="projects">
                 <div className="d-flex">
                   <h2
@@ -145,8 +215,13 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                             database data. Implemented Discord OAuth for
                             authentication.
                           </Card.Text>
-                          <Card.Footer className="text-success">
-                            Technologies: Next.js, React
+                          <Card.Footer className="d-flex justify-content-between align-items-center">
+                            <span className="text-success">
+                              Technologies: Next.js, React
+                            </span>
+                            <Card.Link className={"text-secondary"}>
+                              Private Project
+                            </Card.Link>
                           </Card.Footer>
                         </Card.Body>
                       </Card>
@@ -336,67 +411,6 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                 </picture>
               </motion.div> */}
               {/* </a> */}
-              <section id="prevexp">
-                <div className="d-flex">
-                  <h2
-                    className={`${
-                      darkMode ? styles.headingTwoDark : styles.headingTwoLight
-                    }`}
-                  >
-                    Professional Experience
-                  </h2>
-                </div>
-                <div
-                  className={`${
-                    darkMode ? "text-white" : "text-gray-900"
-                  } mb-4 mx-3`}
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {[
-                      {
-                        company: "The Pennsylvania State University",
-                        title: "Teaching Assistant",
-                        description:
-                          "TA for an entry level Python course at Penn State.",
-                        date: "August 2022 - December 2023",
-                      },
-                      {
-                        company: "Special Order Systems",
-                        title: "Software Intern",
-                        description:
-                          "My first project based software internship, in which I worked with Python and APIs.",
-                        date: "July 2021 - December 2021",
-                      },
-                    ].map((job, index) => (
-                      <div
-                        key={index}
-                        className={`${
-                          darkMode ? "bg-gray-800" : "bg-white"
-                        } rounded-lg shadow-lg overflow-hidden ${
-                          styles.workExpCard
-                        }`}
-                      >
-                        <div className="p-6">
-                          <h3 className="text-xl font-semibold mb-2">
-                            {job.company}
-                          </h3>
-                          <h4 className="text-lg font-medium mb-2">
-                            {job.title}
-                          </h4>
-                          <p
-                            className={`mb-4 ${
-                              darkMode ? "text-gray-300" : "text-gray-600"
-                            }`}
-                          >
-                            {job.description}
-                          </p>
-                          <p className="text-sm text-gray-500">{job.date}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
               <section id="techstack">
                 <div className="d-flex">
                   <h2
@@ -404,7 +418,7 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                       darkMode ? styles.headingTwoDark : styles.headingTwoLight
                     }`}
                   >
-                    Dev Tools/Tech Stack
+                    Tech Stack
                   </h2>
                 </div>
                 <TechStack darkMode={darkMode} />

@@ -8,12 +8,12 @@
 }
 
 .contactCard {
-  animation: contactFadeIn 3s ease-in-out forwards;
+  animation: contactFadeIn 4s ease-in-out forwards;
 }
 
 @keyframes contactFadeIn {
   from {
-    opacity: 0.2;
+    opacity: 0.1;
   }
   to {
     opacity: 1;

@@ -104,7 +104,7 @@ export default function ContactNavbar() {
                 </Link>
               </Nav>
               <Navbar.Brand
-                href="/linkedin"
+                href="https://www.linkedin.com/in/gparab"
                 target="_blank"
                 rel="noreferrer noopener"
                 className="me-2"
@@ -118,7 +118,7 @@ export default function ContactNavbar() {
                 />
               </Navbar.Brand>
               <Navbar.Brand
-                href="/github"
+                href="https://github.com/graviscool"
                 target="_blank"
                 rel="noreferrer noopener"
                 className="me-0"

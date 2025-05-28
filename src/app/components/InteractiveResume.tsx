@@ -66,11 +66,22 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
 
   const experiences = [
     {
+      title: "Software Development Engineer Intern",
+      company: "Amazon Web Services (AWS)",
+      location: "Arlington, VA",
+      date: "", // TODO update
+      details: [
+        "Incoming Summer 2025",
+      ],
+    },
+    {
       title: "Tactical Software Engineering Co-op",
       company: "General Dynamics Electric Boat",
       location: "Groton, CT",
-      date: "January 2025 - Present",
-      details: ["Incoming Winter 2025"],
+      date: "January 2025 - May 2025",
+      details: [
+        "Internal Tooling and software for the US Navy's upcoming fleet of submarines.",
+      ],
     },
     {
       title: "Teaching Assistant",
@@ -106,7 +117,7 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
       ],
     },
     {
-      title: "JBOD System in C",
+      title: "JBOD System",
       date: "September 2023 - December 2023",
       tech: "C",
       details: [
@@ -166,7 +177,7 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
                 width={18}
                 height={18}
               />
-              Linkedin
+              linkedin.com/in/gparab
             </a>
           </div>
         </motion.div>
@@ -203,11 +214,11 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
                   Bachelor of Science (B.S.), Computer Science
                 </p>
                 <p className={`${colors.text.secondary} mb-2`}>
-                  Minors in Engineering Leadership Development |
+                  Minor in Engineering Leadership Development |
                   GPA: 3.66
                 </p>
                 <p className={`${colors.text.tertiary} mb-4`}>
-                  July 2022 - May 2026
+                  July 2022 - May 2026 (expected)
                 </p>
               </motion.div>
 
