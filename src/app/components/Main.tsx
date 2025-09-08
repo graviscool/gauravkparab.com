@@ -11,6 +11,13 @@ import TechStack from "./TechStack";
 
 const profExperiences = [
   {
+    company: "Amazon Web Services (AWS)",
+    title: "Software Development Engineer Intern",
+    description:
+      "Amazon EC2",
+    date: "June 2025 - August 2025",
+  },
+  {
     company: "General Dynamics Electric Boat",
     title: "Tactical Software Engineer Co-op",
     description:

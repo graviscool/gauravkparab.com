@@ -230,7 +230,7 @@ export default function Contact() {
                       isDark ? "text-light" : "text-gray-600"
                     }`}
                   >
-                    Hi! I&apos;m Gaurav, a rising senior studying Computer Science at
+                    Hi! I&apos;m Gaurav, a senior studying Computer Science at
                     Penn State. I&apos;m always interested in picking up new
                     projects or exploring new technologies. Feel free to reach
                     out!

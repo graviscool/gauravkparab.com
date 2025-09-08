@@ -69,9 +69,10 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
       title: "Software Development Engineer Intern",
       company: "Amazon Web Services (AWS)",
       location: "Arlington, VA",
-      date: "", // TODO update
+      date: "June 2025 - August 2025", // TODO update
       details: [
-        "Incoming Summer 2025",
+        "Designed a customer facing API to automate the onboarding process for an existing feature, reducing onboarding time from ~1 week to a few seconds",
+        "Reviewed threat mitigations for API implementation, ensuring standards prior to public feature launch",
       ],
     },
     {
@@ -156,7 +157,7 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
           <div className="flex justify-center space-x-6 mb-4">
             <MapPin size={18} className={`mr-2 ${colors.text.secondary}`} />
             <span className={`${colors.text.secondary} ms-0`}>
-              San Jose, CA
+              San Francisco Bay Area
             </span>
             <a
               href="mailto:gkparab1@gmail.com"
@@ -214,8 +215,7 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
                   Bachelor of Science (B.S.), Computer Science
                 </p>
                 <p className={`${colors.text.secondary} mb-2`}>
-                  Minor in Engineering Leadership Development |
-                  GPA: 3.66
+                  Minor in Engineering Leadership Development | GPA: 3.66
                 </p>
                 <p className={`${colors.text.tertiary} mb-4`}>
                   July 2022 - May 2026 (expected)

@@ -92,6 +92,7 @@
 .headingTwoLight {
   font-family: Georgia, "Times New Roman", Times, serif;
   padding: 10px 10px;
+  margin-left: 0.5rem;
   /* border-bottom: 2px solid #007bff;
   padding-bottom: 5px; */
   background: -webkit-linear-gradient(#2b5876, #4e4376);
@@ -110,6 +111,7 @@
 .headingTwoDark {
   font-family: Georgia, "Times New Roman", Times, serif;
   padding: 10px 10px;
+  margin-left: 0.5rem;
   /* border-bottom: 2px solid #007bff;
   padding-bottom: 5px; */
   background: -webkit-linear-gradient(#fe6741, #feb47b);

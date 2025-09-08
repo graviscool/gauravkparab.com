@@ -131,7 +131,7 @@ export default function NavigationBar({
                 />
               </Navbar.Brand>
               <Nav className="ms-2">
-                <NextNavLink href="/contact">Contact Me</NextNavLink>
+                <NextNavLink href="/contact">Contact</NextNavLink>
               </Nav>
               <FormControlLabel
                 value="Dark Mode Button"
