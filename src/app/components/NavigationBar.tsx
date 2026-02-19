@@ -1,11 +1,12 @@
+"use client";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Dropdown, Image, SplitButton } from "react-bootstrap";
 import { FormControlLabel, Switch } from "@mui/material";
-import { Dispatch, SetStateAction } from "react";
 import Link from "next/link";
+import { useTheme } from "@/src/contexts/ThemeContext";
 
 const NextNavLink = ({
   href,
@@ -39,21 +40,17 @@ const NextBrandLink = ({
   );
 };
 
-export default function NavigationBar({
-  dark,
-  setDark,
-}: Readonly<{
-  dark: boolean;
-  setDark: Dispatch<SetStateAction<boolean>>;
-}>) {
+export default function NavigationBar() {
+  const { isDark, setDark } = useTheme();
+
   return (
     <header>
       <a id="top" content="top of page"></a>
       <Navbar
         expand="md"
-        bg={dark ? "dark" : ""}
+        bg={isDark ? "dark" : ""}
         className="bg-body-tertiary mb-0 z-1"
-        data-bs-theme={dark ? "dark" : "light"}
+        data-bs-theme={isDark ? "dark" : "light"}
         // sticky="top"
         fixed="top"
         collapseOnSelect
@@ -77,7 +74,6 @@ export default function NavigationBar({
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="me-auto">
-                {/* <Nav.Link href="/blurb">Blurb</Nav.Link> */}
                 <Nav.Link href="#projects">Projects</Nav.Link>
                 <Nav.Link href="#prevexp">Experience</Nav.Link>
               </Nav>
@@ -105,6 +101,7 @@ export default function NavigationBar({
                 target="_blank"
                 rel="noreferrer noopener"
                 className="me-2"
+                aria-label="Visit Gaurav's LinkedIn profile"
               >
                 <Image
                   src="/images/linkedin-logo.png"
@@ -119,13 +116,14 @@ export default function NavigationBar({
                 target="_blank"
                 rel="noreferrer noopener"
                 className="me-0"
+                aria-label="Visit Gaurav's GitHub profile"
               >
                 <Image
                   src="/images/github-logo-white.png"
                   width="30"
                   height="30"
                   className={`d-inline-block align-top ${
-                    !dark ? "bg-dark opacity-25" : ""
+                    !isDark ? "bg-dark opacity-25" : ""
                   }`}
                   alt="Github"
                 />
@@ -135,15 +133,16 @@ export default function NavigationBar({
               </Nav>
               <FormControlLabel
                 value="Dark Mode Button"
-                className={`ms-1 ${dark ? "text-light" : "text-dark"}`}
+                className={`ms-1 ${isDark ? "text-light" : "text-dark"}`}
                 control={
                   <Switch
                     color="primary"
-                    checked={dark}
+                    checked={isDark}
                     onChange={(e) => setDark(e.target.checked)}
+                    inputProps={{ "aria-label": "Toggle dark mode" }}
                   />
                 }
-                label={dark ? "Dark" : "Light"}
+                label={isDark ? "Dark" : "Light"}
                 labelPlacement="end"
               />
             </Offcanvas.Body>

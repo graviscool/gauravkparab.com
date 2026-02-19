@@ -1,3 +1,4 @@
+"use client";
 import {
   Container,
   Navbar,
@@ -7,8 +8,8 @@ import {
   Image,
   SplitButton,
 } from "react-bootstrap";
-import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useTheme } from "@/src/contexts/ThemeContext";
 
 const NextNavLink = ({
   href,
@@ -43,14 +44,7 @@ const NextBrandLink = ({
 };
 
 export default function ContactNavbar() {
-  const [isDark, setIsDark] = useState(true);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const savedMode = localStorage.getItem("darkMode");
-      setIsDark(savedMode ? JSON.parse(savedMode) : true);
-    }
-  }, []);
+  const { isDark } = useTheme();
 
   return (
     <header>
@@ -108,6 +102,7 @@ export default function ContactNavbar() {
                 target="_blank"
                 rel="noreferrer noopener"
                 className="me-2"
+                aria-label="Visit Gaurav's LinkedIn profile"
               >
                 <Image
                   src="/images/linkedin-logo.png"
@@ -122,6 +117,7 @@ export default function ContactNavbar() {
                 target="_blank"
                 rel="noreferrer noopener"
                 className="me-0"
+                aria-label="Visit Gaurav's GitHub profile"
               >
                 <Image
                   src="/images/github-logo-white.png"

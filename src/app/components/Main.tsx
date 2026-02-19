@@ -1,3 +1,4 @@
+"use client";
 import React, { useRef, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
@@ -8,6 +9,7 @@ import TypeIt from "typeit-react";
 import { ParallaxBanner } from "react-scroll-parallax";
 import Head from "next/head";
 import TechStack from "./TechStack";
+import { useTheme } from "@/src/contexts/ThemeContext";
 
 const profExperiences = [
   {
@@ -40,7 +42,8 @@ const profExperiences = [
   },
 ];
 
-export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
+export default function Main() {
+  const { isDark: darkMode } = useTheme();
   const [typeItInstance, setTypeItInstance] = useState<any>(null);
   const [typeFreezeText, setTypeFreezeText] = useState("Pause Animation");
   const freezeOrUnfreezeText = () => {
@@ -302,122 +305,7 @@ export default function Main({ darkMode }: Readonly<{ darkMode: boolean }>) {
                     </Col>
                   </Row>
                 </div>
-                {/* <div className="px-3">
-                  <Row md={3} className="g-3">
-                    <Col xs={12} md={6} lg={4}>
-                      <Card
-                        bg="secondary"
-                        border="primary"
-                        className={`mb-3 me-3 w-100 ${styles.projectCard}`}
-                      >
-                        <Card.Body>
-                          <Card.Title>Dashboard</Card.Title>
-                          <Card.Subtitle className="mb-2 text-light">
-                            Next.js
-                          </Card.Subtitle>
-                          <Card.Text>
-                            Created a dashboard for uses to view sensitive
-                            database data. It used Discord OAuth to
-                            authenticated users and check if they had the
-                            permissions to access the data.
-                          </Card.Text>
-                          {/* <Card.Link
-                      >
-                      </Card.Link> */}
-                {/* </Card.Body> 
-                      </Card>
-                    </Col>
-                    <Col xs={12} md={6} lg={4}>
-                      <Card
-                        bg="secondary"
-                        border="primary"
-                        className={`mb-3 me-3 w-100 ${styles.projectCard}`}
-                      >
-                        <Card.Body>
-                          <Card.Title>Monopoly</Card.Title>
-                          <Card.Subtitle className="mb-2 text-light">
-                            Java
-                          </Card.Subtitle>
-                          <Card.Text>
-                            Built the game of Monopoly in Java using GUI, with
-                            two other teammates. I wrote 30% of the code and
-                            assisted with debugging, writing documentation, and
-                            submitting reports. It was a great experience making
-                            my first full-stack project.
-                          </Card.Text>
-                          <Card.Link
-                            href="/projectfiles/MonopolyProject.jar"
-                            className="text-dark"
-                          >
-                            JAR file
-                          </Card.Link>
-                        </Card.Body>
-                      </Card>
-                    </Col>
-                    <Col xs={12} md={6} lg={4}>
-                      <Card
-                        bg="secondary"
-                        border="primary"
-                        className={`mb-3 w-100 ${styles.projectCard}`}
-                      >
-                        <Card.Body>
-                          <Card.Title>Discord Bot</Card.Title>
-                          <Card.Subtitle className="mb-3 text-light">
-                            Node.js
-                          </Card.Subtitle>
-                          <Card.Text>
-                            Built a bot that allowed moderators to perform tasks
-                            efficiently and allowed the server management to
-                            automate tasks such as role assignment and messages.
-                          </Card.Text>
-                          <Card.Link
-                            href="https://github.com/The-English-Hub-Dev/The-English-Hub"
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            className="link-info"
-                          >
-                            GitHub Link
-                          </Card.Link>
-                        </Card.Body>
-                      </Card>
-                    </Col>
-                  </Row>
-                </div> */}
               </section>
-              {/* <a href="/#"> */}
-              {/* <motion.div
-                className={styles.topLang}
-                initial={{ translateX: "-100%" }}
-                whileInView={{ translateX: 0 }}
-                viewport={{ once: true }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-              {/*<picture>
-                  <source
-                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=300px&langs_count=7&disable_animations=true"
-                    media="(max-width: 430px)"
-                  />
-                  <source
-                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=400px&langs_count=7&disable_animations=true"
-                    media="(max-width: 550px)"
-                  />
-                  <source
-                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=500px&langs_count=7&disable_animations=true"
-                    media="(max-width: 800px)"
-                  />
-                  <source
-                    srcSet="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&card_width=700px&langs_count=7"
-                    media="(max-width: 9999px)"
-                  />
-
-                  <img
-                    height={200}
-                    src="https://github-readme-stats-orpin-seven-78.vercel.app/api/top-langs?username=graviscool&theme=radical&layout=compact&langs_count=7"
-                    alt="Top Languages Used"
-                  />
-                </picture>
-              </motion.div> */}
-              {/* </a> */}
               <section id="techstack">
                 <div className="d-flex">
                   <h2

@@ -18,9 +18,20 @@ export const metadata: Metadata = {
   },
   description: "A portfolio website for Gaurav",
   icons: "images/gp-logo.png",
-  keywords: ["portfolio", "personal website"],
+  keywords: ["portfolio", "personal website", "software engineer", "developer"],
   authors: { name: "Gaurav" },
   metadataBase: new URL("https://gauravkparab.com"),
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Gaurav Parab",
     description: "A portfolio website for Gaurav",

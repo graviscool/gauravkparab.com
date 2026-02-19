@@ -69,7 +69,7 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
       title: "Software Development Engineer Intern",
       company: "Amazon Web Services (AWS)",
       location: "Arlington, VA",
-      date: "June 2025 - August 2025", // TODO update
+      date: "June 2025 - August 2025",
       details: [
         "Designed a customer facing API to automate the onboarding process for an existing feature, reducing onboarding time from ~1 week to a few seconds",
         "Reviewed threat mitigations for API implementation, ensuring standards prior to public feature launch",
