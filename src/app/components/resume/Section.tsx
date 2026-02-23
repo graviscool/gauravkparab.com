@@ -1,12 +1,12 @@
-import React from "react";
+import { ReactElement, ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 interface SectionProps {
   id: string;
   title: string;
-  icon: React.ReactElement;
-  content: React.ReactNode;
+  icon: ReactElement;
+  content: ReactNode;
   expandedSection: string | null;
   setExpandedSection: (section: string | null) => void;
   colors: {
