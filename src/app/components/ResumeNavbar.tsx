@@ -18,9 +18,9 @@ const NextNavLink = ({
 }) => {
   return (
     <Link href={href}>
-      {/* @next-codemod-error This Link previously used the now removed `legacyBehavior` prop, and has a child that might not be an anchor. The codemod bailed out of lifting the child props to the Link. Check that the child component does not render an anchor, and potentially move the props manually to Link. */
-      }
-      <Nav.Link {...props}>{children}</Nav.Link>
+      <Nav.Link {...props} href={href}>
+        {children}
+      </Nav.Link>
     </Link>
   );
 };
@@ -36,9 +36,9 @@ const NextBrandLink = ({
 }) => {
   return (
     <Link href={href}>
-      {/* @next-codemod-error This Link previously used the now removed `legacyBehavior` prop, and has a child that might not be an anchor. The codemod bailed out of lifting the child props to the Link. Check that the child component does not render an anchor, and potentially move the props manually to Link. */
-      }
-      <Navbar.Brand {...props}>{children}</Navbar.Brand>
+      <Navbar.Brand {...props} href={href}>
+        {children}
+      </Navbar.Brand>
     </Link>
   );
 };
