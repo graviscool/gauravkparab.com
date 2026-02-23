@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import { Row, Col, Button } from "react-bootstrap";
@@ -15,8 +15,7 @@ const profExperiences = [
   {
     company: "Amazon Web Services (AWS)",
     title: "Software Development Engineer Intern",
-    description:
-      "Amazon EC2",
+    description: "Amazon EC2",
     date: "June 2025 - August 2025",
   },
   {
@@ -128,7 +127,7 @@ export default function Main() {
                       .exec((_instance) => {
                         setTypeFreezeText("Animation Complete");
                         document.getElementById(
-                          "pauseTypeButton"
+                          "pauseTypeButton",
                         )!.style.opacity = "0.2";
                       });
 
