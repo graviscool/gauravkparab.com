@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from "react";
+import { ReactElement, ReactNode, FC, cloneElement } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
@@ -18,7 +18,7 @@ interface SectionProps {
   };
 }
 
-export const Section: React.FC<SectionProps> = ({
+export const Section: FC<SectionProps> = ({
   id,
   title,
   icon,
@@ -39,7 +39,7 @@ export const Section: React.FC<SectionProps> = ({
       whileHover={{ scale: 1.01 }}
     >
       <div className="flex items-center space-x-2 text-white">
-        {React.cloneElement(icon, { className: "text-white" })}
+        {cloneElement(icon, { className: "text-white" })}
         <h2 className="text-xl font-semibold">{title}</h2>
       </div>
       {expandedSection === id ? (
