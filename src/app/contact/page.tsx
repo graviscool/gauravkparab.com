@@ -43,7 +43,7 @@ export default function Contact() {
           email: formData.get("email"),
           message: formData.get("message"),
         },
-        { publicKey: "BgT2UkxSM0t0kALG6" }
+        { publicKey: "BgT2UkxSM0t0kALG6" },
       );
       setSubmitStatus("success");
       (event.target as HTMLFormElement).reset();

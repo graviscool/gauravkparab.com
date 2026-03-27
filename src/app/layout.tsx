@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Roboto } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -17,10 +17,21 @@ export const metadata: Metadata = {
     template: "%s - Gaurav Parab",
   },
   description: "A portfolio website for Gaurav",
-  icons: "images/gp-logo.png",
-  keywords: ["portfolio", "personal website", "software engineer", "developer"],
-  authors: { name: "Gaurav" },
   metadataBase: new URL("https://gauravkparab.com"),
+  alternates: {
+    canonical: "/",
+  },
+  icons: {
+    icon: "/images/gp-logo.png",
+    apple: "/images/gp-logo.png",
+  },
+  keywords: ["portfolio", "personal website", "software engineer", "developer"],
+  authors: [{ name: "Gaurav" }],
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   robots: {
     index: true,
     follow: true,
@@ -35,13 +46,35 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Gaurav Parab",
     description: "A portfolio website for Gaurav",
-    images: "images/gp-logo.png",
+    url: "https://gauravkparab.com",
+    siteName: "Gaurav Parab",
+    images: [
+      {
+        url: "/images/gp-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Gaurav Parab",
+      },
+    ],
     locale: "en_US",
     type: "website",
   },
   twitter: {
-    images: "images/gp-logo.png",
+    card: "summary_large_image",
+    title: "Gaurav Parab",
+    description: "A portfolio website for Gaurav",
+    images: ["/images/gp-logo.png"],
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  colorScheme: "dark light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#212529" },
+  ],
 };
 
 export default function RootLayout({
@@ -50,8 +83,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} ${roboto.className}`}>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <Providers>{children}</Providers>
         <Analytics />
         <SpeedInsights />

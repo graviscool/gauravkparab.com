@@ -10,36 +10,46 @@ import Link from "next/link";
 const NextNavLink = ({
   href,
   children,
+  className,
   ...props
 }: {
   href: string;
   children: React.ReactNode;
+  className?: string;
   [key: string]: any;
 }) => {
   return (
-    <Link href={href}>
-      <Nav.Link {...props} href={href}>
-        {children}
-      </Nav.Link>
-    </Link>
+    <Nav.Link
+      as={Link}
+      {...props}
+      href={href}
+      className={`text-decoration-none ${className ?? ""}`.trim()}
+    >
+      {children}
+    </Nav.Link>
   );
 };
 
 const NextBrandLink = ({
   href,
   children,
+  className,
   ...props
 }: {
   href: string;
   children: React.ReactNode;
+  className?: string;
   [key: string]: any;
 }) => {
   return (
-    <Link href={href}>
-      <Navbar.Brand {...props} href={href}>
-        {children}
-      </Navbar.Brand>
-    </Link>
+    <Navbar.Brand
+      as={Link}
+      {...props}
+      href={href}
+      className={`text-decoration-none ${className ?? ""}`.trim()}
+    >
+      {children}
+    </Navbar.Brand>
   );
 };
 

@@ -11,6 +11,12 @@ import Head from "next/head";
 import TechStack from "./TechStack";
 import { useTheme } from "@/src/contexts/ThemeContext";
 
+interface TypeItController {
+  is: (state: string) => boolean;
+  freeze: () => void;
+  unfreeze: () => void;
+}
+
 const profExperiences = [
   {
     company: "Amazon Web Services (AWS)",
@@ -43,9 +49,17 @@ const profExperiences = [
 
 export default function Main() {
   const { isDark: darkMode } = useTheme();
-  const [typeItInstance, setTypeItInstance] = useState<any>(null);
+  const [typeItInstance, setTypeItInstance] = useState<TypeItController | null>(
+    null,
+  );
   const [typeFreezeText, setTypeFreezeText] = useState("Pause Animation");
+  const [isTypeAnimationComplete, setIsTypeAnimationComplete] = useState(false);
+
   const freezeOrUnfreezeText = () => {
+    if (!typeItInstance) {
+      return;
+    }
+
     if (typeItInstance.is("frozen")) {
       typeItInstance.unfreeze();
       setTypeFreezeText("Pause Animation");
@@ -90,12 +104,13 @@ export default function Main() {
                 <Button
                   variant="outline-warning"
                   size="sm"
-                  className={styles.pauseTypeButton}
-                  id="pauseTypeButton"
+                  className={`${styles.pauseTypeButton} ${
+                    isTypeAnimationComplete ? "opacity-20" : ""
+                  }`}
                   onClick={() => {
                     freezeOrUnfreezeText();
                   }}
-                  disabled={typeFreezeText == "Animation Complete"}
+                  disabled={typeFreezeText === "Animation Complete"}
                 >
                   {typeFreezeText}
                 </Button>
@@ -126,9 +141,7 @@ export default function Main() {
                       .type("!")
                       .exec((_instance) => {
                         setTypeFreezeText("Animation Complete");
-                        document.getElementById(
-                          "pauseTypeButton",
-                        )!.style.opacity = "0.2";
+                        setIsTypeAnimationComplete(true);
                       });
 
                     return instance;
