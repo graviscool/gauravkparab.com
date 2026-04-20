@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Linkedin } from "lucide-react";
+import { Mail, Linkedin as LinkedinIcon } from "lucide-react";
 import ContactNavbar from "../components/ContactNavbar";
 import emailjs from "@emailjs/browser";
 import styles from "@/styles/Contact.module.css";
@@ -92,7 +92,7 @@ export default function Contact() {
                   </div>
 
                   <div className="flex items-center space-x-3">
-                    <Linkedin
+                    <LinkedinIcon
                       className={`h-5 w-5 ${isDark ? "text-light" : ""}`}
                     />
                     <a

@@ -39,7 +39,7 @@ export const Section: FC<SectionProps> = ({
       whileHover={{ scale: 1.01 }}
     >
       <div className="flex items-center space-x-2 text-white">
-        {cloneElement(icon, { className: "text-white" })}
+        {cloneElement(icon, { className: "text-white" } as any)}
         <h2 className="text-xl font-semibold">{title}</h2>
       </div>
       {expandedSection === id ? (
