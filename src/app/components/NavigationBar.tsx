@@ -154,7 +154,7 @@ export default function NavigationBar() {
                     color="primary"
                     checked={isDark}
                     onChange={(e) => setDark(e.target.checked)}
-                    inputProps={{ "aria-label": "Toggle dark mode" }}
+                    slotProps={{ input: { "aria-label": "Toggle dark mode" } }}
                   />
                 }
                 label={isDark ? "Dark" : "Light"}
