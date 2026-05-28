@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { ArrowUp } from "lucide-react";
 
@@ -7,14 +7,11 @@ export default function Footer({
 }: {
   page: "home" | "contact" | "resume";
 }) {
-  const [isDark, setIsDark] = useState(true);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const savedMode = localStorage.getItem("darkMode");
-      setIsDark(savedMode ? JSON.parse(savedMode) : true);
-    }
-  }, []);
+  const [isDark] = useState(() => {
+    if (typeof window === "undefined") return true;
+    const savedMode = localStorage.getItem("darkMode");
+    return savedMode ? JSON.parse(savedMode) : true;
+  });
 
   return (
     <footer

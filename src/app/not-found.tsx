@@ -1,17 +1,14 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Container } from "react-bootstrap";
 
 export default function NotFound() {
-  const [dark404, setDark404] = useState(true);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const savedMode = localStorage.getItem("darkMode");
-      setDark404(savedMode ? JSON.parse(savedMode) : true);
-    }
-  }, []);
+  const [dark404] = useState(() => {
+    if (typeof window === "undefined") return true;
+    const savedMode = localStorage.getItem("darkMode");
+    return savedMode ? JSON.parse(savedMode) : true;
+  });
 
   return (
     <>

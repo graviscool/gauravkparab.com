@@ -10,13 +10,14 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window === "undefined") return true;
+    const savedMode = localStorage.getItem("darkMode");
+    return savedMode ? JSON.parse(savedMode) : true;
+  });
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const savedMode = localStorage.getItem("darkMode");
-      setIsDark(savedMode ? JSON.parse(savedMode) : true);
-
       // Add transition class to body for smooth theme changes
       document.body.classList.add("theme-transition");
     }

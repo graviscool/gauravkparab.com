@@ -1,18 +1,15 @@
 "use client";
 import ResumeNavbar from "@/src/app/components/ResumeNavbar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import InteractiveResume from "../components/InteractiveResume";
 import Footer from "../components/Footer";
 
 export default function Resume() {
-  const [isDark, setIsDark] = useState(true);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const savedMode = localStorage.getItem("darkMode");
-      setIsDark(savedMode ? JSON.parse(savedMode) : true);
-    }
-  }, []);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window === "undefined") return true;
+    const savedMode = localStorage.getItem("darkMode");
+    return savedMode ? JSON.parse(savedMode) : true;
+  });
 
   return (
     <>
