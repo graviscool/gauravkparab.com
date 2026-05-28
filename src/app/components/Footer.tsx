@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Link from "next/link";
 import { ArrowUp } from "lucide-react";
 import { getStoredDarkMode } from "@/lib/theme";
@@ -7,7 +8,7 @@ export default function Footer({
 }: {
   page: "home" | "contact" | "resume";
 }) {
-  const isDark = getStoredDarkMode();
+  const [isDark] = useState(getStoredDarkMode);
 
   return (
     <footer
