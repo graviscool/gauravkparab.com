@@ -3,9 +3,10 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Dropdown, SplitButton } from "react-bootstrap";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { FormControlLabel, Switch } from "@mui/material";
 import Link from "next/link";
+import { getStoredDarkMode } from "@/lib/theme";
 
 const NextNavLink = ({
   href,
@@ -58,20 +59,13 @@ export default function ResumeNavbar({
 }: Readonly<{
   setDark: Dispatch<SetStateAction<boolean>>;
 }>) {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(getStoredDarkMode);
 
   const setDarkMode = (newMode: boolean) => {
     setIsDark(newMode);
     setDark(newMode);
     localStorage.setItem("darkMode", JSON.stringify(newMode));
   };
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const savedMode = localStorage.getItem("darkMode");
-      setIsDark(savedMode ? JSON.parse(savedMode) : true);
-    }
-  }, []);
 
   return (
     <header>

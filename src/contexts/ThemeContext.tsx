@@ -1,5 +1,6 @@
 "use client";
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { getStoredDarkMode } from "@/lib/theme";
 
 interface ThemeContextType {
   isDark: boolean;
@@ -10,13 +11,10 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(getStoredDarkMode);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const savedMode = localStorage.getItem("darkMode");
-      setIsDark(savedMode ? JSON.parse(savedMode) : true);
-
       // Add transition class to body for smooth theme changes
       document.body.classList.add("theme-transition");
     }
