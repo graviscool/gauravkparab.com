@@ -3,13 +3,10 @@ import ResumeNavbar from "@/src/app/components/ResumeNavbar";
 import { useState } from "react";
 import InteractiveResume from "../components/InteractiveResume";
 import Footer from "../components/Footer";
+import { getStoredDarkMode } from "@/lib/theme";
 
 export default function Resume() {
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window === "undefined") return true;
-    const savedMode = localStorage.getItem("darkMode");
-    return savedMode ? JSON.parse(savedMode) : true;
-  });
+  const [isDark, setIsDark] = useState(getStoredDarkMode);
 
   return (
     <>

@@ -1,17 +1,13 @@
-import { useState } from "react";
 import Link from "next/link";
 import { ArrowUp } from "lucide-react";
+import { getStoredDarkMode } from "@/lib/theme";
 
 export default function Footer({
   page,
 }: {
   page: "home" | "contact" | "resume";
 }) {
-  const [isDark] = useState(() => {
-    if (typeof window === "undefined") return true;
-    const savedMode = localStorage.getItem("darkMode");
-    return savedMode ? JSON.parse(savedMode) : true;
-  });
+  const isDark = getStoredDarkMode();
 
   return (
     <footer

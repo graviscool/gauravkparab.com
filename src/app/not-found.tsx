@@ -1,14 +1,10 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
 import { Container } from "react-bootstrap";
+import { getStoredDarkMode } from "@/lib/theme";
 
 export default function NotFound() {
-  const [dark404] = useState(() => {
-    if (typeof window === "undefined") return true;
-    const savedMode = localStorage.getItem("darkMode");
-    return savedMode ? JSON.parse(savedMode) : true;
-  });
+  const dark404 = getStoredDarkMode();
 
   return (
     <>

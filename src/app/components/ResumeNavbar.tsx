@@ -6,6 +6,7 @@ import { Dropdown, SplitButton } from "react-bootstrap";
 import { Dispatch, SetStateAction, useState } from "react";
 import { FormControlLabel, Switch } from "@mui/material";
 import Link from "next/link";
+import { getStoredDarkMode } from "@/lib/theme";
 
 const NextNavLink = ({
   href,
@@ -58,11 +59,7 @@ export default function ResumeNavbar({
 }: Readonly<{
   setDark: Dispatch<SetStateAction<boolean>>;
 }>) {
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window === "undefined") return true;
-    const savedMode = localStorage.getItem("darkMode");
-    return savedMode ? JSON.parse(savedMode) : true;
-  });
+  const [isDark, setIsDark] = useState(getStoredDarkMode);
 
   const setDarkMode = (newMode: boolean) => {
     setIsDark(newMode);
