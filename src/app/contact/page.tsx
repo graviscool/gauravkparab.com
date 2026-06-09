@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,23 +9,16 @@ import { Mail, Linkedin as LinkedinIcon } from "lucide-react";
 import ContactNavbar from "../components/ContactNavbar";
 import emailjs from "@emailjs/browser";
 import styles from "@/styles/Contact.module.css";
-import { CardImg } from "react-bootstrap";
+import Image from "next/image";
 import Footer from "../components/Footer";
-import Head from "next/head";
+import { useTheme } from "@/src/contexts/ThemeContext";
 
 export default function Contact() {
-  const [isDark, setIsDark] = useState(true);
+  const { isDark } = useTheme();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const savedMode = localStorage.getItem("darkMode");
-      setIsDark(savedMode ? JSON.parse(savedMode) : true);
-    }
-  }, []);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -56,9 +49,6 @@ export default function Contact() {
 
   return (
     <>
-      <Head>
-        <link rel="preload" href="/images/profPhoto.webp" as="image" />
-      </Head>
       <title>Contact - Gaurav Parab</title>
       <ContactNavbar />
       <div
@@ -210,10 +200,19 @@ export default function Contact() {
             } w-full mt-2 p-3 shadow-lg rounded-lg`}
           >
             <div className="flex items-center">
-              <CardImg
-                src="/images/profPhoto.webp"
-                style={{ width: "15%", marginRight: "1rem" }}
-              />
+              <div
+                style={{ width: "15%", minWidth: "80px", marginRight: "1rem" }}
+                className="relative aspect-square"
+              >
+                <Image
+                  src="/images/profPhoto.webp"
+                  alt="Gaurav Parab"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 80px, 150px"
+                  className="rounded-lg object-cover"
+                />
+              </div>
               <div>
                 <CardHeader>
                   <CardTitle
