@@ -34,8 +34,7 @@
     "react-dom": "^19.2.6",
     "react-scroll-parallax": "^3.5.0",
     "tailwind-merge": "^3.6.0",
-    "tailwindcss-animate": "^1.0.7",
-    "typeit-react": "^2.7.8"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^24.12.4",

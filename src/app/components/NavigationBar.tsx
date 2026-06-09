@@ -90,6 +90,7 @@ export default function NavigationBar() {
               <Nav className="me-auto">
                 <Nav.Link href="#projects">Projects</Nav.Link>
                 <Nav.Link href="#prevexp">Experience</Nav.Link>
+                <Nav.Link href="#techstack">Tech Stack</Nav.Link>
               </Nav>
               <Nav className="me-3">
                 <Link href="/resume">
@@ -144,7 +145,7 @@ export default function NavigationBar() {
                 />
               </Navbar.Brand>
               <Nav className="ms-2">
-                <NextNavLink href="/contact">Contact</NextNavLink>
+                <NextNavLink href="/contact">Get in Touch</NextNavLink>
               </Nav>
               <FormControlLabel
                 value="Dark Mode Button"

@@ -1,25 +1,14 @@
 "use client";
-import { useRef, useState, useCallback } from "react";
+import { useRef } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import styles from "@/styles/Main.module.css";
 import { motion, useScroll, useInView } from "framer-motion";
-import TypeIt from "typeit-react";
 import { ParallaxBanner } from "react-scroll-parallax";
 import Head from "next/head";
 import TechStack from "./TechStack";
 import { useTheme } from "@/src/contexts/ThemeContext";
-
-/**
- * Partial interface for the TypeIt instance we actually use.
- * TypeIt mutates itself — this belongs in a ref, never in state.
- */
-interface TypeItInstance {
-  is: (state: "frozen" | "started" | "completed" | "destroyed") => boolean;
-  freeze: () => TypeItInstance;
-  unfreeze: () => TypeItInstance;
-}
 
 interface Experience {
   company: string;
@@ -39,9 +28,6 @@ interface Project {
   link?: { label: string; href: string };
   isPrivate?: boolean;
 }
-
-/** Discriminated union prevents string-comparison bugs on animation state. */
-type AnimationState = "running" | "paused" | "complete";
 
 const experiences: Experience[] = [
   {
@@ -284,40 +270,14 @@ function ProjectCard({ project, darkMode, index }: ProjectCardProps) {
   );
 }
 
-
 export default function Main() {
   const { isDark: darkMode } = useTheme();
-
-  const typeItRef = useRef<TypeItInstance | null>(null);
-
-  const [animState, setAnimState] = useState<AnimationState>("running");
 
   const bgImageSection = useRef<HTMLDivElement>(null);
   const { scrollYProgress: bgScrollProgress } = useScroll({
     target: bgImageSection,
     offset: ["0.06 start", "1.05 start"],
   });
-
-  // useCallback prevents a new function reference on every render.
-  const handleAnimToggle = useCallback(() => {
-    const instance = typeItRef.current;
-    if (!instance || animState === "complete") return;
-
-    if (animState === "paused") {
-      instance.unfreeze();
-      setAnimState("running");
-    } else {
-      instance.freeze();
-      setAnimState("paused");
-    }
-  }, [animState]);
-
-  const pauseButtonLabel =
-    animState === "complete"
-      ? "Animation complete"
-      : animState === "paused"
-        ? "Resume"
-        : "Pause";
 
   return (
     <>
@@ -340,73 +300,69 @@ export default function Main() {
                 className={`${styles.bgImage} vh-100 vw-100`}
               />
 
-              {/*
-               * clamp() gives fluid responsive positioning — no hardcoded
-               * pixel values that break on mobile or ultrawide screens.
-               */}
+              {/* Dark gradient scrim for text readability */}
+              <div className={styles.heroScrim} />
+
               <div
                 className="position-absolute"
                 style={{
                   top: "clamp(3.5rem, 10vh, 7rem)",
                   left: "clamp(1.25rem, 5vw, 6rem)",
+                  maxWidth: "clamp(280px, 55vw, 680px)",
                 }}
               >
-                <Button
-                  variant="outline-warning"
-                  size="sm"
-                  className={`${styles.pauseTypeButton} mb-3 d-block ${
-                    animState === "complete" ? "opacity-25" : ""
-                  }`}
-                  onClick={handleAnimToggle}
-                  disabled={animState === "complete"}
-                  aria-label={
-                    animState === "paused"
-                      ? "Resume typewriter animation"
-                      : animState === "complete"
-                        ? "Typewriter animation is complete"
-                        : "Pause typewriter animation"
-                  }
-                >
-                  {pauseButtonLabel}
-                </Button>
+                <h1 className={`${styles.introHi} mb-2`}>Gaurav Parab</h1>
 
-                <TypeIt
-                  as="h1"
-                  getBeforeInit={(instance) => {
-                    instance
-                      .pause(750)
-                      .type("Hi! I'm Gaurav.")
-                      .break({ delay: 2000 })
-                      .type("A college student 🎓")
-                      .pause(1500)
-                      .delete(17, { speed: 200 })
-                      .pause(1500)
-                      .type("web developer.")
-                      .pause(1500)
-                      .delete(14, { speed: 200 })
-                      .pause(1500)
-                      .type("AI enthusiast.")
-                      .pause(500)
-                      .move(-15)
-                      .type("n")
-                      .pause(200)
-                      .move(16)
-                      .pause(1500)
-                      .delete(19, { speed: 200 })
-                      .type("!")
-                      .exec(() => setAnimState("complete"));
-                    return instance;
-                  }}
-                  getAfterInit={(instance) => {
-                    // Cast needed because TypeIt's exported types don't expose
-                    // freeze/unfreeze — but the runtime instance has them.
-                    typeItRef.current = instance as unknown as TypeItInstance;
-                    return instance;
-                  }}
-                  options={{ speed: 75, waitUntilVisible: true }}
-                  className={`${styles.introHi} mb-4`}
-                />
+                <p className={`${styles.heroSubtitle} mb-3`}>
+                  Incoming SDE at AWS&nbsp;·&nbsp;Penn State Graduate&nbsp;
+                </p>
+
+                <p className={`${styles.heroBio} mb-4`}>
+                  Recently graduated from Penn State, relocating to the DMV to
+                  join AWS — focused on distributed systems and backend
+                  infrastructure.
+                </p>
               </div>
+
+              {/* Bouncing scroll-down chevron — bottom-center of hero */}
+              <motion.a
+                href="#prevexp"
+                aria-label="Scroll to content"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document
+                    .getElementById("prevexp")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="position-absolute"
+                style={{
+                  bottom: "2rem",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  cursor: "pointer",
+                  textDecoration: "none",
+                  zIndex: 10,
+                }}
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.75)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </motion.a>
             </div>
 
             <div>

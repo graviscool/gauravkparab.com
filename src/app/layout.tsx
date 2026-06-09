@@ -13,7 +13,7 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: {
-    default: "Gaurav Parab",
+    default: "Gaurav Parab — Incoming SDE at AWS",
     template: "%s - Gaurav Parab",
   },
   description: "A portfolio website for Gaurav",
