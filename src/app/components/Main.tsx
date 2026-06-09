@@ -311,16 +311,15 @@ export default function Main() {
                   maxWidth: "clamp(280px, 55vw, 680px)",
                 }}
               >
-                <h1 className={`${styles.introHi} mb-2`}>Gaurav Parab</h1>
+                <h1 className={`${styles.introHi} mb-2`}>Incoming SDE at AWS</h1>
 
                 <p className={`${styles.heroSubtitle} mb-3`}>
-                  Incoming SDE at AWS&nbsp;·&nbsp;Penn State Graduate&nbsp;
+                  Penn State CS Graduate
                 </p>
 
                 <p className={`${styles.heroBio} mb-4`}>
-                  Recently graduated from Penn State, relocating to the DMV to
-                  join AWS — focused on distributed systems and backend
-                  infrastructure.
+                  Recent graduate, relocating to the DMV to
+                  join AWS this fall.
                 </p>
               </div>
 
