@@ -1,79 +1,323 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef, useState, useCallback } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import { Row, Col, Button } from "react-bootstrap";
 import styles from "@/styles/Main.module.css";
-import { motion, useScroll } from "framer-motion";
+import { motion, useScroll, useInView } from "framer-motion";
 import TypeIt from "typeit-react";
 import { ParallaxBanner } from "react-scroll-parallax";
 import Head from "next/head";
 import TechStack from "./TechStack";
 import { useTheme } from "@/src/contexts/ThemeContext";
 
-interface TypeItController {
-  is: (state: string) => boolean;
-  freeze: () => void;
-  unfreeze: () => void;
+/**
+ * Partial interface for the TypeIt instance we actually use.
+ * TypeIt mutates itself — this belongs in a ref, never in state.
+ */
+interface TypeItInstance {
+  is: (state: "frozen" | "started" | "completed" | "destroyed") => boolean;
+  freeze: () => TypeItInstance;
+  unfreeze: () => TypeItInstance;
 }
 
-const profExperiences = [
+interface Experience {
+  company: string;
+  title: string;
+  description: string;
+  /** Display string, e.g. "June 2025 – August 2025" */
+  date: string;
+  /** ISO-parseable date for the <time> element, e.g. "2025-06" */
+  dateTime: string;
+}
+
+interface Project {
+  category: string;
+  name: string;
+  description: string;
+  technologies: string[];
+  link?: { label: string; href: string };
+  isPrivate?: boolean;
+}
+
+/** Discriminated union prevents string-comparison bugs on animation state. */
+type AnimationState = "running" | "paused" | "complete";
+
+const experiences: Experience[] = [
   {
     company: "Amazon Web Services (AWS)",
     title: "Software Development Engineer Intern",
     description: "Amazon EC2",
-    date: "June 2025 - August 2025",
+    date: "June 2025 – August 2025",
+    dateTime: "2025-06",
   },
   {
     company: "General Dynamics Electric Boat",
     title: "Tactical Software Engineer Co-op",
     description:
-      "Internal tooling & software for the US Navy's nuclear submarines.",
-    date: "January 2025 - May 2025",
+      "Internal tooling & software for the US Navy's nuclear submarine program.",
+    date: "January 2025 – May 2025",
+    dateTime: "2025-01",
   },
   {
     company: "The Pennsylvania State University",
     title: "Teaching Assistant",
     description:
-      "Assisted teaching operations for an entry level Python course at Penn State.",
-    date: "August 2022 - December 2023",
+      "Assisted teaching operations for an entry-level Python course at Penn State.",
+    date: "August 2022 – December 2023",
+    dateTime: "2022-08",
   },
   {
     company: "Special Order Systems",
     title: "Software Intern",
     description:
-      "Project based software internship, in which I worked with Python and APIs.",
-    date: "July 2021 - December 2021",
+      "Project-based internship building Python tooling and REST API integrations.",
+    date: "July 2021 – December 2021",
+    dateTime: "2021-07",
   },
 ];
 
+const projects: Project[] = [
+  {
+    category: "Web Application",
+    name: "Dashboard",
+    description:
+      "Built a role-gated dashboard for viewing sensitive database records, implementing Discord OAuth for authentication and granular access control.",
+    technologies: ["Next.js", "React"],
+    isPrivate: true,
+  },
+  {
+    category: "Java Game Development",
+    name: "Monopoly",
+    description:
+      "Fully playable GUI implementation of Monopoly in Java, including property management, trading, and computer opponents.",
+    technologies: ["Java", "Swing"],
+    link: { label: "Download JAR", href: "/projectfiles/MonopolyProject.jar" },
+  },
+  {
+    category: "Node.js Development",
+    name: "Discord Bot",
+    description:
+      "A a bot to streamline server management andtasks by automating moderator tasks and role assignments.",
+    technologies: ["Node.js", "Discord.js"],
+    link: {
+      label: "GitHub",
+      href: "https://github.com/The-English-Hub-Dev/The-English-Hub",
+    },
+  },
+];
+
+// ─── Shared animation variants ─────────────────────────────────────────────
+
+/**
+ * Reusable fade-up variant used by both card types.
+ * The `custom` prop drives the stagger delay so each card
+ * enters slightly after the previous one.
+ */
+const cardEntryVariants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.45,
+      delay: i * 0.1,
+      ease: [0.25, 0.46, 0.45, 0.94] as const,
+    },
+  }),
+};
+
+interface ExperienceCardProps {
+  experience: Experience;
+  darkMode: boolean;
+  index: number;
+}
+
+function ExperienceCard({ experience, darkMode, index }: ExperienceCardProps) {
+  const ref = useRef<HTMLElement>(null);
+  // `once: true` means the animation fires once when the card enters the
+  // viewport — it won't re-animate on scroll back up.
+  const isInView = useInView(ref, { once: true, margin: "-60px 0px" });
+
+  return (
+    <motion.article
+      ref={ref}
+      variants={cardEntryVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      custom={index}
+      className={`rounded-lg overflow-hidden ${
+        darkMode
+          ? "bg-gray-800 shadow-lg"
+          : "bg-white shadow-md border border-gray-100"
+      } ${styles.workExpCard}`}
+    >
+      <div className="p-6">
+        {/* Date leads — recruiters scan chronologically */}
+        <time
+          dateTime={experience.dateTime}
+          className={`text-xs font-mono tracking-widest uppercase block mb-3 ${
+            darkMode ? "text-blue-400" : "text-blue-600"
+          }`}
+        >
+          {experience.date}
+        </time>
+        <h3
+          className={`text-lg font-bold mb-1 ${
+            darkMode ? "text-white" : "text-gray-900"
+          }`}
+        >
+          {experience.company}
+        </h3>
+        <h4
+          className={`text-sm font-semibold mb-3 ${
+            darkMode ? "text-gray-300" : "text-gray-600"
+          }`}
+        >
+          {experience.title}
+        </h4>
+        <p
+          className={`text-sm leading-relaxed ${
+            darkMode ? "text-gray-400" : "text-gray-500"
+          }`}
+        >
+          {experience.description}
+        </p>
+      </div>
+    </motion.article>
+  );
+}
+
+interface ProjectCardProps {
+  project: Project;
+  darkMode: boolean;
+  index: number;
+}
+
+function ProjectCard({ project, darkMode, index }: ProjectCardProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px 0px" });
+
+  const isExternal = project.link?.href.startsWith("http") ?? false;
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={cardEntryVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      custom={index}
+      className="h-full"
+    >
+      <Card
+        text={darkMode ? "light" : "dark"}
+        border="primary"
+        className={`mb-3 w-100 h-100 ${
+          darkMode ? styles.expCard : styles.expCardLight
+        } ${styles.projectCard}`}
+      >
+        {/* Visually distinct category header */}
+        <Card.Header
+          className={`text-xs uppercase tracking-wider font-semibold py-2 ${
+            darkMode
+              ? "text-blue-300 bg-transparent border-blue-800"
+              : "text-blue-600 bg-blue-50/60 border-blue-100"
+          }`}
+        >
+          {project.category}
+        </Card.Header>
+
+        <Card.Body className="d-flex flex-column gap-2">
+          <Card.Title className="mb-0">{project.name}</Card.Title>
+          <Card.Text
+            className={`flex-grow-1 text-sm mb-0 ${
+              darkMode ? "text-gray-300" : "text-gray-600"
+            }`}
+          >
+            {project.description}
+          </Card.Text>
+
+          <div className="d-flex justify-content-between align-items-center flex-wrap gap-2 mt-auto pt-2">
+            {/* Technology pill badges — scannable at a glance */}
+            <div className="d-flex flex-wrap gap-1">
+              {project.technologies.map((tech) => (
+                <span
+                  key={tech}
+                  className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                    darkMode
+                      ? "bg-blue-900/40 text-blue-300 border border-blue-800"
+                      : "bg-blue-50 text-blue-700 border border-blue-200"
+                  }`}
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {project.isPrivate ? (
+              <span
+                className={`text-xs ${
+                  darkMode ? "text-gray-500" : "text-gray-400"
+                }`}
+              >
+                Private
+              </span>
+            ) : project.link ? (
+              <a
+                href={project.link.href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
+                aria-label={`${project.link.label} for ${project.name}`}
+                className={`text-sm font-medium no-underline ${
+                  darkMode
+                    ? "text-blue-400 hover:text-blue-300"
+                    : "text-blue-600 hover:text-blue-500"
+                }`}
+              >
+                {project.link.label} →
+              </a>
+            ) : null}
+          </div>
+        </Card.Body>
+      </Card>
+    </motion.div>
+  );
+}
+
+
 export default function Main() {
   const { isDark: darkMode } = useTheme();
-  const [typeItInstance, setTypeItInstance] = useState<TypeItController | null>(
-    null,
-  );
-  const [typeFreezeText, setTypeFreezeText] = useState("Pause Animation");
-  const [isTypeAnimationComplete, setIsTypeAnimationComplete] = useState(false);
 
-  const freezeOrUnfreezeText = () => {
-    if (!typeItInstance) {
-      return;
-    }
+  const typeItRef = useRef<TypeItInstance | null>(null);
 
-    if (typeItInstance.is("frozen")) {
-      typeItInstance.unfreeze();
-      setTypeFreezeText("Pause Animation");
-    } else {
-      typeItInstance.freeze();
-      setTypeFreezeText("Resume Animation");
-    }
-  };
+  const [animState, setAnimState] = useState<AnimationState>("running");
 
-  const bgImageSection = useRef(null);
+  const bgImageSection = useRef<HTMLDivElement>(null);
   const { scrollYProgress: bgScrollProgress } = useScroll({
     target: bgImageSection,
     offset: ["0.06 start", "1.05 start"],
   });
+
+  // useCallback prevents a new function reference on every render.
+  const handleAnimToggle = useCallback(() => {
+    const instance = typeItRef.current;
+    if (!instance || animState === "complete") return;
+
+    if (animState === "paused") {
+      instance.unfreeze();
+      setAnimState("running");
+    } else {
+      instance.freeze();
+      setAnimState("paused");
+    }
+  }, [animState]);
+
+  const pauseButtonLabel =
+    animState === "complete"
+      ? "Animation complete"
+      : animState === "paused"
+        ? "Resume"
+        : "Pause";
 
   return (
     <>
@@ -82,42 +326,53 @@ export default function Main() {
       </Head>
       <Container
         fluid
-        className={`${darkMode ? "p-0 bg-dark" : styles.mainContainerLight}`}
+        className={darkMode ? "p-0 bg-dark" : styles.mainContainerLight}
       >
         <div className="overflow-hidden">
           <main>
-            <div ref={bgImageSection}>
-              <div className="vw-100 position-relative">
-                <ParallaxBanner
-                  layers={[{ image: "images/sf-night.webp", speed: -20 }]}
-                  className={`${styles.bgImage} vh-100`}
-                />
-              </div>
+            {/*
+             * position-relative on the outer div so the hero content overlay
+             * is positioned relative to the parallax section, not the viewport.
+             */}
+            <div ref={bgImageSection} className="position-relative">
+              <ParallaxBanner
+                layers={[{ image: "images/sf-night.webp", speed: -20 }]}
+                className={`${styles.bgImage} vh-100 vw-100`}
+              />
+
+              {/*
+               * clamp() gives fluid responsive positioning — no hardcoded
+               * pixel values that break on mobile or ultrawide screens.
+               */}
               <div
+                className="position-absolute"
                 style={{
-                  position: "absolute",
-                  left: 100,
-                  top: 100,
-                  alignItems: "center",
+                  top: "clamp(3.5rem, 10vh, 7rem)",
+                  left: "clamp(1.25rem, 5vw, 6rem)",
                 }}
               >
                 <Button
                   variant="outline-warning"
                   size="sm"
-                  className={`${styles.pauseTypeButton} ${
-                    isTypeAnimationComplete ? "opacity-20" : ""
+                  className={`${styles.pauseTypeButton} mb-3 d-block ${
+                    animState === "complete" ? "opacity-25" : ""
                   }`}
-                  onClick={() => {
-                    freezeOrUnfreezeText();
-                  }}
-                  disabled={typeFreezeText === "Animation Complete"}
+                  onClick={handleAnimToggle}
+                  disabled={animState === "complete"}
+                  aria-label={
+                    animState === "paused"
+                      ? "Resume typewriter animation"
+                      : animState === "complete"
+                        ? "Typewriter animation is complete"
+                        : "Pause typewriter animation"
+                  }
                 >
-                  {typeFreezeText}
+                  {pauseButtonLabel}
                 </Button>
+
                 <TypeIt
                   as="h1"
                   getBeforeInit={(instance) => {
-                    // setTypeItInstance(instance);
                     instance
                       .pause(750)
                       .type("Hi! I'm Gaurav.")
@@ -139,36 +394,36 @@ export default function Main() {
                       .pause(1500)
                       .delete(19, { speed: 200 })
                       .type("!")
-                      .exec((_instance) => {
-                        setTypeFreezeText("Animation Complete");
-                        setIsTypeAnimationComplete(true);
-                      });
-
+                      .exec(() => setAnimState("complete"));
                     return instance;
                   }}
                   getAfterInit={(instance) => {
-                    setTypeItInstance(instance);
+                    // Cast needed because TypeIt's exported types don't expose
+                    // freeze/unfreeze — but the runtime instance has them.
+                    typeItRef.current = instance as unknown as TypeItInstance;
                     return instance;
                   }}
-                  options={{
-                    speed: 75,
-                    waitUntilVisible: true,
-                  }}
+                  options={{ speed: 75, waitUntilVisible: true }}
                   className={`${styles.introHi} mb-4`}
                 />
               </div>
             </div>
+
             <div>
               <motion.div
-                className={`${styles.imageScrollProgressBar}`}
+                className={styles.imageScrollProgressBar}
                 style={{ scaleX: bgScrollProgress }}
               />
-              <section id="prevexp">
+
+              {/* aria-labelledby links the section to its visible heading,
+                  giving screen reader users a named landmark to jump to. */}
+              <section id="prevexp" aria-labelledby="exp-heading">
                 <div className="d-flex">
                   <h2
-                    className={`${
+                    id="exp-heading"
+                    className={
                       darkMode ? styles.headingTwoDark : styles.headingTwoLight
-                    }`}
+                    }
                   >
                     Professional Experience
                   </h2>
@@ -178,40 +433,23 @@ export default function Main() {
                     darkMode ? "text-white" : "text-gray-900"
                   } mb-4 mx-3`}
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {profExperiences.map((job, index) => (
-                      <div
-                        key={index}
-                        className={`${
-                          darkMode ? "bg-gray-800" : "bg-white"
-                        } rounded-lg shadow-lg overflow-hidden ${
-                          styles.workExpCard
-                        }`}
-                      >
-                        <div className="p-6">
-                          <h3 className="text-xl font-semibold mb-2">
-                            {job.company}
-                          </h3>
-                          <h4 className="text-lg font-medium mb-2">
-                            {job.title}
-                          </h4>
-                          <p
-                            className={`mb-4 ${
-                              darkMode ? "text-gray-300" : "text-gray-600"
-                            }`}
-                          >
-                            {job.description}
-                          </p>
-                          <p className="text-sm text-gray-500">{job.date}</p>
-                        </div>
-                      </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {experiences.map((exp, index) => (
+                      <ExperienceCard
+                        key={exp.company}
+                        experience={exp}
+                        darkMode={darkMode}
+                        index={index}
+                      />
                     ))}
                   </div>
                 </div>
               </section>
-              <section id="projects">
+
+              <section id="projects" aria-labelledby="projects-heading">
                 <div className="d-flex">
                   <h2
+                    id="projects-heading"
                     className={`${
                       darkMode ? styles.headingTwoDark : styles.headingTwoLight
                     } mt-5`}
@@ -220,110 +458,27 @@ export default function Main() {
                   </h2>
                 </div>
                 <div className="px-3">
-                  <Row md={3} className="g-3">
-                    <Col xs={12} md={6} lg={4}>
-                      <Card
-                        text={darkMode ? "light" : "dark"}
-                        border="primary"
-                        className={`mb-3 w-100 ${
-                          darkMode ? styles.expCard : styles.expCardLight
-                        } ${styles.projectCard}`}
-                      >
-                        <Card.Header>Web Application</Card.Header>
-                        <Card.Body>
-                          <Card.Title>Dashboard</Card.Title>
-                          <Card.Text>
-                            Created a dashboard for users to view sensitive
-                            database data. Implemented Discord OAuth for
-                            authentication.
-                          </Card.Text>
-                          <Card.Footer className="d-flex justify-content-between align-items-center">
-                            <span className="text-success">
-                              Technologies: Next.js, React
-                            </span>
-                            <Card.Link className={"text-secondary"}>
-                              Private Project
-                            </Card.Link>
-                          </Card.Footer>
-                        </Card.Body>
-                      </Card>
-                    </Col>
-
-                    <Col xs={12} md={6} lg={4}>
-                      <Card
-                        text={darkMode ? "light" : "dark"}
-                        border="primary"
-                        className={`mb-3 w-100 ${
-                          darkMode ? styles.expCard : styles.expCardLight
-                        } ${styles.projectCard}`}
-                      >
-                        <Card.Header>Java Game Development</Card.Header>
-                        <Card.Body>
-                          <Card.Title>Monopoly</Card.Title>
-                          <Card.Text>
-                            Built a GUI-based game of Monopoly in Java. First
-                            full-stack project experience.
-                          </Card.Text>
-                          <Card.Footer className="d-flex justify-content-between align-items-center">
-                            <span className="text-success">
-                              Technology: Java
-                            </span>
-                            <Card.Link
-                              href="/projectfiles/MonopolyProject.jar"
-                              className={`${
-                                darkMode ? "text-info" : "text-primary"
-                              }`}
-                            >
-                              JAR file
-                            </Card.Link>
-                          </Card.Footer>
-                        </Card.Body>
-                      </Card>
-                    </Col>
-
-                    <Col xs={12} md={6} lg={4}>
-                      <Card
-                        text={darkMode ? "light" : "dark"}
-                        border="primary"
-                        className={`mb-3 w-100 ${
-                          darkMode ? styles.expCard : styles.expCardLight
-                        } ${styles.projectCard}`}
-                      >
-                        <Card.Header>Node.js Development</Card.Header>
-                        <Card.Body>
-                          <Card.Title>Discord Bot</Card.Title>
-                          <Card.Text>
-                            Built a bot to streamline server management and
-                            tasks by automating moderator tasks and role
-                            assignments.
-                          </Card.Text>
-                          <Card.Footer className="d-flex justify-content-between align-items-center">
-                            <span className="text-success">
-                              Technology: Node.js
-                            </span>
-                            <Card.Link
-                              href="https://github.com/The-English-Hub-Dev/The-English-Hub"
-                              target="_blank"
-                              rel="noreferrer noopener"
-                              className={`${
-                                darkMode ? "text-info" : "text-primary"
-                              }`}
-                            >
-                              GitHub Link
-                            </Card.Link>
-                          </Card.Footer>
-                        </Card.Body>
-                      </Card>
-                    </Col>
+                  <Row className="g-3">
+                    {projects.map((project, index) => (
+                      <Col xs={12} md={6} lg={4} key={project.name}>
+                        <ProjectCard
+                          project={project}
+                          darkMode={darkMode}
+                          index={index}
+                        />
+                      </Col>
+                    ))}
                   </Row>
                 </div>
               </section>
-              <section id="techstack">
+
+              <section id="techstack" aria-labelledby="techstack-heading">
                 <div className="d-flex">
                   <h2
-                    className={`${
+                    id="techstack-heading"
+                    className={
                       darkMode ? styles.headingTwoDark : styles.headingTwoLight
-                    }`}
+                    }
                   >
                     Tech Stack
                   </h2>
