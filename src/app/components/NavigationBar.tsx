@@ -102,8 +102,6 @@ export default function NavigationBar() {
                     href="https://resume.gauravkparab.com/Gaurav_Parab_resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    target="_blank"
-                    rel="noreferrer noopener"
                   >
                     View PDF Resume
                   </Dropdown.Item>
