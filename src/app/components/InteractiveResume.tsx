@@ -8,6 +8,8 @@ import {
   Mail,
   Terminal,
   MapPin,
+  Phone,
+  Globe,
 } from "lucide-react";
 import { Section } from "./resume/Section";
 import { SkillBubble } from "./resume/SkillBubble";
@@ -48,92 +50,72 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
   };
 
   const skills = {
-    languages: [
+    Languages: [
       "Python",
       "Java",
       "JavaScript",
-      "TypeScript",
-      "C",
+      "C/C++",
       "HTML/CSS",
-      "Verilog",
       "Bash",
-      "C++",
+      "SQL",
+      "Assembly",
+      "React",
+      "Next.js",
       "R",
     ],
-    tools: ["Git", "Node.js", "Docker", "React", "Next.js", "MongoDB"],
-    "Non-Technical": ["Tennis", "Photography", "Hindi", "Marathi", "Spanish"],
+    "Developer Tools": [
+      "Node.js",
+      "Docker",
+      "Amazon Web Services",
+      "REST APIS",
+    ],
+    Interests: ["Cloud", "Artificial Intelligence", "Algorithms", "DevOps"],
   };
 
   const experiences = [
     {
       title: "Software Development Engineer Intern",
-      company: "Amazon Web Services (AWS)",
+      company: "Amazon Web Services",
       location: "Arlington, VA",
       date: "June 2025 - August 2025",
       details: [
         "Designed a customer facing API to automate the onboarding process for an existing feature, reducing onboarding time from ~1 week to a few seconds",
         "Reviewed threat mitigations for API implementation, ensuring standards prior to public feature launch",
+        "Built scalable API infrastructure using DynamoDB, EC2, and AWS Organizations",
       ],
     },
     {
-      title: "Tactical Software Engineering Co-op",
-      company: "General Dynamics Electric Boat",
+      title: "Software Engineering Co-op",
+      company: "General Dynamics",
       location: "Groton, CT",
       date: "January 2025 - May 2025",
       details: [
-        "Internal Tooling and software for the US Navy's upcoming fleet of submarines.",
+        "Developed various scripts for database processes, automating requirement traceability, reducing manual labor, and speeding up reviews by 40%",
+        "Resolved critical bug requests and issues by debugging DXL code, analyzing database inconsistencies, and quickly implementing fixes for impacted users",
+        "Maintained critical testing and publishing frameworks for mission-critical software, ensuring reliability and redundancy in operational environments",
       ],
     },
     {
       title: "Teaching Assistant",
-      company: "Pennsylvania State University",
+      company: "The Pennsylvania State University",
       location: "University Park, PA",
       date: "August 2022 - December 2023",
       details: [
-        "Led weekly Python programming recitations for approximately 200 students.",
-        "Conducted review sessions and code reviews, ensuring clarity in programming concepts.",
-        "Conducted code reviews for 100+ Python assignments per week, providing valuable feedback",
-      ],
-    },
-    {
-      title: "Software Intern",
-      company: "Special Order Systems",
-      location: "Sacramento, CA",
-      date: "July 2021 - December 2021",
-      details: [
-        "Developed security solutions for California state beaches, ensuring data integrity and safety.",
-        "Automated weather data retrieval processes, improving efficiency and accuracy.",
+        "Facilitated weekly recitations for ~200 students learning Python programming fundamentals",
+        "Led three weekly review sessions to help students understand the new material presented in lectures",
+        "Conducted code reviews for 100+ Python assignments per week, providing feedback to students and instructors",
       ],
     },
   ];
 
   const projects = [
     {
-      title: "React/Next.js Dashboard",
+      title: "Dashboard",
       date: "July 2024 - Present",
-      tech: "React, Next.js, OAuth",
+      tech: "React, Next.js",
       details: [
-        "Designed a secure dashboard for managing sensitive punishment documents with Discord OAuth integration.",
-        "Focused on enhancing user experience for server administrators.",
-      ],
-    },
-    {
-      title: "JBOD System",
-      date: "September 2023 - December 2023",
-      tech: "C",
-      details: [
-        "Created a simulated multi-disk system with read and write capabilities",
-        "Implemented networking features to enable server communication.",
-        "Focused on optimizing system performance and debugging complex issues.",
-      ],
-    },
-    {
-      title: "Monopoly Board Game",
-      date: "May 2022",
-      tech: "Java",
-      details: [
-        "Collaborated with a team to create a GUI-based Monopoly board game.",
-        "Implemented gameplay mechanics and interactive features.",
+        "Designed a responsive dashboard to securely display over 200 sensitive documents, improving engagement for 100+ users.",
+        "Used Discord OAuth to lock sensitive data behind authentication",
       ],
     },
   ];
@@ -154,16 +136,30 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
           >
             Gaurav Parab
           </h1>
-          <div className="flex justify-center space-x-6 mb-4">
-            <MapPin size={18} className={`mr-2 ${colors.text.secondary}`} />
-            <span className={`${colors.text.secondary} ms-0`}>
-              San Francisco Bay Area
-            </span>
+          <div className="flex flex-wrap justify-center gap-6 mb-4">
+            <div className={`flex items-center ${colors.text.secondary}`}>
+              <MapPin size={18} className="mr-2" />
+              <span>San Jose, CA</span>
+            </div>
+            <a
+              href="tel:4088135199"
+              className={`${colors.text.secondary} hover:text-blue-500 transition-colors flex items-center`}
+            >
+              <Phone size={18} className="mr-2" /> 408-813-5199
+            </a>
             <a
               href="mailto:gkparab1@gmail.com"
               className={`${colors.text.secondary} hover:text-blue-500 transition-colors flex items-center`}
             >
               <Mail size={18} className="mr-2" /> gkparab1@gmail.com
+            </a>
+            <a
+              href="https://gauravkparab.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${colors.text.secondary} hover:text-blue-500 transition-colors flex items-center`}
+            >
+              <Globe size={18} className="mr-2" /> gauravkparab.com
             </a>
             <a
               href="https://linkedin.com/in/gparab"
@@ -184,6 +180,27 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
         </motion.div>
 
         <Section
+          id="experience"
+          title="Technical Experience"
+          icon={<Briefcase size={24} />}
+          expandedSection={expandedSection}
+          setExpandedSection={setExpandedSection}
+          colors={colors}
+          content={
+            <div className="space-y-6">
+              {experiences.map((exp, index) => (
+                <ExperienceCard
+                  key={index}
+                  experience={exp}
+                  colors={colors}
+                  index={index}
+                />
+              ))}
+            </div>
+          }
+        />
+
+        <Section
           id="education"
           title="Education"
           icon={<GraduationCap size={24} />}
@@ -195,7 +212,6 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
               className={`${colors.cardBg} p-6 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl ${colors.text.primary}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              // whileHover={{ scale: 1.02 }}
             >
               <motion.h3
                 className="font-bold text-2xl mb-3 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent"
@@ -215,10 +231,10 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
                   Bachelor of Science (B.S.), Computer Science
                 </p>
                 <p className={`${colors.text.secondary} mb-2`}>
-                  Minor in Engineering Leadership Development | GPA: 3.66
+                  Minor in ELD | GPA: 3.66
                 </p>
                 <p className={`${colors.text.tertiary} mb-4`}>
-                  July 2022 - May 2026 (expected)
+                  July 2022 - May 2026
                 </p>
               </motion.div>
 
@@ -231,13 +247,12 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
                 <p className="font-medium text-lg mb-3">Relevant Coursework:</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   {[
-                    "Data Structures and Algorithms",
+                    "Data Structures & Algorithms",
                     "Computational Theory",
-                    "Systems Programming",
+                    "Operating Systems",
                     "Computer Organization and Design",
-                    "OOP with Web-Based Applications",
-                    "Digital Design",
-                    "Computing with Quantum Computers",
+                    "Object-Oriented Programming",
+                    "Quantum Computing",
                   ].map((course, index) => (
                     <motion.div
                       key={course}
@@ -277,36 +292,10 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {skillList.map((skill) => (
-                      <SkillBubble
-                        key={skill}
-                        skill={skill}
-                        colors={colors}
-                        // setHoveredSkill={setHoveredSkill}
-                      />
+                      <SkillBubble key={skill} skill={skill} colors={colors} />
                     ))}
                   </div>
                 </div>
-              ))}
-            </div>
-          }
-        />
-
-        <Section
-          id="experience"
-          title="Professional Experience"
-          icon={<Briefcase size={24} />}
-          expandedSection={expandedSection}
-          setExpandedSection={setExpandedSection}
-          colors={colors}
-          content={
-            <div className="space-y-6">
-              {experiences.map((exp, index) => (
-                <ExperienceCard
-                  key={index}
-                  experience={exp}
-                  colors={colors}
-                  index={index}
-                />
               ))}
             </div>
           }
@@ -345,8 +334,8 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
                 </h3>
                 <p className={colors.text.secondary}>
                   Actively engaged in workshops and bootcamps, collaborating
-                  with fellow participants to further understanding of machine
-                  learning and artificial intelligence applications.
+                  with fellow participants to further my understanding of
+                  machine learning
                 </p>
               </div>
               <div>
@@ -357,8 +346,8 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
                 </h3>
                 <p className={colors.text.secondary}>
                   Attended weekly tennis practices, interacting with club
-                  members to refine tennis skills and contribute to a
-                  collaborative team environment.
+                  members to refine my tennis skills and contribute to a
+                  collaborative team environment
                 </p>
               </div>
             </div>
