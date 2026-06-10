@@ -67,7 +67,7 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
       "Node.js",
       "Docker",
       "Amazon Web Services",
-      "REST APIS",
+      "REST APIs",
     ],
     Interests: ["Cloud", "Artificial Intelligence", "Algorithms", "DevOps"],
   };
@@ -77,7 +77,7 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
       title: "Software Development Engineer Intern",
       company: "Amazon Web Services",
       location: "Arlington, VA",
-      date: "June 2025 - August 2025",
+      date: "June 2025 – August 2025",
       details: [
         "Designed a customer facing API to automate the onboarding process for an existing feature, reducing onboarding time from ~1 week to a few seconds",
         "Reviewed threat mitigations for API implementation, ensuring standards prior to public feature launch",
@@ -88,7 +88,7 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
       title: "Software Engineering Co-op",
       company: "General Dynamics",
       location: "Groton, CT",
-      date: "January 2025 - May 2025",
+      date: "January 2025 – May 2025",
       details: [
         "Developed various scripts for database processes, automating requirement traceability, reducing manual labor, and speeding up reviews by 40%",
         "Resolved critical bug requests and issues by debugging DXL code, analyzing database inconsistencies, and quickly implementing fixes for impacted users",
@@ -99,7 +99,7 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
       title: "Teaching Assistant",
       company: "The Pennsylvania State University",
       location: "University Park, PA",
-      date: "August 2022 - December 2023",
+      date: "August 2022 – December 2023",
       details: [
         "Facilitated weekly recitations for ~200 students learning Python programming fundamentals",
         "Led three weekly review sessions to help students understand the new material presented in lectures",
@@ -111,7 +111,7 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
   const projects = [
     {
       title: "Dashboard",
-      date: "July 2024 - Present",
+      date: "July 2024 – Present",
       tech: "React, Next.js",
       details: [
         "Designed a responsive dashboard to securely display over 200 sensitive documents, improving engagement for 100+ users.",
@@ -234,7 +234,7 @@ const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
                   Minor in ELD | GPA: 3.66
                 </p>
                 <p className={`${colors.text.tertiary} mb-4`}>
-                  July 2022 - May 2026
+                  July 2022 – May 2026
                 </p>
               </motion.div>
 
