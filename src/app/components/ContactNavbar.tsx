@@ -93,24 +93,21 @@ export default function ContactNavbar() {
                 <NextNavLink href="/#prevexp">Previous Experience</NextNavLink>
               </Nav>
               <Nav className="me-3">
-                <Link href="/resume">
-                  {/* @next-codemod-error This Link previously used the now removed `legacyBehavior` prop, and has a child that might not be an anchor. The codemod bailed out of lifting the child props to the Link. Check that the child component does not render an anchor, and potentially move the props manually to Link. */}
-                  <SplitButton
-                    title="View Resume"
-                    variant="outline-success"
-                    href="/resume"
+                <SplitButton
+                  title="View Resume"
+                  variant="outline-success"
+                  onClick={() => window.location.href = "/resume"}
+                >
+                  <Dropdown.Item href="/documents/Gaurav_Parab_resume.pdf">
+                    View PDF Resume
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    href="/documents/Gaurav_Parab_resume.pdf"
+                    download
                   >
-                    <Dropdown.Item href="/documents/Gaurav_Parab_resume.pdf">
-                      View PDF Resume
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      href="/documents/Gaurav_Parab_resume.pdf"
-                      download
-                    >
-                      Download Resume
-                    </Dropdown.Item>
-                  </SplitButton>
-                </Link>
+                    Download Resume
+                  </Dropdown.Item>
+                </SplitButton>
               </Nav>
               <Navbar.Brand
                 href="https://www.linkedin.com/in/gparab"
