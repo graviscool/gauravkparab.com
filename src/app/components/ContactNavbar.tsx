@@ -96,13 +96,19 @@ export default function ContactNavbar() {
                 <SplitButton
                   title="View Resume"
                   variant="outline-success"
-                  onClick={() => window.location.href = "/resume"}
+                  onClick={() => (window.location.href = "/resume")}
                 >
-                  <Dropdown.Item href="/documents/Gaurav_Parab_resume.pdf">
+                  <Dropdown.Item
+                    href="https://resume.gauravkparab.com/Gaurav_Parab_resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     View PDF Resume
                   </Dropdown.Item>
                   <Dropdown.Item
-                    href="/documents/Gaurav_Parab_resume.pdf"
+                    href="https://resume.gauravkparab.com/Gaurav_Parab_resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     download
                   >
                     Download Resume

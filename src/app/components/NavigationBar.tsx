@@ -93,20 +93,24 @@ export default function NavigationBar() {
                 <Nav.Link href="#techstack">Tech Stack</Nav.Link>
               </Nav>
               <Nav className="me-3">
-                <SplitButton 
-                  title="View Resume" 
+                <SplitButton
+                  title="View Resume"
                   variant="outline-success"
-                  onClick={() => window.location.href = "/resume"}
+                  onClick={() => (window.location.href = "/resume")}
                 >
                   <Dropdown.Item
-                    href="/documents/Gaurav_Parab_resume.pdf"
+                    href="https://resume.gauravkparab.com/Gaurav_Parab_resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     target="_blank"
                     rel="noreferrer noopener"
                   >
                     View PDF Resume
                   </Dropdown.Item>
                   <Dropdown.Item
-                    href="/documents/Gaurav_Parab_resume.pdf"
+                    href="https://resume.gauravkparab.com/Gaurav_Parab_resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     download
                   >
                     Download PDF Resume
