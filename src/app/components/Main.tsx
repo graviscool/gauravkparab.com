@@ -318,7 +318,7 @@ export default function Main() {
                 </p>
 
                 <p className={`${styles.heroBio} mb-4`}>
-                  Recent graduate, relocating to the DMV to
+                  Relocating to the DMV to
                   join AWS this fall.
                 </p>
               </div>
