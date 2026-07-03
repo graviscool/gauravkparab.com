@@ -42,7 +42,7 @@ export const Section: FC<SectionProps> = ({
         {cloneElement(icon, { className: "text-white" } as any)}
         <h2 className="text-xl font-semibold">{title}</h2>
       </div>
-      {expandedSection === id ? (
+      {expandedSection === id || expandedSection === "all" ? (
         <ChevronUp size={20} className="text-white" />
       ) : (
         <ChevronDown size={20} className="text-white" />
@@ -50,7 +50,7 @@ export const Section: FC<SectionProps> = ({
     </motion.div>
 
     <AnimatePresence>
-      {expandedSection === id && (
+      {(expandedSection === id || expandedSection === "all") && (
         <motion.div
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: "auto", opacity: 1 }}

@@ -188,7 +188,7 @@ export default function TechStack({
           >
             <Card.Img
               variant="top"
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/powershell/powershell-plain.svg"
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-plain.svg"
             />
             <Card.Body>
               <Card.Text>Bash</Card.Text>

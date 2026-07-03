@@ -39,9 +39,9 @@ const experiences: Experience[] = [
   },
   {
     company: "General Dynamics Electric Boat",
-    title: "Tactical Software Engineer Co-op",
+    title: "Software Engineering Co-op",
     description:
-      "Internal tooling & software for the US Navy's nuclear submarine program.",
+      "Internal tooling & software for defense programs.",
     date: "January 2025 – May 2025",
     dateTime: "2025-01",
   },
@@ -68,7 +68,7 @@ const projects: Project[] = [
     category: "Web Application",
     name: "Dashboard",
     description:
-      "Built a role-gated dashboard for viewing sensitive database records, implementing Discord OAuth for authentication and granular access control.",
+      "Built a role-gated dashboard serving 100+ users to securely view 200+ sensitive documents, implementing Discord OAuth for authentication and granular access control.",
     technologies: ["Next.js", "React"],
     isPrivate: true,
   },

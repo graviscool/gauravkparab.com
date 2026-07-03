@@ -229,10 +229,10 @@ export default function Contact() {
                       isDark ? "text-light" : "text-gray-600"
                     }`}
                   >
-                    Hi! I&apos;m Gaurav, a senior studying Computer Science at
-                    Penn State. I&apos;m always interested in picking up new
-                    projects or exploring new technologies. Feel free to reach
-                    out!
+                    Hi! I&apos;m Gaurav, a recent CS graduate from Penn State
+                    now joining AWS as an SDE. I&apos;m always interested in
+                    picking up new projects or exploring new technologies. Feel
+                    free to reach out!
                   </p>
                 </CardContent>
               </div>

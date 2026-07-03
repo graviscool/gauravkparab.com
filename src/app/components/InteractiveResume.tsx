@@ -19,7 +19,7 @@ import { SkillsVisualization } from "./resume/SkillsVisualization";
 import Image from "next/image";
 
 const InteractiveResume = ({ darkMode }: { darkMode: boolean }) => {
-  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const [expandedSection, setExpandedSection] = useState<string | null>("all");
 
   const colors = {
     background: darkMode ? "bg-neutral-900" : "bg-slate-50",
